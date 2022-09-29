@@ -7,7 +7,8 @@ export default createGlobalStyle`
       box-sizing:border-box;
     }
 
-    body {
+    body, button, input {
       font-family: 'Manrope', sans-serif;
     }
+
 `;
