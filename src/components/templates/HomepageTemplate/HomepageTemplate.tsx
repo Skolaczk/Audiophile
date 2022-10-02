@@ -8,9 +8,11 @@ const Homepage = () => {
   return (
     <MainTemplate>
       <Hero />
-      <CategoryList />
-      <CardsGrid />
-      <Card />
+      <div style={{ margin: '0 auto', maxWidth: '1200px' }}>
+        <CategoryList />
+        <CardsGrid />
+        <Card />
+      </div>
     </MainTemplate>
   );
 };

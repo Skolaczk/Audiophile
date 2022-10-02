@@ -1,10 +1,11 @@
 import { ButtonLink } from 'components/atoms/Button/ButtonLink';
 import HeroImage from 'images/home/mobile/image-hero.jpg';
+import HeroImageDesktop from 'images/home/desktop/image-hero.jpg';
 import { StyledHero } from './Hero.styles';
 
 const Hero = () => {
   return (
-    <StyledHero heroImage={HeroImage}>
+    <StyledHero heroImage={HeroImage} heroImageDesktop={HeroImageDesktop}>
       <div>
         <h2>New product</h2>
         <h1>xx99 mark ii headphones</h1>

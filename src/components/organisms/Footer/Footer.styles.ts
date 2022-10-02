@@ -4,49 +4,85 @@ export const StyledFooter = styled.footer`
   background-color: ${({ theme }) => theme.color.black};
   text-align: center;
   padding: 50px 25px 30px;
-  position: relative;
+  margin-top: 50px;
 
   ul {
     display: flex;
     list-style: none;
     text-transform: uppercase;
-    color: ${({ theme }) => theme.color.white};
     flex-direction: column;
     align-items: center;
     font-size: ${({ theme }) => theme.font.size.smallText};
     font-weight: ${({ theme }) => theme.font.weight.bold};
     margin: 50px 0;
-  }
-
-  li:not(:last-child) {
-    margin-bottom: 20px;
+    gap: 25px;
   }
 
   p {
     color: ${({ theme }) => theme.color.lightBlack};
-    font-size: ${({ theme }) => theme.font.size.mediumText};
+    font-size: ${({ theme }) => theme.font.size.largeText};
     margin-bottom: 50px;
     line-height: 1.7;
+
+    ${({ theme }) => theme.mq.tablet} {
+      margin-top: 50px;
+    }
   }
 
-  div {
+  a {
+    text-decoration: none;
+    color: ${({ theme }) => theme.color.white};
+  }
+
+  ${({ theme }) => theme.mq.tablet} {
+    text-align: left;
+
+    ul {
+      flex-direction: row;
+      margin: 0;
+    }
+  }
+`;
+
+export const IconsWrapper = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+`;
+
+export const Wrapper = styled.div`
+  ${({ theme }) => theme.mq.tablet} {
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
-  }
 
-  svg {
-    margin: 0 10px;
+    p {
+      margin: 0;
+    }
   }
+`;
+
+export const CenterWrapper = styled.div`
+  max-width: 1150px;
+  margin: 0 auto;
+  position: relative;
 
   &::after {
     content: '';
     position: absolute;
-    top: 0;
+    top: -50px;
     left: 50%;
     transform: translateX(-50%);
     width: 100px;
     height: 5px;
     background-color: ${({ theme }) => theme.color.orange};
+  }
+
+  ${({ theme }) => theme.mq.tablet} {
+    &::after {
+      left: 0;
+      transform: none;
+    }
   }
 `;

@@ -2,6 +2,7 @@ import styled from 'styled-components';
 
 type HeroProps = {
   readonly heroImage: string;
+  readonly heroImageDesktop: string;
 };
 
 export const StyledHero = styled.div<HeroProps>`
@@ -38,5 +39,27 @@ export const StyledHero = styled.div<HeroProps>`
     font-size: ${({ theme }) => theme.font.size.largeText};
     line-height: 1.7;
     margin-bottom: 40px;
+  }
+
+  ${({ theme }) => theme.mq.desktop} {
+    background: url(${({ heroImageDesktop }) => heroImageDesktop}) no-repeat;
+    background-position: center;
+    background-color: ${({ theme }) => theme.color.black};
+    justify-content: flex-start;
+    padding: 25px;
+    height: calc(70vh - 81px);
+
+    div {
+      background-image: none;
+      text-align: left;
+      padding: 0;
+      width: 1200px;
+      margin: 0 auto;
+
+      h1,
+      p {
+        max-width: 450px;
+      }
+    }
   }
 `;

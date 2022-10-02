@@ -2,8 +2,15 @@ import { useEffect, useState } from 'react';
 import { ReactComponent as Logo } from 'assets/icons/logo.svg';
 import { ReactComponent as CartIcon } from 'assets/icons/icon-cart.svg';
 import CategoryList from 'components/organisms/CategoryList/CategoryList';
-import { HamburgerButton, Navigation, StyledHeader } from './Header.styles';
-import { Link, useLocation } from 'react-router-dom';
+import {
+  DesktopNavigation,
+  HamburgerButton,
+  Navigation,
+  StyledHeader,
+  Wrapper,
+  Background,
+} from './Header.styles';
+import { Link, NavLink, useLocation } from 'react-router-dom';
 
 const Header = () => {
   const location = useLocation();
@@ -14,25 +21,64 @@ const Header = () => {
   };
 
   useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+  }, [isOpen]);
+
+  useEffect(() => {
     setIsOpen(false);
   }, [location]);
 
   return (
     <StyledHeader>
-      <HamburgerButton isOpen={isOpen} onClick={toggleNavigation}>
-        <div />
-        <div />
-        <div />
-      </HamburgerButton>
-      <Link to='/'>
-        <Logo />
-      </Link>
-      <button>
-        <CartIcon />
-      </button>
+      <Wrapper>
+        <HamburgerButton isOpen={isOpen} onClick={toggleNavigation}>
+          <div />
+          <div />
+          <div />
+        </HamburgerButton>
+        <Link to='/'>
+          <Logo />
+        </Link>
+        <DesktopNavigation>
+          <ul>
+            <li>
+              <NavLink
+                className={({ isActive }) => (isActive ? 'active' : 'inactive')}
+                to='/headphones'
+              >
+                headphones
+              </NavLink>
+            </li>
+            <li>
+              <NavLink
+                className={({ isActive }) => (isActive ? 'active' : 'inactive')}
+                to='/speakers'
+              >
+                speakers
+              </NavLink>
+            </li>
+            <li>
+              <NavLink
+                className={({ isActive }) => (isActive ? 'active' : 'inactive')}
+                to='/earphones'
+              >
+                earphones
+              </NavLink>
+            </li>
+          </ul>
+        </DesktopNavigation>
+        <button>
+          <CartIcon />
+        </button>
+      </Wrapper>
       <Navigation isOpen={isOpen}>
         <CategoryList />
       </Navigation>
+      <Background isOpen={isOpen} onClick={toggleNavigation} />
     </StyledHeader>
   );
 };

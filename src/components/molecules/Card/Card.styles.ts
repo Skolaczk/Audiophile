@@ -21,8 +21,35 @@ export const StyledCard = styled.div`
   }
 
   p {
-    font-size: ${({ theme }) => theme.font.size.mediumText};
+    font-size: ${({ theme }) => theme.font.size.largeText};
     color: ${({ theme }) => theme.color.darkGray};
     line-height: 1.7;
+  }
+
+  ${({ theme }) => theme.mq.tablet} {
+    display: flex;
+    align-items: center;
+    gap: 50px;
+
+    picture {
+      order: 1;
+      width: 50%;
+    }
+
+    div {
+      width: 50%;
+      text-align: left;
+    }
+
+    h2 {
+      margin-top: 0;
+    }
+  }
+
+  ${({ theme }) => theme.mq.desktop} {
+    h2 {
+      font-size: ${({ theme }) => theme.font.size.largeHeading};
+      margin-bottom: 35px;
+    }
   }
 `;
