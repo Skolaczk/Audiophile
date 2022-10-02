@@ -2,17 +2,18 @@ import Card from 'components/molecules/Card/Card';
 import CardsGrid from 'components/organisms/CardsGrid/CardsGrid';
 import CategoryList from 'components/organisms/CategoryList/CategoryList';
 import Hero from 'components/organisms/Hero/Hero';
+import { ViewWrapper } from 'components/organisms/ViewWrapper/ViewWrapper.styles';
 import MainTemplate from '../MainTemplate/MainTemplate';
 
 const Homepage = () => {
   return (
     <MainTemplate>
       <Hero />
-      <div style={{ margin: '0 auto', maxWidth: '1200px' }}>
+      <ViewWrapper>
         <CategoryList />
         <CardsGrid />
         <Card />
-      </div>
+      </ViewWrapper>
     </MainTemplate>
   );
 };

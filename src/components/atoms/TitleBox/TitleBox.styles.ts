@@ -11,4 +11,9 @@ export const StyledTitleBox = styled.div`
     text-align: center;
     letter-spacing: 0.125rem;
   }
+
+  ${({ theme }) => theme.mq.tablet} {
+    padding: 100px;
+    margin-bottom: 50px;
+  }
 `;

@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const StyledProductsList = styled.div`
-  padding: 35px 25px;
+  padding: 25px 25px;
   display: grid;
   gap: 75px;
 `;
@@ -35,5 +35,31 @@ export const StyledProductsListItem = styled.div`
     font-size: ${({ theme }) => theme.font.size.largeText};
     line-height: 1.66;
     margin: 25px 0;
+  }
+
+  ${({ theme }) => theme.mq.tablet} {
+    display: flex;
+    align-items: center;
+    gap: 50px;
+    text-align: left;
+
+    div,
+    picture {
+      width: 50%;
+    }
+
+    img {
+      margin: 0;
+    }
+
+    &:nth-child(even) {
+      picture {
+        order: 2;
+      }
+    }
+  }
+
+  ${({ theme }) => theme.mq.desktop} {
+    gap: 100px;
   }
 `;

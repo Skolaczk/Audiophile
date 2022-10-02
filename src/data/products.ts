@@ -1,4 +1,6 @@
-import categoryImage from 'images/category-earphones/mobile/image-yx1-earphones.jpg';
+import categoryImageMobile from 'images/category-earphones/mobile/image-yx1-earphones.jpg';
+import categoryImageTablet from 'images/category-earphones/tablet/image-yx1-earphones.jpg';
+import categoryImageDesktop from 'images/category-earphones/desktop/image-yx1-earphones.jpg';
 import image from 'images/product-yx1-earphones/mobile/image-product.jpg';
 import galleryImageFirst from 'images/product-yx1-earphones/mobile/image-gallery-1.jpg';
 import galleryImageSecond from 'images/product-yx1-earphones/mobile/image-gallery-2.jpg';
@@ -13,7 +15,11 @@ const products = [
     image: image,
     cartImage: '/images/cart/image-yx1-earphones.jpg',
     category: 'earphones',
-    categoryImage: categoryImage,
+    categoryImage: {
+      mobile: categoryImageMobile,
+      tablet: categoryImageTablet,
+      desktop: categoryImageDesktop,
+    },
     new: true,
     price: 599,
     description:
@@ -73,7 +79,11 @@ const products = [
     image: image,
     cartImage: '/images/cart/image-xx99-mark-one-headphones.jpg',
     category: 'headphones',
-    categoryImage: categoryImage,
+    categoryImage: {
+      mobile: categoryImageMobile,
+      tablet: categoryImageTablet,
+      desktop: categoryImageDesktop,
+    },
     new: false,
     price: 1750,
     description:
@@ -129,7 +139,11 @@ const products = [
     image: image,
     cartImage: '/images/cart/image-xx59-headphones.jpg',
     category: 'headphones',
-    categoryImage: categoryImage,
+    categoryImage: {
+      mobile: categoryImageMobile,
+      tablet: categoryImageTablet,
+      desktop: categoryImageDesktop,
+    },
     new: false,
     price: 899,
     description:
@@ -185,7 +199,11 @@ const products = [
     image: image,
     cartImage: '/images/cart/image-xx99-mark-two-headphones.jpg',
     category: 'headphones',
-    categoryImage: categoryImage,
+    categoryImage: {
+      mobile: categoryImageMobile,
+      tablet: categoryImageTablet,
+      desktop: categoryImageDesktop,
+    },
     new: true,
     price: 2999,
     description:
@@ -245,7 +263,11 @@ const products = [
     image: image,
     cartImage: '/images/cart/image-zx7-speaker.jpg',
     category: 'speakers',
-    categoryImage: categoryImage,
+    categoryImage: {
+      mobile: categoryImageMobile,
+      tablet: categoryImageTablet,
+      desktop: categoryImageDesktop,
+    },
     new: false,
     price: 3500,
     description:
@@ -305,7 +327,11 @@ const products = [
     image: image,
     cartImage: '/images/cart/image-zx9-speaker.jpg',
     category: 'speakers',
-    categoryImage: categoryImage,
+    categoryImage: {
+      mobile: categoryImageMobile,
+      tablet: categoryImageTablet,
+      desktop: categoryImageDesktop,
+    },
     new: true,
     price: 4500,
     description:

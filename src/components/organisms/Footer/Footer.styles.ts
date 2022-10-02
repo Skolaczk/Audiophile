@@ -4,7 +4,6 @@ export const StyledFooter = styled.footer`
   background-color: ${({ theme }) => theme.color.black};
   text-align: center;
   padding: 50px 25px 30px;
-  margin-top: 50px;
 
   ul {
     display: flex;
@@ -35,6 +34,7 @@ export const StyledFooter = styled.footer`
   }
 
   ${({ theme }) => theme.mq.tablet} {
+    margin-top: 50px;
     text-align: left;
 
     ul {
