@@ -1,5 +1,9 @@
 import { FC } from 'react';
-import { ProductCompositionWrapper, StyledContent } from './ProductContent.styles';
+import {
+  ProductCompositionWrapper,
+  StyledContent,
+  StyledProductContent,
+} from './ProductContent.styles';
 
 type ProductContentType = {
   features: string;
@@ -8,19 +12,23 @@ type ProductContentType = {
 
 const ProductContent: FC<ProductContentType> = ({ features, includedItems }) => {
   return (
-    <>
-      <h3>features</h3>
-      <StyledContent>{features}</StyledContent>
-      <h3>in the box</h3>
-      <ProductCompositionWrapper>
-        {includedItems.map(({ quantity, item }) => (
-          <div key={item}>
-            <span>{quantity}x</span>
-            <p>{item}</p>
-          </div>
-        ))}
-      </ProductCompositionWrapper>
-    </>
+    <StyledProductContent>
+      <div>
+        <h3>features</h3>
+        <StyledContent>{features}</StyledContent>
+      </div>
+      <div>
+        <h3>in the box</h3>
+        <ProductCompositionWrapper>
+          {includedItems.map(({ quantity, item }) => (
+            <div key={item}>
+              <span>{quantity}x</span>
+              <p>{item}</p>
+            </div>
+          ))}
+        </ProductCompositionWrapper>
+      </div>
+    </StyledProductContent>
   );
 };
 

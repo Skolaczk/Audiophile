@@ -10,6 +10,7 @@ import ProductGallery from 'components/molecules/ProductGallery/ProductGallery';
 import OthersProductsList from 'components/organisms/OthersProductsList/OthersProductsList';
 import { ProductItemWrapper } from './ProductTemplate.styles';
 import GoBackLink from 'components/atoms/GoBackLink/GoBackLink';
+import { ViewWrapper } from 'components/organisms/ViewWrapper/ViewWrapper.styles';
 
 const Product = () => {
   const { slug } = useParams();
@@ -17,19 +18,21 @@ const Product = () => {
 
   return (
     <MainTemplate>
-      {product ? (
-        <ProductItemWrapper>
-          <GoBackLink />
-          <ProductHero {...product} />
-          <ProductContent features={product.features} includedItems={product.includedItems} />
-          <ProductGallery gallery={product.gallery} />
-          <OthersProductsList others={product.others} />
-        </ProductItemWrapper>
-      ) : (
-        <p>No items</p>
-      )}
-      <CategoryList />
-      <Card />
+      <ViewWrapper>
+        {product ? (
+          <ProductItemWrapper>
+            <GoBackLink />
+            <ProductHero {...product} />
+            <ProductContent features={product.features} includedItems={product.includedItems} />
+            <ProductGallery gallery={product.gallery} />
+            <OthersProductsList others={product.others} />
+          </ProductItemWrapper>
+        ) : (
+          <p>No items</p>
+        )}
+        <CategoryList />
+        <Card />
+      </ViewWrapper>
     </MainTemplate>
   );
 };

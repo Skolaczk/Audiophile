@@ -46,3 +46,19 @@ export const StyledContent = styled.p`
   line-height: 1.66;
   margin: 25px 0;
 `;
+
+export const StyledProductHero = styled.div`
+  ${({ theme }) => theme.mq.hugePhone} {
+    display: flex;
+    align-items: center;
+    gap: 25px;
+  }
+
+  ${({ theme }) => theme.mq.desktop} {
+    gap: 100px;
+
+    h2 {
+      font-size: ${({ theme }) => theme.font.size.largeHeading};
+    }
+  }
+`;

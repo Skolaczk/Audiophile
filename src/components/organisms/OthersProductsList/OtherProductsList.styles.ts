@@ -16,5 +16,12 @@ export const StyledOtherProduct = styled.div`
 
 export const CenterHeading = styled.h3`
   text-align: center;
-  margin-bottom: 15px;
+  margin-bottom: 25px;
+`;
+
+export const ProductsWrapper = styled.div`
+  ${({ theme }) => theme.mq.tablet} {
+    display: flex;
+    gap: 25px;
+  }
 `;

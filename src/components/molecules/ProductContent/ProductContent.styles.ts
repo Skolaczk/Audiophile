@@ -8,7 +8,7 @@ export const StyledContent = styled.p`
 `;
 
 export const ProductCompositionWrapper = styled.div`
-  margin-top: 15px;
+  margin-top: 25px;
 
   div {
     display: flex;
@@ -29,5 +29,20 @@ export const ProductCompositionWrapper = styled.div`
   span:not(:last-child),
   p:not(:last-child) {
     margin-bottom: 10px;
+  }
+`;
+
+export const StyledProductContent = styled.div`
+  ${({ theme }) => theme.mq.tablet} {
+    display: flex;
+    gap: 50px;
+
+    div:first-child {
+      width: 60%;
+    }
+  }
+
+  ${({ theme }) => theme.mq.desktop} {
+    gap: 100px;
   }
 `;
