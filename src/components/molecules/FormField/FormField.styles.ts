@@ -1,5 +1,9 @@
 import styled from 'styled-components';
 
+type InputBoxType = {
+  isBig?: boolean;
+};
+
 export const LabelBox = styled.div`
   display: flex;
   justify-content: space-between;
@@ -15,8 +19,9 @@ export const StyledLabel = styled.label`
   font-weight: ${({ theme }) => theme.font.weight.bold};
 `;
 
-export const InputBox = styled.div`
+export const InputBox = styled.div<InputBoxType>`
   margin-bottom: 20px;
+  grid-column: ${({ isBig }) => (isBig ? '1 / 3' : '')};
 
   input {
     margin-top: 10px;

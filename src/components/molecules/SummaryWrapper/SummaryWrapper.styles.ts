@@ -22,6 +22,11 @@ export const StyledSummaryWrapper = styled.div`
     font-size: ${({ theme }) => theme.font.size.small};
     font-weight: ${({ theme }) => theme.font.weight.bold};
   }
+
+  ${({ theme }) => theme.mq.desktop} {
+    width: 30%;
+    margin: 0;
+  }
 `;
 
 export const SummaryList = styled.div`

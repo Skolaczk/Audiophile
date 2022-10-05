@@ -34,7 +34,6 @@ export const StyledFooter = styled.footer`
   }
 
   ${({ theme }) => theme.mq.tablet} {
-    margin-top: 50px;
     text-align: left;
 
     ul {

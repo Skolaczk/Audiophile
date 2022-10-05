@@ -7,11 +7,12 @@ type FormFieldType = {
   label: string;
   type: string;
   placeholder: string;
+  isBig?: boolean;
 };
 
-const FormField: FC<FormFieldType> = ({ id, label, type, placeholder }) => {
+const FormField: FC<FormFieldType> = ({ id, label, type, placeholder, isBig }) => {
   return (
-    <InputBox>
+    <InputBox isBig={isBig}>
       <LabelBox>
         <StyledLabel htmlFor={id}>{label}</StyledLabel>
         {false ? <p>field cannot be empty</p> : null}

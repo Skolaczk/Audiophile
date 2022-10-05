@@ -6,7 +6,21 @@ const StyledGoBackLink = styled(Link)`
   text-decoration: none;
   font-size: ${({ theme }) => theme.font.size.largeText};
   margin-bottom: 15px;
+  width: 56px;
   display: block;
+  position: relative;
+
+  &:hover {
+    &:after {
+      content: '';
+      position: absolute;
+      bottom: 2px;
+      left: 0;
+      background-color: ${({ theme }) => theme.color.darkGray};
+      height: 1px;
+      width: 100%;
+    }
+  }
 `;
 
 const GoBackLink = () => {

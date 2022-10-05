@@ -19,6 +19,11 @@ export const StyledForm = styled.div`
     letter-spacing: 0.0581rem;
     margin: 30px 0 15px;
   }
+
+  ${({ theme }) => theme.mq.desktop} {
+    width: 70%;
+    padding: 50px;
+  }
 `;
 
 export const RadioInputBox = styled.div`
@@ -42,4 +47,12 @@ export const StyledLabel = styled.label`
   font-size: 12px;
   color: ${({ theme }) => theme.color.black};
   font-weight: ${({ theme }) => theme.font.weight.bold};
+`;
+
+export const InputsWrapper = styled.div`
+  ${({ theme }) => theme.mq.hugePhone} {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0 20px;
+  }
 `;
