@@ -4,14 +4,32 @@ type IsOpenProps = {
   readonly isOpen: boolean;
 };
 
+type CountType = {
+  readonly count: number;
+};
+
 export const StyledHeader = styled.header`
   background-color: ${({ theme }) => theme.color.black};
   z-index: 2;
   padding: 0 25px;
+`;
 
-  button {
-    border: none;
-    background-color: transparent;
+export const IconButton = styled.button<CountType>`
+  border: none;
+  background-color: transparent;
+  position: relative;
+
+  &:after {
+    position: absolute;
+    top: -10px;
+    right: -10px;
+    content: '${({ count }) => count}';
+    width: 20px;
+    height: 20px;
+    background-color: ${({ theme }) => theme.color.orange};
+    border-radius: 50%;
+    color: ${({ theme }) => theme.color.white};
+    font-size: ${({ theme }) => theme.font.size.smallText};
   }
 `;
 

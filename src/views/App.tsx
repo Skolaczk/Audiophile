@@ -6,20 +6,29 @@ import Homepage from 'components/templates/HomepageTemplate/HomepageTemplate';
 import CategoryTemplate from 'components/templates/CategoryTemplate/CategoryTemplate';
 import Product from 'components/templates/ProductTemplate/ProductTemplate';
 import CheckoutTemplate from 'components/templates/CheckoutTemplate/CheckoutTemplate';
+import Cart from 'components/molecules/Cart/Cart';
+import { ModalProvider } from 'hooks/useModal';
+import { Provider } from 'react-redux';
+import { store } from 'store';
 
 const App = () => {
   return (
-    <Router>
-      <ThemeProvider theme={theme}>
-        <GlobalStyles />
-        <Routes>
-          <Route path='/' element={<Homepage />} />
-          <Route path='/:category' element={<CategoryTemplate />} />
-          <Route path='/:category/:slug' element={<Product />} />
-          <Route path='/checkout' element={<CheckoutTemplate />} />
-        </Routes>
-      </ThemeProvider>
-    </Router>
+    <Provider store={store}>
+      <Router>
+        <ThemeProvider theme={theme}>
+          <ModalProvider>
+            <GlobalStyles />
+            <Routes>
+              <Route path='/' element={<Homepage />} />
+              <Route path='/:category' element={<CategoryTemplate />} />
+              <Route path='/:category/:slug' element={<Product />} />
+              <Route path='/checkout' element={<CheckoutTemplate />} />
+            </Routes>
+            <Cart />
+          </ModalProvider>
+        </ThemeProvider>
+      </Router>
+    </Provider>
   );
 };
 

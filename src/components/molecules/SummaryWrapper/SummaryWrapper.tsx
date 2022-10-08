@@ -1,29 +1,34 @@
 /* eslint-disable no-constant-condition */
-import Image from 'images/cart/image-yx1-earphones.jpg';
+import { getSumPrice } from 'helpers/getSumPrice';
+import { useAppSelector } from 'hooks/useRedux';
 import { CartItem, StyledSummaryWrapper, SummaryItem, SummaryList } from './SummaryWrapper.styles';
 
 const SummaryWrapper = () => {
+  const cartList = useAppSelector((state) => state.cartList);
+
   return (
     <StyledSummaryWrapper>
       <h3>summary</h3>
       {true ? (
-        <CartItem>
-          <div>
-            <img src={Image} alt='' />
+        cartList.map(({ id, image, name, price, quantity }) => (
+          <CartItem key={id}>
             <div>
-              <h4>XX 99 MK II</h4>
-              <p>$ 2999</p>
+              <img src={image} alt='' />
+              <div>
+                <h4>{name}</h4>
+                <p>$ {price}</p>
+              </div>
             </div>
-          </div>
-          <p>x1</p>
-        </CartItem>
+            <p>x {quantity}</p>
+          </CartItem>
+        ))
       ) : (
         <p>No Items in cart</p>
       )}
       <SummaryList>
         <SummaryItem>
           <p>total</p>
-          <p>$ 0</p>
+          <p>$ {getSumPrice(cartList)}</p>
         </SummaryItem>
         <SummaryItem>
           <p>shipping</p>
@@ -31,11 +36,11 @@ const SummaryWrapper = () => {
         </SummaryItem>
         <SummaryItem>
           <p>vat (included)</p>
-          <p>$ 0</p>
+          <p>$ {(23 * getSumPrice(cartList)) / 100}</p>
         </SummaryItem>
         <SummaryItem>
           <p>grand total</p>
-          <p>$ 50</p>
+          <p>$ {getSumPrice(cartList) + 50 + (23 * getSumPrice(cartList)) / 100}</p>
         </SummaryItem>
       </SummaryList>
       <button type='submit' form='form'>

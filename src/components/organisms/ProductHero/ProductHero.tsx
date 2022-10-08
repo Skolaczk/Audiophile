@@ -1,4 +1,5 @@
-import { FC } from 'react';
+import { useAppDispatch } from 'hooks/useRedux';
+import { FC, useReducer } from 'react';
 import {
   StyledBoxCounter,
   StyledButton,
@@ -7,8 +8,10 @@ import {
   StyledProductHero,
   Wrapper,
 } from './ProductHero.styles';
+import { addProduct } from 'store';
 
 type ProductHeroType = {
+  cartImage: string;
   name: string;
   image: { mobile: string; tablet: string; desktop: string };
   new: boolean;
@@ -16,7 +19,36 @@ type ProductHeroType = {
   description: string;
 };
 
-const ProductHero: FC<ProductHeroType> = ({ image, name, new: isNew, description, price }) => {
+function reducer(state: { count: number }, action: { type: string }) {
+  switch (action.type) {
+    case 'increment':
+      return { count: state.count++ };
+    case 'decrement':
+      if (state.count === 1) return state;
+      else return { count: state.count-- };
+    case 'reset':
+      return { count: 1 };
+    default:
+      return state;
+  }
+}
+
+const ProductHero: FC<ProductHeroType> = ({
+  cartImage,
+  image,
+  name,
+  new: isNew,
+  description,
+  price,
+}) => {
+  const dispatch = useAppDispatch();
+  const [state, dispatchCounter] = useReducer(reducer, { count: 1 });
+
+  const handleAddProduct = () => {
+    dispatch(addProduct({ image: cartImage, name, price, quantity: state.count }));
+    dispatchCounter({ type: 'reset' });
+  };
+
   return (
     <StyledProductHero>
       <picture>
@@ -31,11 +63,11 @@ const ProductHero: FC<ProductHeroType> = ({ image, name, new: isNew, description
         <StyledPrice>$ {price}</StyledPrice>
         <Wrapper>
           <StyledBoxCounter>
-            <button>-</button>
-            <div>1</div>
-            <button>+</button>
+            <button onClick={() => dispatchCounter({ type: 'decrement' })}>-</button>
+            <div>{state.count}</div>
+            <button onClick={() => dispatchCounter({ type: 'increment' })}>+</button>
           </StyledBoxCounter>
-          <StyledButton>add to cart</StyledButton>
+          <StyledButton onClick={handleAddProduct}>add to cart</StyledButton>
         </Wrapper>
       </div>
     </StyledProductHero>

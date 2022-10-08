@@ -9,12 +9,17 @@ import {
   StyledHeader,
   Wrapper,
   Background,
+  IconButton,
 } from './Header.styles';
 import { Link, NavLink, useLocation } from 'react-router-dom';
+import { useModal } from 'hooks/useModal';
+import { useAppSelector } from 'hooks/useRedux';
 
 const Header = () => {
   const location = useLocation();
   const [isOpen, setIsOpen] = useState(false);
+  const cartListLength = useAppSelector((state) => state.cartList.length);
+  const { toggleModal } = useModal();
 
   const toggleNavigation = () => {
     setIsOpen((prevState) => !prevState);
@@ -71,9 +76,9 @@ const Header = () => {
             </li>
           </ul>
         </DesktopNavigation>
-        <button>
+        <IconButton onClick={toggleModal} count={cartListLength}>
           <CartIcon />
-        </button>
+        </IconButton>
       </Wrapper>
       <Navigation isOpen={isOpen}>
         <CategoryList />
