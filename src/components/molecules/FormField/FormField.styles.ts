@@ -4,6 +4,10 @@ type InputBoxType = {
   isBig?: boolean;
 };
 
+type isErrorType = {
+  isError: string | false | undefined;
+};
+
 export const LabelBox = styled.div`
   display: flex;
   justify-content: space-between;
@@ -19,7 +23,7 @@ export const StyledLabel = styled.label`
   font-weight: ${({ theme }) => theme.font.weight.bold};
 `;
 
-export const InputBox = styled.div<InputBoxType>`
+export const InputBox = styled.div<InputBoxType & isErrorType>`
   margin-bottom: 20px;
   grid-column: ${({ isBig }) => (isBig ? '1 / 3' : '')};
 
@@ -29,5 +33,14 @@ export const InputBox = styled.div<InputBoxType>`
     border-radius: 10px;
     padding: 15px;
     width: 100%;
+  }
+
+  label,
+  p {
+    color: ${({ isError, theme }) => (isError ? theme.color.red : null)};
+  }
+
+  input {
+    border-color: ${({ isError, theme }) => (isError ? theme.color.red : null)};
   }
 `;
