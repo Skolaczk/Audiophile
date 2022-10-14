@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { ReactComponent as Logo } from 'assets/icons/logo.svg';
 import { ReactComponent as CartIcon } from 'assets/icons/icon-cart.svg';
+import { ReactComponent as UserIcon } from 'assets/icons/user.svg';
 import CategoryList from 'components/organisms/CategoryList/CategoryList';
 import {
   DesktopNavigation,
@@ -10,6 +11,8 @@ import {
   Wrapper,
   Background,
   IconButton,
+  IconLink,
+  IconsWrapper,
 } from './Header.styles';
 import { Link, NavLink, useLocation } from 'react-router-dom';
 import { useModal } from 'hooks/useModal';
@@ -76,9 +79,14 @@ const Header = () => {
             </li>
           </ul>
         </DesktopNavigation>
-        <IconButton onClick={toggleModal} count={cartListLength}>
-          <CartIcon />
-        </IconButton>
+        <IconsWrapper>
+          <IconLink to='/sign-in'>
+            <UserIcon />
+          </IconLink>
+          <IconButton onClick={toggleModal} count={cartListLength}>
+            <CartIcon />
+          </IconButton>
+        </IconsWrapper>
       </Wrapper>
       <Navigation isOpen={isOpen}>
         <CategoryList />

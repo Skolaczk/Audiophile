@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
 type IsOpenProps = {
@@ -5,13 +6,25 @@ type IsOpenProps = {
 };
 
 type CountType = {
-  readonly count: number;
+  readonly count?: number;
 };
 
 export const StyledHeader = styled.header`
   background-color: ${({ theme }) => theme.color.black};
   z-index: 2;
   padding: 0 25px;
+`;
+
+export const IconLink = styled(Link)`
+  svg {
+    fill: white;
+    height: 20px;
+  }
+`;
+
+export const IconsWrapper = styled.div`
+  display: flex;
+  gap: 10px;
 `;
 
 export const IconButton = styled.button<CountType>`
@@ -47,6 +60,8 @@ export const HamburgerButton = styled.button<IsOpenProps>`
   z-index: 2;
   width: 23px;
   height: 23px;
+  background-color: transparent;
+  border: none;
 
   div {
     height: 3px;

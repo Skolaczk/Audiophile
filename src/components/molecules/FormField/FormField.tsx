@@ -8,7 +8,7 @@ type FormFieldType = {
   placeholder: string;
   isBig?: boolean;
   onChange: ChangeEventHandler<HTMLInputElement>;
-  value: string;
+  value?: string;
   isError: string | false | undefined;
 };
 

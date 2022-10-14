@@ -10,22 +10,32 @@ import Cart from 'components/molecules/Cart/Cart';
 import { ModalProvider } from 'hooks/useModal';
 import { Provider } from 'react-redux';
 import { store } from 'store';
+import { AuthProvider } from 'hooks/useAuth';
+import SignIn from 'components/templates/SignInTemplate/SignInTemplate';
+import { ErrorProvider } from 'hooks/useError';
+import SignUp from 'components/templates/SignUpTemplate/SignUpTemplate';
 
 const App = () => {
   return (
     <Provider store={store}>
       <Router>
         <ThemeProvider theme={theme}>
-          <ModalProvider>
-            <GlobalStyles />
-            <Routes>
-              <Route path='/' element={<Homepage />} />
-              <Route path='/:category' element={<CategoryTemplate />} />
-              <Route path='/:category/:slug' element={<Product />} />
-              <Route path='/checkout' element={<CheckoutTemplate />} />
-            </Routes>
-            <Cart />
-          </ModalProvider>
+          <ErrorProvider>
+            <AuthProvider>
+              <ModalProvider>
+                <GlobalStyles />
+                <Routes>
+                  <Route path='/' element={<Homepage />} />
+                  <Route path='/:category' element={<CategoryTemplate />} />
+                  <Route path='/:category/:slug' element={<Product />} />
+                  <Route path='/checkout' element={<CheckoutTemplate />} />
+                  <Route path='/sign-in' element={<SignIn />} />
+                  <Route path='/sign-up' element={<SignUp />} />
+                </Routes>
+                <Cart />
+              </ModalProvider>
+            </AuthProvider>
+          </ErrorProvider>
         </ThemeProvider>
       </Router>
     </Provider>
