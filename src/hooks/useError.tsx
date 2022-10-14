@@ -1,4 +1,5 @@
-import { FC, createContext, useState, useContext } from 'react';
+import { FC, createContext, useState, useContext, useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
 
 type ChildrenType = {
   children: React.ReactNode;
@@ -13,16 +14,24 @@ const ErrorContext = createContext<ErrorContextType>(null!);
 
 export const ErrorProvider: FC<ChildrenType> = ({ children }) => {
   const [error, setError] = useState('');
+  const location = useLocation();
 
   const catchError = (errorCode: string) => {
     switch (errorCode) {
-      case 'auth/invalid-email':
-        setError('bad email');
+      case 'auth/email-already-in-use':
+        setError('This email already exists');
+        break;
+      case 'auth/user-not-found':
+        setError('User not found');
         break;
       default:
-        setError('Something went wrong');
+        setError(`Something went wrong, ${errorCode}`);
     }
   };
+
+  useEffect(() => {
+    setError('');
+  }, [location]);
 
   return <ErrorContext.Provider value={{ error, catchError }}>{children}</ErrorContext.Provider>;
 };

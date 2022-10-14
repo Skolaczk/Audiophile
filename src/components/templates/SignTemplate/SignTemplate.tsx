@@ -15,7 +15,7 @@ import { FC } from 'react';
 
 type ChildrenType = {
   children: React.ReactNode;
-  isSignIn: boolean;
+  isSignIn?: boolean;
 };
 
 const SignTemplate: FC<ChildrenType> = ({ children, isSignIn }) => {

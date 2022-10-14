@@ -14,6 +14,7 @@ import { AuthProvider } from 'hooks/useAuth';
 import SignIn from 'components/templates/SignInTemplate/SignInTemplate';
 import { ErrorProvider } from 'hooks/useError';
 import SignUp from 'components/templates/SignUpTemplate/SignUpTemplate';
+import AccountTemplate from 'components/templates/AccountTemplate/AccountTemplate';
 
 const App = () => {
   return (
@@ -31,6 +32,7 @@ const App = () => {
                   <Route path='/checkout' element={<CheckoutTemplate />} />
                   <Route path='/sign-in' element={<SignIn />} />
                   <Route path='/sign-up' element={<SignUp />} />
+                  <Route path='/account' element={<AccountTemplate />} />
                 </Routes>
                 <Cart />
               </ModalProvider>

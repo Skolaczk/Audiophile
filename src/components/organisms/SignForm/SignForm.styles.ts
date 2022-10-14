@@ -21,3 +21,9 @@ export const StyledButton = styled.button`
   font-weight: ${({ theme }) => theme.font.weight.bold};
   margin-top: 10px;
 `;
+
+export const StyledError = styled.p`
+  color: ${({ theme }) => theme.color.red};
+  margin-top: 10px;
+  font-size: ${({ theme }) => theme.font.size.largeText};
+`;

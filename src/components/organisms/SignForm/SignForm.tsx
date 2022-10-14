@@ -2,25 +2,45 @@ import { FC } from 'react';
 import FormField from 'components/molecules/FormField/FormField';
 import { useAuth } from 'hooks/useAuth';
 import { useError } from 'hooks/useError';
-import { StyledButton, StyledForm } from './SignForm.styles';
+import { StyledButton, StyledError, StyledForm } from './SignForm.styles';
+import { useFormik } from 'formik';
+import * as Yup from 'yup';
 
 type SignFormType = {
   isSignIn?: boolean;
 };
 
 const SignForm: FC<SignFormType> = ({ isSignIn }) => {
-  const { handleInputChange, handleSignUp, handleSignIn } = useAuth();
+  const { handleSignUp, handleSignIn } = useAuth();
   const { error } = useError();
+  const formik = useFormik({
+    initialValues: {
+      name: 'fff',
+      email: 'fff@gmail.com',
+      password: '111111',
+    },
+    validationSchema: Yup.object({
+      name: isSignIn ? Yup.string() : Yup.string().required('Name field is required'),
+      email: Yup.string().email('Invalid email address').required('Email field is required'),
+      password: Yup.string().min(6, 'Password is too short').required('Password field is required'),
+    }),
+    onSubmit: (values) => {
+      if (!error) formik.resetForm();
+      isSignIn ? handleSignIn(values) : handleSignUp(values);
+    },
+  });
+
   return (
-    <StyledForm action=''>
+    <StyledForm action='' onSubmit={formik.handleSubmit}>
       {!isSignIn ? (
         <FormField
           id='name'
           label='Name'
           type='text'
           placeholder='Jan'
-          onChange={handleInputChange}
-          isError={error}
+          onChange={formik.handleChange}
+          isError={formik.touched.name && formik.errors.name}
+          value={formik.values.name}
         />
       ) : null}
       <FormField
@@ -28,20 +48,21 @@ const SignForm: FC<SignFormType> = ({ isSignIn }) => {
         label='Email'
         type='text'
         placeholder='jankowalski@gmail.com'
-        onChange={handleInputChange}
-        isError={error}
+        onChange={formik.handleChange}
+        isError={formik.touched.email && formik.errors.email}
+        value={formik.values.email}
       />
       <FormField
         id='password'
         label='Password'
         type='password'
         placeholder='*********'
-        onChange={handleInputChange}
-        isError={error}
+        onChange={formik.handleChange}
+        isError={formik.touched.password && formik.errors.password}
+        value={formik.values.password}
       />
-      <StyledButton onClick={isSignIn ? handleSignIn : handleSignUp}>
-        {isSignIn ? 'Sign in' : 'Sign up'}
-      </StyledButton>
+      <StyledButton type='submit'>{isSignIn ? 'Sign in' : 'Sign up'}</StyledButton>
+      {error ? <StyledError>{error}</StyledError> : null}
     </StyledForm>
   );
 };
