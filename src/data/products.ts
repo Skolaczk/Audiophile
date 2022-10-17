@@ -33,7 +33,8 @@ const products = [
       desktop: categoryImageDesktop,
     },
     new: true,
-    price: 599,
+    productPrice: 599,
+    price: 'price_1LtEcHLPiJF5XvZcwxbkDGW8',
     description:
       'Tailor your listening experience with bespoke dynamic drivers from the new YX1 Wireless Earphones. Enjoy incredible high-fidelity sound even in noisy environments with its active noise cancellation feature.',
     features:
@@ -125,7 +126,8 @@ const products = [
       desktop: categoryImageDesktop,
     },
     new: false,
-    price: 1750,
+    productPrice: 1750,
+    price: 'price_1LtEdBLPiJF5XvZcUIjYN2mU',
     description:
       'As the gold standard for headphones, the classic XX99 Mark I offers detailed and accurate audio reproduction for audiophiles, mixing engineers, and music aficionados alike in studios and on the go.',
     features:
@@ -213,7 +215,8 @@ const products = [
       desktop: categoryImageDesktop,
     },
     new: false,
-    price: 899,
+    productPrice: 899,
+    price: 'price_1LtEdtLPiJF5XvZcuMcY2RQQ',
     description:
       'Enjoy your audio almost anywhere and customize it to your specific tastes with the XX59 headphones. The stylish yet durable versatile wireless headset is a brilliant companion at home or on the move.',
     features:
@@ -301,7 +304,8 @@ const products = [
       desktop: categoryImageDesktop,
     },
     new: true,
-    price: 2999,
+    productPrice: 2999,
+    price: 'price_1LtEeVLPiJF5XvZctlRajcKJ',
     description:
       'The new XX99 Mark II headphones is the pinnacle of pristine audio. It redefines your premium headphone experience by reproducing the balanced depth and precision of studio-quality sound.',
     features:
@@ -393,7 +397,8 @@ const products = [
       desktop: categoryImageDesktop,
     },
     new: false,
-    price: 3500,
+    productPrice: 3500,
+    price: 'price_1LtEf9LPiJF5XvZcoQOstnLn',
     description:
       'Stream high quality sound wirelessly with minimal to no loss. The ZX7 speaker uses high-end audiophile components that represents the top of the line powered speakers for home or studio use.',
     features:
@@ -485,7 +490,8 @@ const products = [
       desktop: categoryImageDesktop,
     },
     new: true,
-    price: 4500,
+    productPrice: 4500,
+    price: 'price_1LtEfiLPiJF5XvZcz2gAbhvD',
     description:
       'Upgrade your sound system with the all new ZX9 active speaker. It’s a bookshelf speaker system that offers truly wireless connectivity -- creating new possibilities for more pleasing and practical audio setups.',
     features:

@@ -15,7 +15,8 @@ type ProductHeroType = {
   name: string;
   image: { mobile: string; tablet: string; desktop: string };
   new: boolean;
-  price: number;
+  productPrice: number;
+  price: string;
   description: string;
 };
 
@@ -39,13 +40,14 @@ const ProductHero: FC<ProductHeroType> = ({
   name,
   new: isNew,
   description,
+  productPrice,
   price,
 }) => {
   const dispatch = useAppDispatch();
   const [state, dispatchCounter] = useReducer(reducer, { count: 1 });
 
   const handleAddProduct = () => {
-    dispatch(addProduct({ image: cartImage, name, price, quantity: state.count }));
+    dispatch(addProduct({ image: cartImage, name, productPrice, quantity: state.count, price }));
     dispatchCounter({ type: 'reset' });
   };
 
@@ -60,7 +62,7 @@ const ProductHero: FC<ProductHeroType> = ({
         {isNew ? <h5>new product</h5> : null}
         <h2>{name}</h2>
         <StyledContent>{description}</StyledContent>
-        <StyledPrice>$ {price}</StyledPrice>
+        <StyledPrice>$ {productPrice}</StyledPrice>
         <Wrapper>
           <StyledBoxCounter>
             <button onClick={() => dispatchCounter({ type: 'decrement' })}>-</button>

@@ -5,7 +5,8 @@ type Foo = {
   id: string;
   name: string;
   image: string;
-  price: number;
+  productPrice: number;
+  price: string;
   quantity: number;
 };
 

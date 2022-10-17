@@ -1,9 +1,10 @@
 import FormField from 'components/molecules/FormField/FormField';
 import { useFormik } from 'formik';
+import { FC } from 'react';
 import * as Yup from 'yup';
 import { InputsWrapper, RadioInputBox, StyledForm, StyledLabel } from './Form.styles';
 
-const Form = () => {
+const Form: FC<{ handleClick: () => void }> = ({ handleClick }) => {
   const formik = useFormik({
     initialValues: {
       name: '',
@@ -32,6 +33,7 @@ const Form = () => {
     }),
     onSubmit: (values) => {
       console.log(values);
+      handleClick();
       formik.resetForm();
     },
   });
