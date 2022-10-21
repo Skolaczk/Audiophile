@@ -14,13 +14,12 @@ const AccountTemplate = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    console.log(currentUser);
     if (!currentUser) navigate('/sign-in');
   }, [currentUser, navigate]);
 
   return (
     <MainTemplate>
-      <TitleBox category='your account' />
+      <TitleBox title='your account' />
       <ViewWrapper>
         <StyledHeading>Hello, {currentUser?.displayName}</StyledHeading>
         <Wrapper>

@@ -9,46 +9,31 @@ import {
   Wrapper,
 } from './ProductHero.styles';
 import { addProduct } from 'store';
+import { ActionType, CountType, ProductHeroType } from 'types';
+import { ActionTypes } from 'constants/index';
 
-type ProductHeroType = {
-  cartImage: string;
-  name: string;
-  image: { mobile: string; tablet: string; desktop: string };
-  new: boolean;
-  productPrice: number;
-  price: string;
-  description: string;
-};
-
-function reducer(state: { count: number }, action: { type: string }) {
+const reducer = (state: CountType, action: ActionType) => {
   switch (action.type) {
-    case 'increment':
+    case ActionTypes.Add:
       return { count: state.count++ };
-    case 'decrement':
+    case ActionTypes.Subtract:
       if (state.count === 1) return state;
       else return { count: state.count-- };
-    case 'reset':
+    case ActionTypes.Reset:
       return { count: 1 };
     default:
       return state;
   }
-}
+};
 
-const ProductHero: FC<ProductHeroType> = ({
-  cartImage,
-  image,
-  name,
-  new: isNew,
-  description,
-  productPrice,
-  price,
-}) => {
+const ProductHero: FC<ProductHeroType> = (product) => {
+  const { cartImage, image, name, isNew, description, productPrice, price } = product;
   const dispatch = useAppDispatch();
   const [state, dispatchCounter] = useReducer(reducer, { count: 1 });
 
   const handleAddProduct = () => {
     dispatch(addProduct({ image: cartImage, name, productPrice, quantity: state.count, price }));
-    dispatchCounter({ type: 'reset' });
+    dispatchCounter({ type: ActionTypes.Reset });
   };
 
   return (
@@ -59,15 +44,15 @@ const ProductHero: FC<ProductHeroType> = ({
         <img src={image.mobile} alt='' />
       </picture>
       <div>
-        {isNew ? <h5>new product</h5> : null}
+        {isNew && <h5>new product</h5>}
         <h2>{name}</h2>
         <StyledContent>{description}</StyledContent>
         <StyledPrice>$ {productPrice}</StyledPrice>
         <Wrapper>
           <StyledBoxCounter>
-            <button onClick={() => dispatchCounter({ type: 'decrement' })}>-</button>
+            <button onClick={() => dispatchCounter({ type: ActionTypes.Subtract })}>-</button>
             <div>{state.count}</div>
-            <button onClick={() => dispatchCounter({ type: 'increment' })}>+</button>
+            <button onClick={() => dispatchCounter({ type: ActionTypes.Add })}>+</button>
           </StyledBoxCounter>
           <StyledButton onClick={handleAddProduct}>add to cart</StyledButton>
         </Wrapper>

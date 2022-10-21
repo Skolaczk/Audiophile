@@ -1,14 +1,7 @@
 import { ButtonLink } from 'components/atoms/Button/ButtonLink';
 import { FC } from 'react';
+import { OthersProductsListType } from 'types';
 import { CenterHeading, ProductsWrapper, StyledOtherProduct } from './OtherProductsList.styles';
-
-type OthersProductsListType = {
-  others: Array<{
-    slug: string;
-    name: string;
-    image: { mobile: string; tablet: string; desktop: string };
-  }>;
-};
 
 const OthersProductsList: FC<OthersProductsListType> = ({ others }) => {
   return (

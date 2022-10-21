@@ -1,14 +1,17 @@
 import FormField from 'components/molecules/FormField/FormField';
 import { useFormik } from 'formik';
+import { useAuth } from 'hooks/useAuth';
 import { FC } from 'react';
+import { FormType } from 'types';
 import * as Yup from 'yup';
 import { InputsWrapper, RadioInputBox, StyledForm, StyledLabel } from './Form.styles';
 
-const Form: FC<{ handleClick: () => void }> = ({ handleClick }) => {
+const Form: FC<FormType> = ({ handleRedirectToCheckout }) => {
+  const { currentUser } = useAuth();
   const formik = useFormik({
     initialValues: {
       name: '',
-      email: '',
+      email: currentUser?.email,
       phoneNumber: '',
       address: '',
       zipCode: '',
@@ -31,9 +34,8 @@ const Form: FC<{ handleClick: () => void }> = ({ handleClick }) => {
       city: Yup.string().required('City field is required'),
       country: Yup.string().required('Country field is required'),
     }),
-    onSubmit: (values) => {
-      console.log(values);
-      handleClick();
+    onSubmit: () => {
+      handleRedirectToCheckout();
       formik.resetForm();
     },
   });
@@ -59,7 +61,7 @@ const Form: FC<{ handleClick: () => void }> = ({ handleClick }) => {
             type='email'
             placeholder='jankowalski@gmail.com'
             onChange={formik.handleChange}
-            value={formik.values.email}
+            value={formik.values.email!}
             isError={formik.touched.email && formik.errors.email}
           />
           <FormField

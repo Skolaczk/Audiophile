@@ -1,7 +1,7 @@
 import MainTemplate from '../MainTemplate/MainTemplate';
 import { useParams } from 'react-router-dom';
 import CategoryList from 'components/organisms/CategoryList/CategoryList';
-import Card from 'components/molecules/Card/Card';
+import Card from 'components/molecules/Card/ContentCard';
 import ProductsList from 'components/organisms/ProductsList/ProductsList';
 import TitleBox from 'components/atoms/TitleBox/TitleBox';
 import { ViewWrapper } from 'components/organisms/ViewWrapper/ViewWrapper.styles';
@@ -11,7 +11,7 @@ const CategoryTemplate = () => {
 
   return (
     <MainTemplate>
-      <TitleBox category={category} />
+      <TitleBox title={category} />
       <ViewWrapper>
         <ProductsList category={category} />
         <CategoryList />

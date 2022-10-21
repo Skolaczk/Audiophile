@@ -1,4 +1,3 @@
-/* eslint-disable no-constant-condition */
 import { getSumPrice } from 'helpers/getSumPrice';
 import { useAppSelector } from 'hooks/useRedux';
 import { CartItem, StyledSummaryWrapper, SummaryItem, SummaryList } from './SummaryWrapper.styles';
@@ -9,22 +8,18 @@ const SummaryWrapper = () => {
   return (
     <StyledSummaryWrapper>
       <h3>summary</h3>
-      {true ? (
-        cartList.map(({ id, image, name, productPrice, quantity }) => (
-          <CartItem key={id}>
+      {cartList.map(({ id, image, name, productPrice, quantity }) => (
+        <CartItem key={id}>
+          <div>
+            <img src={image} alt='' />
             <div>
-              <img src={image} alt='' />
-              <div>
-                <h4>{name}</h4>
-                <p>$ {productPrice}</p>
-              </div>
+              <h4>{name}</h4>
+              <p>$ {productPrice}</p>
             </div>
-            <p>x {quantity}</p>
-          </CartItem>
-        ))
-      ) : (
-        <p>No Items in cart</p>
-      )}
+          </div>
+          <p>x {quantity}</p>
+        </CartItem>
+      ))}
       <SummaryList>
         <SummaryItem>
           <p>total</p>

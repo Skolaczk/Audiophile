@@ -1,12 +1,5 @@
 import styled from 'styled-components';
-
-type FirstCardType = {
-  readonly patternCircles: string;
-};
-
-type SecondCardType = {
-  readonly zx7Speaker: string;
-};
+import { FirstCardType, SecondCardType } from 'types';
 
 export const FirstCard = styled.div<FirstCardType>`
   background-color: ${({ theme }) => theme.color.orange};

@@ -1,4 +1,3 @@
-/* eslint-disable no-constant-condition */
 import { useModal } from 'hooks/useModal';
 import EmptyCart from 'images/cart/empty-cart.png';
 import { ButtonLink } from 'components/atoms/Button/ButtonLink';
@@ -7,6 +6,7 @@ import {
   CounterWrapper,
   ItemCartContent,
   NoItemsWrapper,
+  overlay,
   RemoveButton,
   StyledModal,
   Wrapper,
@@ -14,6 +14,7 @@ import {
 import { useAppDispatch, useAppSelector } from 'hooks/useRedux';
 import { removeAllProduct, changeProductQuantity, clearCart } from 'store';
 import { getSumPrice } from 'helpers/getSumPrice';
+import { ActionTypes } from 'constants/index';
 
 const Cart = () => {
   const { modalIsOpen, toggleModal } = useModal();
@@ -33,11 +34,7 @@ const Cart = () => {
     <StyledModal
       isOpen={modalIsOpen}
       onRequestClose={toggleModal}
-      style={{
-        overlay: {
-          backgroundColor: 'rgba(0, 0, 0, 0.5)',
-        },
-      }}
+      style={{ overlay }}
       contentLabel='Cart Modal'
     >
       {cartList.length > 0 ? (
@@ -57,9 +54,13 @@ const Cart = () => {
                   </ItemCartContent>
                 </div>
                 <CounterWrapper>
-                  <button onClick={() => handleChangeProductQuantity(id, 'subtract')}>-</button>
+                  <button onClick={() => handleChangeProductQuantity(id, ActionTypes.Subtract)}>
+                    -
+                  </button>
                   <div>{quantity}</div>
-                  <button onClick={() => handleChangeProductQuantity(id, 'add')}>+</button>
+                  <button onClick={() => handleChangeProductQuantity(id, ActionTypes.Add)}>
+                    +
+                  </button>
                 </CounterWrapper>
               </CartItem>
             ))}

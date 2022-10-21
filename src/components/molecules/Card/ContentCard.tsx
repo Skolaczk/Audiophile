@@ -1,11 +1,11 @@
 import ImageMobile from 'images/shared/mobile/image-best-gear.jpg';
 import ImageTablet from 'images/shared/tablet/image-best-gear.jpg';
 import ImageDesktop from 'images/shared/desktop/image-best-gear.jpg';
-import { StyledCard } from './Card.styles';
+import { StyledContentCard } from './ContentCard.styles';
 
-const Card = () => {
+const ContentCard = () => {
   return (
-    <StyledCard>
+    <StyledContentCard>
       <picture>
         <source media='(min-width: 768px)' srcSet={ImageDesktop} />
         <source media='(min-width: 500px)' srcSet={ImageTablet} />
@@ -23,8 +23,8 @@ const Card = () => {
           best place to buy your portable audio equipment.
         </p>
       </div>
-    </StyledCard>
+    </StyledContentCard>
   );
 };
 
-export default Card;
+export default ContentCard;

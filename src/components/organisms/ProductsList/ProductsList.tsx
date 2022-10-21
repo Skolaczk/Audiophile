@@ -3,10 +3,7 @@ import data from '../../../data/products';
 import { FC, useEffect, useState } from 'react';
 import { StyledProductsList, StyledProductsListItem } from './ProductsList.styles';
 import { useLocation } from 'react-router-dom';
-
-type ProductsListType = {
-  category: string | undefined;
-};
+import { ProductsListType } from 'types';
 
 const ProductsList: FC<ProductsListType> = ({ category }) => {
   const location = useLocation();
@@ -18,7 +15,7 @@ const ProductsList: FC<ProductsListType> = ({ category }) => {
 
   return (
     <StyledProductsList>
-      {products.map(({ new: isNew, id, name, categoryImage, description, slug }) => (
+      {products.map(({ isNew, id, name, categoryImage, description, slug }) => (
         <StyledProductsListItem key={id}>
           <picture>
             <source media='(min-width: 768px)' srcSet={categoryImage.desktop} />
@@ -26,7 +23,7 @@ const ProductsList: FC<ProductsListType> = ({ category }) => {
             <img src={categoryImage.mobile} alt='' />
           </picture>
           <div>
-            {isNew ? <h4>new product</h4> : null}
+            {isNew && <h4>new product</h4>}
             <h2>{name}</h2>
             <p>{description}</p>
             <ButtonLink to={`/${category}/${slug}`}>see product</ButtonLink>

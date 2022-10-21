@@ -5,19 +5,16 @@ import { useError } from 'hooks/useError';
 import { StyledButton, StyledError, StyledForm } from './SignForm.styles';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
+import { IsSignInType } from 'types';
 
-type SignFormType = {
-  isSignIn?: boolean;
-};
-
-const SignForm: FC<SignFormType> = ({ isSignIn }) => {
+const SignForm: FC<IsSignInType> = ({ isSignIn }) => {
   const { handleSignUp, handleSignIn } = useAuth();
   const { error } = useError();
   const formik = useFormik({
     initialValues: {
-      name: 'fff',
-      email: 'fff@gmail.com',
-      password: '111111',
+      name: '',
+      email: '',
+      password: '',
     },
     validationSchema: Yup.object({
       name: isSignIn ? Yup.string() : Yup.string().required('Name field is required'),
@@ -31,8 +28,8 @@ const SignForm: FC<SignFormType> = ({ isSignIn }) => {
   });
 
   return (
-    <StyledForm action='' onSubmit={formik.handleSubmit}>
-      {!isSignIn ? (
+    <StyledForm onSubmit={formik.handleSubmit}>
+      {!isSignIn && (
         <FormField
           id='name'
           label='Name'
@@ -42,7 +39,7 @@ const SignForm: FC<SignFormType> = ({ isSignIn }) => {
           isError={formik.touched.name && formik.errors.name}
           value={formik.values.name}
         />
-      ) : null}
+      )}
       <FormField
         id='email'
         label='Email'
@@ -62,7 +59,7 @@ const SignForm: FC<SignFormType> = ({ isSignIn }) => {
         value={formik.values.password}
       />
       <StyledButton type='submit'>{isSignIn ? 'Sign in' : 'Sign up'}</StyledButton>
-      {error ? <StyledError>{error}</StyledError> : null}
+      {error && <StyledError>{error}</StyledError>}
     </StyledForm>
   );
 };

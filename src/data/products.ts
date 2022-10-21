@@ -32,7 +32,7 @@ const products = [
       tablet: categoryImageTablet,
       desktop: categoryImageDesktop,
     },
-    new: true,
+    isNew: true,
     productPrice: 599,
     price: 'price_1LtEcHLPiJF5XvZcwxbkDGW8',
     description:
@@ -125,7 +125,7 @@ const products = [
       tablet: categoryImageTablet,
       desktop: categoryImageDesktop,
     },
-    new: false,
+    isNew: false,
     productPrice: 1750,
     price: 'price_1LtEdBLPiJF5XvZcUIjYN2mU',
     description:
@@ -214,7 +214,7 @@ const products = [
       tablet: categoryImageTablet,
       desktop: categoryImageDesktop,
     },
-    new: false,
+    isNew: false,
     productPrice: 899,
     price: 'price_1LtEdtLPiJF5XvZcuMcY2RQQ',
     description:
@@ -303,7 +303,7 @@ const products = [
       tablet: categoryImageTablet,
       desktop: categoryImageDesktop,
     },
-    new: true,
+    isNew: true,
     productPrice: 2999,
     price: 'price_1LtEeVLPiJF5XvZctlRajcKJ',
     description:
@@ -396,7 +396,7 @@ const products = [
       tablet: categoryImageTablet,
       desktop: categoryImageDesktop,
     },
-    new: false,
+    isNew: false,
     productPrice: 3500,
     price: 'price_1LtEf9LPiJF5XvZcoQOstnLn',
     description:
@@ -489,7 +489,7 @@ const products = [
       tablet: categoryImageTablet,
       desktop: categoryImageDesktop,
     },
-    new: true,
+    isNew: true,
     productPrice: 4500,
     price: 'price_1LtEfiLPiJF5XvZcz2gAbhvD',
     description:

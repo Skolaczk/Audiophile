@@ -12,13 +12,9 @@ import {
   StyledLink,
 } from './SignTemplate.styles';
 import { FC } from 'react';
+import { ChildrenType, IsSignInType } from 'types';
 
-type ChildrenType = {
-  children: React.ReactNode;
-  isSignIn?: boolean;
-};
-
-const SignTemplate: FC<ChildrenType> = ({ children, isSignIn }) => {
+const SignTemplate: FC<ChildrenType & IsSignInType> = ({ children, isSignIn }) => {
   return (
     <StyledSignInTemplate>
       <ViewWrapper>

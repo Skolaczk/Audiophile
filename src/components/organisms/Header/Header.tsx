@@ -4,9 +4,8 @@ import { ReactComponent as CartIcon } from 'assets/icons/icon-cart.svg';
 import { ReactComponent as UserIcon } from 'assets/icons/user.svg';
 import CategoryList from 'components/organisms/CategoryList/CategoryList';
 import {
-  DesktopNavigation,
   HamburgerButton,
-  Navigation,
+  StyledNavigation,
   StyledHeader,
   Wrapper,
   Background,
@@ -14,9 +13,10 @@ import {
   IconLink,
   IconsWrapper,
 } from './Header.styles';
-import { Link, NavLink, useLocation } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { useModal } from 'hooks/useModal';
 import { useAppSelector } from 'hooks/useRedux';
+import Navigation from 'components/molecules/Navigation/Navigation';
 
 const Header = () => {
   const location = useLocation();
@@ -51,34 +51,7 @@ const Header = () => {
         <Link to='/'>
           <Logo />
         </Link>
-        <DesktopNavigation>
-          <ul>
-            <li>
-              <NavLink
-                className={({ isActive }) => (isActive ? 'active' : 'inactive')}
-                to='/headphones'
-              >
-                headphones
-              </NavLink>
-            </li>
-            <li>
-              <NavLink
-                className={({ isActive }) => (isActive ? 'active' : 'inactive')}
-                to='/speakers'
-              >
-                speakers
-              </NavLink>
-            </li>
-            <li>
-              <NavLink
-                className={({ isActive }) => (isActive ? 'active' : 'inactive')}
-                to='/earphones'
-              >
-                earphones
-              </NavLink>
-            </li>
-          </ul>
-        </DesktopNavigation>
+        <Navigation />
         <IconsWrapper>
           <IconLink to='/sign-in'>
             <UserIcon />
@@ -88,9 +61,9 @@ const Header = () => {
           </IconButton>
         </IconsWrapper>
       </Wrapper>
-      <Navigation isOpen={isOpen}>
+      <StyledNavigation isOpen={isOpen}>
         <CategoryList />
-      </Navigation>
+      </StyledNavigation>
       <Background isOpen={isOpen} onClick={toggleNavigation} />
     </StyledHeader>
   );

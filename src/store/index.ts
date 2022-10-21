@@ -1,36 +1,29 @@
 import { createSlice, configureStore } from '@reduxjs/toolkit';
 import { v4 as uuid } from 'uuid';
-
-type Foo = {
-  id: string;
-  name: string;
-  image: string;
-  productPrice: number;
-  price: string;
-  quantity: number;
-};
+import { CartType } from 'types';
+import { ActionTypes } from 'constants/index';
 
 const cartListSlice = createSlice({
   name: 'cartList',
-  initialState: Array<Foo>,
+  initialState: Array<CartType>,
   reducers: {
-    addProduct(state, action) {
-      const currentProduct = state.find(({ name }) => name === action.payload.name);
+    addProduct(state, { payload }) {
+      const currentProduct = state.find(({ name }) => name === payload.name);
       if (currentProduct) {
-        currentProduct.quantity += action.payload.quantity;
+        currentProduct.quantity += payload.quantity;
       } else {
         state.push({
           id: uuid(),
-          ...action.payload,
+          ...payload,
         });
       }
     },
-    changeProductQuantity(state, action) {
-      const currentProduct = state.find(({ id }) => id === action.payload.id);
+    changeProductQuantity(state, { payload }) {
+      const currentProduct = state.find(({ id }) => id === payload.id);
       if (!currentProduct) return;
 
-      if (action.payload.type === 'add') currentProduct.quantity++;
-      else if (action.payload.type === 'subtract') currentProduct.quantity--;
+      if (payload.type === ActionTypes.Add) currentProduct.quantity++;
+      else currentProduct.quantity--;
     },
     clearCart(state) {
       return state.filter(({ quantity }) => quantity !== 0);

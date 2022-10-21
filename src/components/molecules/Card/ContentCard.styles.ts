@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const StyledCard = styled.div`
+export const StyledContentCard = styled.div`
   padding: 35px 25px;
   text-align: center;
 

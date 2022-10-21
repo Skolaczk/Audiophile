@@ -1,14 +1,7 @@
+import { ErrorMessages, FirebaseErrors } from 'constants/index';
 import { FC, createContext, useState, useContext, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
-
-type ChildrenType = {
-  children: React.ReactNode;
-};
-
-type ErrorContextType = {
-  error: string;
-  catchError: (errorCode: string) => void;
-};
+import { ChildrenType, ErrorContextType } from 'types';
 
 const ErrorContext = createContext<ErrorContextType>(null!);
 
@@ -18,14 +11,14 @@ export const ErrorProvider: FC<ChildrenType> = ({ children }) => {
 
   const catchError = (errorCode: string) => {
     switch (errorCode) {
-      case 'auth/email-already-in-use':
-        setError('This email already exists');
+      case FirebaseErrors.EmailInUseError:
+        setError(ErrorMessages.EmailInUseMessage);
         break;
-      case 'auth/user-not-found':
-        setError('User not found');
+      case FirebaseErrors.UserNotFoundError:
+        setError(ErrorMessages.UserNotFoundMessage);
         break;
       default:
-        setError(`Something went wrong, ${errorCode}`);
+        setError(ErrorMessages.DefaultMessage);
     }
   };
 

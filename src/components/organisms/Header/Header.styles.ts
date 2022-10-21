@@ -1,13 +1,6 @@
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
-
-type IsOpenProps = {
-  readonly isOpen: boolean;
-};
-
-type CountType = {
-  readonly count?: number;
-};
+import { CountType, IsOpenType } from 'types';
 
 export const StyledHeader = styled.header`
   background-color: ${({ theme }) => theme.color.black};
@@ -56,7 +49,7 @@ export const Wrapper = styled.div`
   padding: 25px 0px;
 `;
 
-export const HamburgerButton = styled.button<IsOpenProps>`
+export const HamburgerButton = styled.button<IsOpenType>`
   z-index: 2;
   width: 23px;
   height: 23px;
@@ -96,7 +89,7 @@ export const HamburgerButton = styled.button<IsOpenProps>`
   }
 `;
 
-export const Navigation = styled.nav<IsOpenProps>`
+export const StyledNavigation = styled.nav<IsOpenType>`
   z-index: 1;
   position: absolute;
   top: 0;
@@ -119,7 +112,7 @@ export const Navigation = styled.nav<IsOpenProps>`
   }
 `;
 
-export const Background = styled.div<IsOpenProps>`
+export const Background = styled.div<IsOpenType>`
   ${({ theme }) => theme.mq.hugePhone} {
     display: ${({ isOpen }) => (isOpen ? 'block' : 'none')};
     background-color: ${({ theme }) => theme.color.darkGray};
@@ -127,35 +120,5 @@ export const Background = styled.div<IsOpenProps>`
     width: 100%;
     position: absolute;
     top: 81px;
-  }
-`;
-
-const activeClassName = 'active';
-export const DesktopNavigation = styled.nav`
-  display: none;
-
-  ${({ theme }) => theme.mq.tablet} {
-    display: block;
-
-    ul {
-      display: flex;
-      gap: 25px;
-    }
-
-    li {
-      list-style: none;
-      text-transform: uppercase;
-      font-size: ${({ theme }) => theme.font.size.mediumText};
-      font-weight: ${({ theme }) => theme.font.weight.bold};
-    }
-
-    a {
-      text-decoration: none;
-      color: ${({ theme }) => theme.color.white};
-
-      &.${activeClassName} {
-        color: ${({ theme }) => theme.color.orange};
-      }
-    }
   }
 `;

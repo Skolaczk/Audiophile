@@ -5,14 +5,6 @@ export const WrapperElement = styled.div`
     margin: 25px 0 15px;
   }
 
-  h4 {
-    margin-bottom: 10px;
-  }
-
-  p {
-    font-size: ${({ theme }) => theme.font.size.largeText};
-  }
-
   button {
     background-color: ${({ theme }) => theme.color.orange};
     color: ${({ theme }) => theme.color.white};
@@ -25,12 +17,4 @@ export const WrapperElement = styled.div`
   ${({ theme }) => theme.mq.tablet} {
     width: 50%;
   }
-`;
-
-export const StyledDataBox = styled.div`
-  width: 100%;
-  border: 1px solid ${({ theme }) => theme.color.inputBorder};
-  padding: 10px;
-  border-radius: 5px;
-  margin-bottom: 15px;
 `;

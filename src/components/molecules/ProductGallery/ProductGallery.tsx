@@ -1,13 +1,6 @@
 import { FC } from 'react';
+import { ProductGalleryType } from 'types';
 import { ImagesWrapper } from './ProductGallery.styles';
-
-type ProductGalleryType = {
-  gallery: {
-    first: { mobile: string; tablet: string; desktop: string };
-    second: { mobile: string; tablet: string; desktop: string };
-    third: { mobile: string; tablet: string; desktop: string };
-  };
-};
 
 const ProductGallery: FC<ProductGalleryType> = ({ gallery }) => {
   return (

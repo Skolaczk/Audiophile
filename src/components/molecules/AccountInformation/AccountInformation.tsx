@@ -1,5 +1,6 @@
+import AccountField from 'components/atoms/AccountField/AccountField';
 import { useAuth } from 'hooks/useAuth';
-import { StyledDataBox, WrapperElement } from './AccountInformation.styles';
+import { WrapperElement } from './AccountInformation.styles';
 
 const AccountInformation = () => {
   const { currentUser, handleSignOut } = useAuth();
@@ -7,24 +8,9 @@ const AccountInformation = () => {
   return (
     <WrapperElement>
       <h3>Account information</h3>
-      <div>
-        <h4>Name</h4>
-        <StyledDataBox>
-          <p>{currentUser?.displayName}</p>
-        </StyledDataBox>
-      </div>
-      <div>
-        <h4>Email</h4>
-        <StyledDataBox>
-          <p>{currentUser?.email}</p>
-        </StyledDataBox>
-      </div>
-      <div>
-        <h4>Password</h4>
-        <StyledDataBox>
-          <p>*********</p>
-        </StyledDataBox>
-      </div>
+      <AccountField title='Name' content={currentUser?.displayName} />
+      <AccountField title='Email' content={currentUser?.email} />
+      <AccountField title='Password' content='**********' />
       <button onClick={handleSignOut}>Sign out</button>
     </WrapperElement>
   );

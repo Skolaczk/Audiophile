@@ -1,6 +1,6 @@
 import { ThemeProvider } from 'styled-components';
-import GlobalStyles from '../assets/styles/GlobalStyles';
-import { theme } from '../assets/styles/theme';
+import GlobalStyles from './assets/styles/GlobalStyles';
+import { theme } from './assets/styles/theme';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Homepage from 'components/templates/HomepageTemplate/HomepageTemplate';
 import CategoryTemplate from 'components/templates/CategoryTemplate/CategoryTemplate';

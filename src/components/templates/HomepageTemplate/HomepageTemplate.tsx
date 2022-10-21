@@ -1,4 +1,4 @@
-import Card from 'components/molecules/Card/Card';
+import Card from 'components/molecules/Card/ContentCard';
 import CardsGrid from 'components/organisms/CardsGrid/CardsGrid';
 import CategoryList from 'components/organisms/CategoryList/CategoryList';
 import Hero from 'components/organisms/Hero/Hero';

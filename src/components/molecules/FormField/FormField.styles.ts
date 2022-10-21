@@ -1,12 +1,5 @@
 import styled from 'styled-components';
-
-type InputBoxType = {
-  isBig?: boolean;
-};
-
-type isErrorType = {
-  isError: string | false | undefined;
-};
+import { InputType } from 'types';
 
 export const LabelBox = styled.div`
   display: flex;
@@ -23,7 +16,7 @@ export const StyledLabel = styled.label`
   font-weight: ${({ theme }) => theme.font.weight.bold};
 `;
 
-export const InputBox = styled.div<InputBoxType & isErrorType>`
+export const InputBox = styled.div<InputType>`
   margin-bottom: 20px;
   grid-column: ${({ isBig }) => (isBig ? '1 / 3' : '')};
 

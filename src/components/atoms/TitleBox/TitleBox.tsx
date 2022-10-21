@@ -1,14 +1,11 @@
 import { FC } from 'react';
+import { TitleType } from 'types';
 import { StyledTitleBox } from './TitleBox.styles';
 
-type CategoryType = {
-  category: string | undefined;
-};
-
-const TitleBox: FC<CategoryType> = ({ category }) => {
+const TitleBox: FC<TitleType> = ({ title }) => {
   return (
     <StyledTitleBox>
-      <h1>{category}</h1>
+      <h1>{title}</h1>
     </StyledTitleBox>
   );
 };

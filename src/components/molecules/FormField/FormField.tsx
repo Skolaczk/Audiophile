@@ -1,32 +1,15 @@
-import { ChangeEventHandler, FC } from 'react';
+import { FC } from 'react';
+import { FormFieldType } from 'types';
 import { InputBox, LabelBox, StyledLabel } from './FormField.styles';
 
-type FormFieldType = {
-  id: string;
-  label: string;
-  type: string;
-  placeholder: string;
-  isBig?: boolean;
-  onChange: ChangeEventHandler<HTMLInputElement>;
-  value?: string;
-  isError: string | false | undefined;
-};
+const FormField: FC<FormFieldType> = (formFieldData) => {
+  const { id, label, type, placeholder, isBig, onChange, value, isError } = formFieldData;
 
-const FormField: FC<FormFieldType> = ({
-  id,
-  label,
-  type,
-  placeholder,
-  isBig,
-  onChange,
-  value,
-  isError,
-}) => {
   return (
     <InputBox isError={isError} isBig={isBig}>
       <LabelBox>
         <StyledLabel htmlFor={id}>{label}</StyledLabel>
-        {isError ? <p>{isError}</p> : null}
+        {isError && <p>{isError}</p>}
       </LabelBox>
       <input
         type={type}

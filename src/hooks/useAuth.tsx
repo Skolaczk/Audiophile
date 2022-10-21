@@ -1,48 +1,26 @@
 import React, { FC, useContext, useEffect, useState } from 'react';
 import {
-  getAuth,
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
   onAuthStateChanged,
   updateProfile,
   User,
 } from 'firebase/auth';
-import { app } from '../firebase/Firebase';
+import { auth } from '../firebase/Firebase';
 import { useError } from './useError';
-
-type ChildrenType = {
-  children: React.ReactNode;
-};
-
-type FormValuesType = {
-  name: string;
-  email: string;
-  password: string;
-};
-
-type AuthContextType = {
-  currentUser: User | null;
-  handleSignIn: (values: FormValuesType) => void;
-  handleSignUp: (values: FormValuesType) => void;
-  handleSignOut: () => void;
-};
+import { AuthContextType, ChildrenType, FormValuesType } from 'types';
 
 export const AuthContext = React.createContext<AuthContextType>(null!);
 
 export const AuthProvider: FC<ChildrenType> = ({ children }) => {
-  const auth = getAuth(app);
   const [currentUser, setCurrentUser] = useState<User | null>(null!);
   const { catchError } = useError();
 
   const handleSignOut = () => auth.signOut();
 
-  const handleSignUp = ({ name, email, password }: FormValuesType) => {
+  const handleSignUp = ({ name: displayName, email, password }: FormValuesType) => {
     createUserWithEmailAndPassword(auth, email, password)
-      .then(({ user }) => {
-        updateProfile(user, {
-          displayName: name,
-        });
-      })
+      .then(({ user }) => updateProfile(user, { displayName }))
       .catch(({ code }) => catchError(code));
   };
 

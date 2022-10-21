@@ -1,12 +1,9 @@
 import Footer from 'components/organisms/Footer/Footer';
 import Header from 'components/organisms/Header/Header';
 import { FC } from 'react';
+import { ChildrenType } from 'types';
 
-type ChildrenProps = {
-  children: React.ReactNode;
-};
-
-const MainTemplate: FC<ChildrenProps> = ({ children }) => {
+const MainTemplate: FC<ChildrenType> = ({ children }) => {
   return (
     <>
       <Header />

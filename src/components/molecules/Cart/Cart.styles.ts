@@ -2,6 +2,10 @@ import { ButtonLink } from 'components/atoms/Button/ButtonLink';
 import ReactModal from 'react-modal';
 import styled from 'styled-components';
 
+export const overlay = {
+  backgroundColor: 'rgba(0, 0, 0, 0.5)',
+};
+
 export const StyledModal = styled(ReactModal)`
   position: absolute;
   left: 50%;

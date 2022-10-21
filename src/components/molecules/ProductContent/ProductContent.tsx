@@ -1,14 +1,10 @@
 import { FC } from 'react';
+import { ProductContentType } from 'types';
 import {
   ProductCompositionWrapper,
   StyledContent,
   StyledProductContent,
 } from './ProductContent.styles';
-
-type ProductContentType = {
-  features: string;
-  includedItems: Array<{ quantity: number; item: string }>;
-};
 
 const ProductContent: FC<ProductContentType> = ({ features, includedItems }) => {
   return (

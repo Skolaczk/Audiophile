@@ -1,4 +1,4 @@
-import Card from 'components/molecules/Card/Card';
+import Card from 'components/molecules/Card/ContentCard';
 import CategoryList from 'components/organisms/CategoryList/CategoryList';
 import { useParams } from 'react-router-dom';
 import MainTemplate from '../MainTemplate/MainTemplate';

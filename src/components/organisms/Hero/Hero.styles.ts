@@ -1,11 +1,7 @@
 import styled from 'styled-components';
+import { HeroType } from 'types';
 
-type HeroProps = {
-  readonly heroImage: string;
-  readonly heroImageDesktop: string;
-};
-
-export const StyledHero = styled.div<HeroProps>`
+export const StyledHero = styled.div<HeroType>`
   text-align: center;
   background-color: ${({ theme }) => theme.color.black};
   height: calc(100vh - 81px);
