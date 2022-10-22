@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 export const StyledSummaryWrapper = styled.div`
   background-color: ${({ theme }) => theme.color.white};
-  border-radius: 10px;
+  border-radius: 5px;
   padding: 25px;
   margin: 25px 0;
 
@@ -21,6 +21,11 @@ export const StyledSummaryWrapper = styled.div`
     padding: 15px 25px;
     font-size: ${({ theme }) => theme.font.size.small};
     font-weight: ${({ theme }) => theme.font.weight.bold};
+    transition: background-color 0.25s ease-in-out;
+
+    &:hover {
+      background-color: ${({ theme }) => theme.color.lightOrange};
+    }
   }
 
   ${({ theme }) => theme.mq.desktop} {
@@ -30,7 +35,7 @@ export const StyledSummaryWrapper = styled.div`
 `;
 
 export const SummaryList = styled.div`
-  margin: 25px 0;
+  margin: 0 0 25px;
 
   div:not(:last-child) {
     margin-bottom: 5px;
@@ -69,6 +74,7 @@ export const CartItem = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
+  margin-bottom: 15px;
 
   img {
     width: 64px;

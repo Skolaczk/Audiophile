@@ -11,4 +11,7 @@ export default createGlobalStyle`
       font-family: 'Manrope', sans-serif;
     }
 
+    button {
+      cursor: pointer;
+    }
 `;

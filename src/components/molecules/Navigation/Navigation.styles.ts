@@ -22,8 +22,13 @@ export const StyledNavigation = styled.nav`
     a {
       text-decoration: none;
       color: ${({ theme }) => theme.color.white};
+      transition: color 0.25s ease-in-out;
 
       &.${activeClassName} {
+        color: ${({ theme }) => theme.color.orange};
+      }
+
+      &:hover {
         color: ${({ theme }) => theme.color.orange};
       }
     }

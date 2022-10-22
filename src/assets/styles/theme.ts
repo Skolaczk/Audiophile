@@ -12,6 +12,7 @@ export const theme = {
     inputBorder: '#CFCFCF',
     red: '#CD2C2C',
     granit: 'rgba(255, 255, 255, 0.1)',
+    hoverBlack: '#4c4c4c',
   },
   font: {
     size: {

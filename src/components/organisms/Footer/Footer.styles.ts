@@ -31,6 +31,11 @@ export const StyledFooter = styled.footer`
   a {
     text-decoration: none;
     color: ${({ theme }) => theme.color.white};
+    transition: color 0.25s ease-in-out;
+
+    &:hover {
+      color: ${({ theme }) => theme.color.orange};
+    }
   }
 
   ${({ theme }) => theme.mq.tablet} {
@@ -63,7 +68,7 @@ export const Wrapper = styled.div`
 `;
 
 export const CenterWrapper = styled.div`
-  max-width: 1150px;
+  max-width: 1200px;
   margin: 0 auto;
   position: relative;
 

@@ -8,7 +8,7 @@ export const StyledPrice = styled.p`
 
 export const Wrapper = styled.div`
   display: flex;
-  gap: 10px;
+  gap: 15px;
   margin-top: 25px;
 `;
 
@@ -17,11 +17,18 @@ export const StyledBoxCounter = styled.div`
 
   button {
     border: none;
-    padding: 15px 13px;
+    padding: 15px 20px;
+    transition: background-color 0.25s ease-in-out, color 0.25s ease-in-out;
+
+    &:hover {
+      color: ${({ theme }) => theme.color.orange};
+      background-color: ${({ theme }) => theme.color.gray};
+    }
   }
 
   div {
     padding: 15px 10px;
+    font-weight: ${({ theme }) => theme.font.weight.bold};
   }
 
   * {
@@ -38,6 +45,11 @@ export const StyledButton = styled.button`
   padding: 14px 32px;
   font-size: ${({ theme }) => theme.font.size.smallText};
   text-transform: uppercase;
+  transition: background-color 0.25s ease-in-out;
+
+  &:hover {
+    background-color: ${({ theme }) => theme.color.lightOrange};
+  }
 `;
 
 export const StyledContent = styled.p`

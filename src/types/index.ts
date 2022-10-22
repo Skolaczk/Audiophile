@@ -4,7 +4,7 @@ import { store } from 'store';
 
 export type CartType = {
   id: string;
-  name: string;
+  shortName: string;
   image: string;
   productPrice: number;
   price: string;
@@ -107,6 +107,7 @@ export type OthersProductsListType = {
 export type ProductHeroType = {
   cartImage: string;
   name: string;
+  shortName: string;
   image: { mobile: string; tablet: string; desktop: string };
   isNew: boolean;
   productPrice: number;

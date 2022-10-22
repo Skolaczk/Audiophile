@@ -3,7 +3,7 @@ import styled from 'styled-components';
 export const StyledForm = styled.form`
   background-color: ${({ theme }) => theme.color.white};
   padding: 25px;
-  border-radius: 10px;
+  border-radius: 5px;
 
   h2 {
     color: ${({ theme }) => theme.color.black};
@@ -28,7 +28,7 @@ export const StyledForm = styled.form`
 
 export const RadioInputBox = styled.div`
   border: 1px solid ${({ theme }) => theme.color.inputBorder};
-  border-radius: 10px;
+  border-radius: 5px;
   padding: 15px;
   width: 100%;
   display: flex;

@@ -10,7 +10,9 @@ const Footer = () => {
     <StyledFooter>
       <CenterWrapper>
         <Wrapper>
-          <Logo />
+          <Link to='/'>
+            <Logo />
+          </Link>
           <ul>
             <li>
               <Link to='/'>Home</Link>
@@ -22,7 +24,7 @@ const Footer = () => {
               <Link to='/speakers'>speakers</Link>
             </li>
             <li>
-              <Link to='earphones'>earphones</Link>
+              <Link to='/earphones'>earphones</Link>
             </li>
           </ul>
         </Wrapper>

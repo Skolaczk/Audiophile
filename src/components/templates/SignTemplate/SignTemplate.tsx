@@ -8,7 +8,7 @@ import {
   Wrapper,
   Box,
   StyledParagraph,
-  Foo,
+  Container,
   StyledLink,
 } from './SignTemplate.styles';
 import { FC } from 'react';
@@ -22,7 +22,7 @@ const SignTemplate: FC<ChildrenType & IsSignInType> = ({ children, isSignIn }) =
           <Logo />
         </Link>
         <GoBackLink />
-        <Foo>
+        <Container>
           {children}
           <div>
             <Wrapper>
@@ -50,7 +50,7 @@ const SignTemplate: FC<ChildrenType & IsSignInType> = ({ children, isSignIn }) =
               </ul>
             </Box>
           </div>
-        </Foo>
+        </Container>
         <StyledParagraph>Copyright 2022. All Rights Reserved</StyledParagraph>
       </ViewWrapper>
     </StyledSignInTemplate>

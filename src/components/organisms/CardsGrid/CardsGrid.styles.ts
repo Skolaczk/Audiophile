@@ -31,6 +31,10 @@ export const FirstCard = styled.div<FirstCardType>`
 
   a {
     background-color: ${({ theme }) => theme.color.black};
+
+    &:hover {
+      background-color: ${({ theme }) => theme.color.hoverBlack};
+    }
   }
 `;
 
@@ -50,6 +54,11 @@ export const SecondCard = styled.div<SecondCardType>`
     background-color: transparent;
     border: 1px solid ${({ theme }) => theme.color.black};
     color: ${({ theme }) => theme.color.black};
+
+    &:hover {
+      background-color: ${({ theme }) => theme.color.black};
+      color: ${({ theme }) => theme.color.white};
+    }
   }
 
   ${({ theme }) => theme.mq.desktop} {
@@ -75,6 +84,11 @@ export const ThirdCard = styled.div`
     background-color: transparent;
     border: 1px solid ${({ theme }) => theme.color.black};
     color: ${({ theme }) => theme.color.black};
+
+    &:hover {
+      background-color: ${({ theme }) => theme.color.black};
+      color: ${({ theme }) => theme.color.white};
+    }
   }
 
   ${({ theme }) => theme.mq.hugePhone} {

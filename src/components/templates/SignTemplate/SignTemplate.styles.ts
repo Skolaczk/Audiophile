@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import { ViewWrapper } from 'components/organisms/ViewWrapper/ViewWrapper.styles';
 import { Link } from 'react-router-dom';
 
-export const Foo = styled.div`
+export const Container = styled.div`
   ${({ theme }) => theme.mq.tablet} {
     display: flex;
     gap: 50px;
@@ -52,6 +52,12 @@ export const StyledLink = styled(Link)`
   color: ${({ theme }) => theme.color.orange};
   display: block;
   padding: 10px;
+  transition: background-color 0.25s ease-in-out, color 0.25s ease-in-out;
+
+  &:hover {
+    background-color: ${({ theme }) => theme.color.orange};
+    color: ${({ theme }) => theme.color.white};
+  }
 `;
 
 export const Box = styled.div`

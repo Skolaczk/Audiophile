@@ -22,7 +22,9 @@ const CheckoutTemplate = () => {
   const navigate = useNavigate();
 
   const handleRedirectToCheckout = async () => {
-    const lineItems = cartList.map(({ id, name, image, productPrice, ...keepAttrs }) => keepAttrs);
+    const lineItems = cartList.map(
+      ({ id, shortName, image, productPrice, ...keepAttrs }) => keepAttrs,
+    );
 
     const stripe = await stripePromise;
     await stripe?.redirectToCheckout({

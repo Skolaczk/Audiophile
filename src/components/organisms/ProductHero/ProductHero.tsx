@@ -27,12 +27,14 @@ const reducer = (state: CountType, action: ActionType) => {
 };
 
 const ProductHero: FC<ProductHeroType> = (product) => {
-  const { cartImage, image, name, isNew, description, productPrice, price } = product;
+  const { cartImage, image, name, shortName, isNew, description, productPrice, price } = product;
   const dispatch = useAppDispatch();
   const [state, dispatchCounter] = useReducer(reducer, { count: 1 });
 
   const handleAddProduct = () => {
-    dispatch(addProduct({ image: cartImage, name, productPrice, quantity: state.count, price }));
+    dispatch(
+      addProduct({ image: cartImage, shortName, productPrice, quantity: state.count, price }),
+    );
     dispatchCounter({ type: ActionTypes.Reset });
   };
 

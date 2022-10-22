@@ -12,6 +12,11 @@ export const WrapperElement = styled.div`
     width: 100%;
     padding: 15px;
     margin-top: 15px;
+    transition: background-color 0.25s ease-in-out;
+
+    &:hover {
+      background-color: ${({ theme }) => theme.color.lightOrange};
+    }
   }
 
   ${({ theme }) => theme.mq.tablet} {

@@ -32,4 +32,10 @@ export const StyledCategoryListItem = styled.div`
     left: 50%;
     transform: translateX(-50%);
   }
+
+  &:hover {
+    p {
+      color: ${({ theme }) => theme.color.orange};
+    }
+  }
 `;

@@ -14,17 +14,17 @@ const CardsGrid = () => {
         <p>
           Upgrade to premium speakers that are phenomenally built to deliver truly remarkable sound.
         </p>
-        <ButtonLink to=''>see product</ButtonLink>
+        <ButtonLink to='/speakers/zx9-speaker'>see product</ButtonLink>
       </FirstCard>
       <SecondCard zx7Speaker={ZX7Speaker}>
         <h2>zx7 speaker</h2>
-        <ButtonLink to=''>see product</ButtonLink>
+        <ButtonLink to='/speakers/zx7-speaker'>see product</ButtonLink>
       </SecondCard>
       <Wrapper>
         <img src={Earphones} alt='' />
         <ThirdCard>
           <h2>xy1 earphones</h2>
-          <ButtonLink to=''>see product</ButtonLink>
+          <ButtonLink to='/earphones/yx1-earphones'>see product</ButtonLink>
         </ThirdCard>
       </Wrapper>
     </StyledCardsGrid>

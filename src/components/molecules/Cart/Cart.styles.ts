@@ -13,7 +13,7 @@ export const StyledModal = styled(ReactModal)`
   width: 80%;
   transform: translateX(-50%);
   background-color: ${({ theme }) => theme.color.white};
-  border-radius: 10px;
+  border-radius: 5px;
   max-width: 400px;
   padding: 25px;
 
@@ -127,6 +127,12 @@ export const CounterWrapper = styled.div`
     border: none;
     padding: 5px 15px;
     font-weight: ${({ theme }) => theme.font.weight.bold};
+    transition: background-color 0.25s ease-in-out, color 0.25s ease-in-out;
+
+    &:hover {
+      color: ${({ theme }) => theme.color.orange};
+      background-color: ${({ theme }) => theme.color.gray};
+    }
   }
 
   div {
@@ -136,5 +142,6 @@ export const CounterWrapper = styled.div`
     font-size: ${({ theme }) => theme.font.size.smallText};
     font-weight: ${({ theme }) => theme.font.weight.bold};
     color: ${({ theme }) => theme.color.black};
+    padding: 0 5px;
   }
 `;

@@ -8,7 +8,7 @@ const cartListSlice = createSlice({
   initialState: Array<CartType>,
   reducers: {
     addProduct(state, { payload }) {
-      const currentProduct = state.find(({ name }) => name === payload.name);
+      const currentProduct = state.find(({ shortName }) => shortName === payload.shortName);
       if (currentProduct) {
         currentProduct.quantity += payload.quantity;
       } else {

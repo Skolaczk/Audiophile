@@ -11,4 +11,9 @@ export const ButtonLink = styled(Link)`
   padding: 14px 32px;
   font-size: ${({ theme }) => theme.font.size.smallText};
   text-transform: uppercase;
+  transition: background-color 0.25s ease-in-out, color 0.25s ease-in-out;
+
+  &:hover {
+    background-color: ${({ theme }) => theme.color.lightOrange};
+  }
 `;

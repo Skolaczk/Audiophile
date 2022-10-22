@@ -23,9 +23,13 @@ export const InputBox = styled.div<InputType>`
   input {
     margin-top: 10px;
     border: 1px solid ${({ theme }) => theme.color.inputBorder};
-    border-radius: 10px;
+    border-radius: 5px;
     padding: 15px;
     width: 100%;
+
+    &:focus {
+      outline-color: ${({ theme }) => theme.color.orange};
+    }
   }
 
   label,
