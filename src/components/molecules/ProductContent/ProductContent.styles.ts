@@ -36,13 +36,14 @@ export const StyledProductContent = styled.div`
   ${({ theme }) => theme.mq.tablet} {
     display: flex;
     gap: 50px;
-
-    div:first-child {
-      width: 60%;
-    }
   }
 
   ${({ theme }) => theme.mq.desktop} {
     gap: 100px;
+  }
+`;
+export const FeaturesWrapper = styled.div`
+  ${({ theme }) => theme.mq.tablet} {
+    width: 60%;
   }
 `;

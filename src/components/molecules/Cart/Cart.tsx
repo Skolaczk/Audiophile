@@ -15,6 +15,7 @@ import { useAppDispatch, useAppSelector } from 'hooks/useRedux';
 import { removeAllProduct, changeProductQuantity, clearCart } from 'store';
 import { getSumPrice } from 'helpers/getSumPrice';
 import { ActionTypes } from 'constants/index';
+import { getQuantityProducts } from 'helpers/getQuantityProducts';
 
 const Cart = () => {
   const { modalIsOpen, toggleModal } = useModal();
@@ -40,7 +41,7 @@ const Cart = () => {
       {cartList.length > 0 ? (
         <div>
           <Wrapper>
-            <h2>cart ({cartList.length})</h2>
+            <h2>cart ({getQuantityProducts(cartList)})</h2>
             <RemoveButton onClick={handleRemoveAllProduct}>Remove All</RemoveButton>
           </Wrapper>
           <div>

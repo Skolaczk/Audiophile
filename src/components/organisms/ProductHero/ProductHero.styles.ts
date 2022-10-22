@@ -17,7 +17,7 @@ export const StyledBoxCounter = styled.div`
 
   button {
     border: none;
-    padding: 15px 20px;
+    padding: 15px 15px;
     transition: background-color 0.25s ease-in-out, color 0.25s ease-in-out;
 
     &:hover {

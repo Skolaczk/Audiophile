@@ -142,3 +142,9 @@ export type ActionType = {
 };
 
 export type CurrentUserEmailType = string | undefined;
+
+export type SuccessInformationType = {
+  isOpen: boolean;
+  closeSuccesInformation: () => void;
+  name: string;
+};

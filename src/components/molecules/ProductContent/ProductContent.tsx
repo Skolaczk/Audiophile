@@ -1,6 +1,7 @@
 import { FC } from 'react';
 import { ProductContentType } from 'types';
 import {
+  FeaturesWrapper,
   ProductCompositionWrapper,
   StyledContent,
   StyledProductContent,
@@ -9,10 +10,10 @@ import {
 const ProductContent: FC<ProductContentType> = ({ features, includedItems }) => {
   return (
     <StyledProductContent>
-      <div>
+      <FeaturesWrapper>
         <h3>features</h3>
         <StyledContent>{features}</StyledContent>
-      </div>
+      </FeaturesWrapper>
       <div>
         <h3>in the box</h3>
         <ProductCompositionWrapper>

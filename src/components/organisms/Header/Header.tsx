@@ -17,11 +17,12 @@ import { Link, useLocation } from 'react-router-dom';
 import { useModal } from 'hooks/useModal';
 import { useAppSelector } from 'hooks/useRedux';
 import Navigation from 'components/molecules/Navigation/Navigation';
+import { getQuantityProducts } from 'helpers/getQuantityProducts';
 
 const Header = () => {
   const location = useLocation();
   const [isOpen, setIsOpen] = useState(false);
-  const cartListLength = useAppSelector((state) => state.cartList.length);
+  const cartList = useAppSelector((state) => state.cartList);
   const { toggleModal } = useModal();
 
   const toggleNavigation = () => {
@@ -56,7 +57,7 @@ const Header = () => {
           <IconLink to='/sign-in'>
             <UserIcon />
           </IconLink>
-          <IconButton onClick={toggleModal} count={cartListLength}>
+          <IconButton onClick={toggleModal} count={getQuantityProducts(cartList)}>
             <CartIcon />
           </IconButton>
         </IconsWrapper>

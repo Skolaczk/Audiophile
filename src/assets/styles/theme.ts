@@ -13,6 +13,8 @@ export const theme = {
     red: '#CD2C2C',
     granit: 'rgba(255, 255, 255, 0.1)',
     hoverBlack: '#4c4c4c',
+    green: '#38A169',
+    darkGreen: 'rgba(0, 0, 0, 0.06)',
   },
   font: {
     size: {
