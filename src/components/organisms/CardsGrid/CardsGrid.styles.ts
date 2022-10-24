@@ -18,14 +18,13 @@ export const FirstCard = styled.div<FirstCardType>`
   h2 {
     color: ${({ theme }) => theme.color.white};
     margin-top: 15px;
-    line-height: 1;
     font-size: clamp(36px, 8vw, 56px);
   }
 
   p {
     color: ${({ theme }) => theme.color.lightBlack};
     font-size: ${({ theme }) => theme.font.size.mediumText};
-    line-height: 1.7;
+    line-height: ${({ theme }) => theme.lineHeight};
     margin: 25px 0 50px;
   }
 

@@ -32,6 +32,11 @@ export const theme = {
       bold: '700',
     },
   },
+  letterSpacing: {
+    small: '0.125rem',
+    big: '0.625rem',
+  },
+  lineHeight: '1.7',
   mq: {
     hugePhone: '@media (min-width: 500px)',
     tablet: '@media (min-width: 768px)',

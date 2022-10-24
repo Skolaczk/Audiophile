@@ -21,7 +21,7 @@ export const StyledHero = styled.div<HeroType>`
   h2 {
     color: ${({ theme }) => theme.color.lightBlack};
     font-size: ${({ theme }) => theme.font.size.mediumText};
-    letter-spacing: 0.625rem;
+    letter-spacing: ${({ theme }) => theme.letterSpacing.big};
   }
 
   h1 {
@@ -33,7 +33,7 @@ export const StyledHero = styled.div<HeroType>`
   p {
     color: ${({ theme }) => theme.color.lightBlack};
     font-size: ${({ theme }) => theme.font.size.largeText};
-    line-height: 1.7;
+    line-height: ${({ theme }) => theme.lineHeight};
     margin-bottom: 40px;
   }
 

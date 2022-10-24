@@ -1,4 +1,4 @@
-import { createSlice, configureStore } from '@reduxjs/toolkit';
+import { createSlice, configureStore, Middleware } from '@reduxjs/toolkit';
 import { v4 as uuid } from 'uuid';
 import { CartType } from 'types';
 import { ActionTypes } from 'constants/index';
@@ -34,6 +34,18 @@ const cartListSlice = createSlice({
   },
 });
 
+const reHydrateStore = () => {
+  if (localStorage.getItem('cartList') !== null) {
+    return JSON.parse(localStorage.getItem('cartList')!);
+  }
+};
+
+const cartListMiddleware: Middleware = (store) => (next) => (action) => {
+  const result = next(action);
+  localStorage.setItem('cartList', JSON.stringify(store.getState()));
+  return result;
+};
+
 export const { addProduct, removeAllProduct, changeProductQuantity, clearCart } =
   cartListSlice.actions;
 
@@ -41,4 +53,6 @@ export const store = configureStore({
   reducer: {
     cartList: cartListSlice.reducer,
   },
+  preloadedState: reHydrateStore(),
+  middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(cartListMiddleware),
 });

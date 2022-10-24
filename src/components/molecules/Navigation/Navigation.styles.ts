@@ -17,6 +17,7 @@ export const StyledNavigation = styled.nav`
       text-transform: uppercase;
       font-size: ${({ theme }) => theme.font.size.mediumText};
       font-weight: ${({ theme }) => theme.font.weight.bold};
+      letter-spacing: ${({ theme }) => theme.letterSpacing.small};
     }
 
     a {

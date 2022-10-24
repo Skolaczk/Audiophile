@@ -3,7 +3,7 @@ import styled from 'styled-components';
 export const StyledContent = styled.p`
   color: ${({ theme }) => theme.color.darkGray};
   font-size: ${({ theme }) => theme.font.size.largeText};
-  line-height: 1.66;
+  line-height: ${({ theme }) => theme.lineHeight};
   margin: 25px 0;
 `;
 

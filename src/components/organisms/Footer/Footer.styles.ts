@@ -21,7 +21,7 @@ export const StyledFooter = styled.footer`
     color: ${({ theme }) => theme.color.lightBlack};
     font-size: ${({ theme }) => theme.font.size.largeText};
     margin-bottom: 50px;
-    line-height: 1.7;
+    line-height: ${({ theme }) => theme.lineHeight};
 
     ${({ theme }) => theme.mq.tablet} {
       margin-top: 50px;

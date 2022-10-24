@@ -16,7 +16,7 @@ export const StyledForm = styled.form`
     color: ${({ theme }) => theme.color.orange};
     font-size: ${({ theme }) => theme.font.size.smallText};
     text-transform: uppercase;
-    letter-spacing: 0.0581rem;
+    letter-spacing: 0.05rem;
     margin: 30px 0 15px;
   }
 

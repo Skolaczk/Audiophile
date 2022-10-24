@@ -26,16 +26,12 @@ const SummaryWrapper = () => {
           <p>$ {getSumPrice(cartList)}</p>
         </SummaryItem>
         <SummaryItem>
-          <p>shipping</p>
-          <p>$ 50</p>
-        </SummaryItem>
-        <SummaryItem>
           <p>vat (included)</p>
           <p>$ {(23 * getSumPrice(cartList)) / 100}</p>
         </SummaryItem>
         <SummaryItem>
           <p>grand total</p>
-          <p>$ {getSumPrice(cartList) + 50 + (23 * getSumPrice(cartList)) / 100}</p>
+          <p>$ {getSumPrice(cartList)}</p>
         </SummaryItem>
       </SummaryList>
       <button type='submit' form='form'>

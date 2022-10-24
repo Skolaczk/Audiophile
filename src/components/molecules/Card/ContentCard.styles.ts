@@ -23,7 +23,7 @@ export const StyledContentCard = styled.div`
   p {
     font-size: ${({ theme }) => theme.font.size.largeText};
     color: ${({ theme }) => theme.color.darkGray};
-    line-height: 1.7;
+    line-height: ${({ theme }) => theme.lineHeight};
   }
 
   ${({ theme }) => theme.mq.tablet} {

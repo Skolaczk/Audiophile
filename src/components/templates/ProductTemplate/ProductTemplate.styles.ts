@@ -10,7 +10,7 @@ export const ProductItemWrapper = styled.div`
 
   h5 {
     color: ${({ theme }) => theme.color.orange};
-    letter-spacing: 0.625rem;
+    letter-spacing: ${({ theme }) => theme.letterSpacing.big};
     text-transform: uppercase;
     font-size: ${({ theme }) => theme.font.size.mediumText};
     font-weight: ${({ theme }) => theme.font.weight.regular};
@@ -20,7 +20,6 @@ export const ProductItemWrapper = styled.div`
   h2 {
     font-size: ${({ theme }) => theme.font.size.mediumHeading};
     color: ${({ theme }) => theme.color.black};
-    line-height: 1.33;
     margin-top: 25px;
   }
 
