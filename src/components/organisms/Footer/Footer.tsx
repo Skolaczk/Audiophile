@@ -1,6 +1,6 @@
-import { ReactComponent as FacebookIcon } from 'assets/icons/icon-facebook.svg';
-import { ReactComponent as TwitterIcon } from 'assets/icons/icon-twitter.svg';
-import { ReactComponent as InstagramIcon } from 'assets/icons/icon-instagram.svg';
+import { ReactComponent as FacebookIcon } from 'assets/icons/facebook.svg';
+import { ReactComponent as TwitterIcon } from 'assets/icons/twitter.svg';
+import { ReactComponent as InstagramIcon } from 'assets/icons/instagram.svg';
 import { ReactComponent as Logo } from 'assets/icons/logo.svg';
 import { CenterWrapper, IconsWrapper, StyledFooter, Wrapper } from './Footer.styles';
 import { Link } from 'react-router-dom';

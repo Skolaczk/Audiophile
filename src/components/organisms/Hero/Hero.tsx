@@ -1,6 +1,6 @@
 import { ButtonLink } from 'components/atoms/Button/ButtonLink';
-import HeroImage from 'images/home/mobile/image-hero.jpg';
-import HeroImageDesktop from 'images/home/desktop/image-hero.jpg';
+import HeroImage from 'images/mobile/image-hero.jpg';
+import HeroImageDesktop from 'images/desktop/image-hero.jpg';
 import { StyledHero } from './Hero.styles';
 
 const Hero = () => {

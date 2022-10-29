@@ -1,6 +1,6 @@
 import { FC } from 'react';
 import { Link } from 'react-router-dom';
-import { ReactComponent as ArrowRightIcon } from 'assets/icons/icon-arrow-right.svg';
+import { ReactComponent as ArrowRightIcon } from 'assets/icons/arrow-right.svg';
 import { StyledCategoryListItem } from './CategoryListItem.styles';
 import { CategoryListItemType } from 'types';
 

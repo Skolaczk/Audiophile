@@ -2,6 +2,8 @@ import { User } from 'firebase/auth';
 import { ChangeEventHandler } from 'react';
 import { store } from 'store';
 
+type ImageType = { mobile: string; tablet: string; desktop: string };
+
 export type CartType = {
   id: string;
   shortName: string;
@@ -73,9 +75,9 @@ export type ProductContentType = {
 
 export type ProductGalleryType = {
   gallery: {
-    first: { mobile: string; tablet: string; desktop: string };
-    second: { mobile: string; tablet: string; desktop: string };
-    third: { mobile: string; tablet: string; desktop: string };
+    first: ImageType;
+    second: ImageType;
+    third: ImageType;
   };
 };
 
@@ -100,7 +102,7 @@ export type OthersProductsListType = {
   others: Array<{
     slug: string;
     name: string;
-    image: { mobile: string; tablet: string; desktop: string };
+    image: ImageType;
   }>;
 };
 
@@ -108,7 +110,7 @@ export type ProductHeroType = {
   cartImage: string;
   name: string;
   shortName: string;
-  image: { mobile: string; tablet: string; desktop: string };
+  image: ImageType;
   isNew: boolean;
   productPrice: number;
   price: string;
@@ -147,4 +149,35 @@ export type SuccessInformationType = {
   isOpen: boolean;
   closeSuccesInformation: () => void;
   name: string;
+};
+
+export type IsLoadingType = {
+  isLoading: boolean;
+};
+
+export type ProductType = {
+  id: number;
+  slug: string;
+  name: string;
+  shortName: string;
+  image: ImageType;
+  cartImage: string;
+  category: string;
+  categoryImage: ImageType;
+  isNew: boolean;
+  productPrice: number;
+  price: string;
+  description: string;
+  features: string;
+  includedItems: Array<{ quantity: number; item: string }>;
+  gallery: {
+    first: ImageType;
+    second: ImageType;
+    third: ImageType;
+  };
+  others: Array<{
+    slug: string;
+    name: string;
+    image: ImageType;
+  }>;
 };

@@ -1,5 +1,5 @@
 import { useModal } from 'hooks/useModal';
-import EmptyCart from 'images/cart/empty-cart.png';
+import EmptyCart from 'images/desktop/empty-cart.png';
 import { ButtonLink } from 'components/atoms/Button/ButtonLink';
 import {
   CartItem,

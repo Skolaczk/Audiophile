@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { ReactComponent as Logo } from 'assets/icons/logo.svg';
-import { ReactComponent as CartIcon } from 'assets/icons/icon-cart.svg';
+import { ReactComponent as CartIcon } from 'assets/icons/cart.svg';
 import { ReactComponent as UserIcon } from 'assets/icons/user.svg';
 import CategoryList from 'components/organisms/CategoryList/CategoryList';
 import {

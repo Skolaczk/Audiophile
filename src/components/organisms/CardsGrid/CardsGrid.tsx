@@ -1,8 +1,8 @@
 import { ButtonLink } from 'components/atoms/Button/ButtonLink';
-import Speaker from 'images/home/mobile/image-speaker-zx9.png';
-import ZX7Speaker from 'images/home/mobile/image-speaker-zx7.jpg';
-import PatternCircles from 'images/home/desktop/pattern-circles.svg';
-import Earphones from 'images/home/mobile/image-earphones-yx1.jpg';
+import Speaker from 'images/mobile/image-speaker-zx9.png';
+import ZX7Speaker from 'images/mobile/image-speaker-zx7.jpg';
+import PatternCircles from 'images/desktop/pattern-circles.svg';
+import Earphones from 'images/mobile/image-earphones-yx1.jpg';
 import { FirstCard, SecondCard, StyledCardsGrid, ThirdCard, Wrapper } from './CardsGrid.styles';
 
 const CardsGrid = () => {

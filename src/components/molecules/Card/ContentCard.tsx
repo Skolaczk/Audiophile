@@ -1,6 +1,6 @@
-import ImageMobile from 'images/shared/mobile/image-best-gear.jpg';
-import ImageTablet from 'images/shared/tablet/image-best-gear.jpg';
-import ImageDesktop from 'images/shared/desktop/image-best-gear.jpg';
+import ImageMobile from 'images/mobile/image-best-gear.jpg';
+import ImageTablet from 'images/tablet/image-best-gear.jpg';
+import ImageDesktop from 'images/desktop/image-best-gear.jpg';
 import { StyledContentCard } from './ContentCard.styles';
 
 const ContentCard = () => {

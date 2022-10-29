@@ -16,7 +16,7 @@ const OthersProductsList: FC<OthersProductsListType> = ({ others }) => {
               <img src={image.mobile} alt='' />
             </picture>
             <h4>{name}</h4>
-            <ButtonLink to={slug}>see product</ButtonLink>
+            <ButtonLink to={`/${slug}`}>see product</ButtonLink>
           </StyledOtherProduct>
         ))}
       </ProductsWrapper>
