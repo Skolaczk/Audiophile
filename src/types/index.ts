@@ -181,3 +181,7 @@ export type ProductType = {
     image: ImageType;
   }>;
 };
+
+export type GoBackLinkType = {
+  location?: string;
+};

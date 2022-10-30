@@ -15,6 +15,7 @@ import SignIn from 'components/templates/SignInTemplate/SignInTemplate';
 import { ErrorProvider } from 'hooks/useError';
 import SignUp from 'components/templates/SignUpTemplate/SignUpTemplate';
 import AccountTemplate from 'components/templates/AccountTemplate/AccountTemplate';
+import SuccessTemplate from 'components/templates/SuccessTemplate/SuccessTemplate';
 
 const App = () => {
   return (
@@ -33,6 +34,7 @@ const App = () => {
                   <Route path='/sign-in' element={<SignIn />} />
                   <Route path='/sign-up' element={<SignUp />} />
                   <Route path='/account' element={<AccountTemplate />} />
+                  <Route path='/success' element={<SuccessTemplate />} />
                 </Routes>
                 <Cart />
               </ModalProvider>

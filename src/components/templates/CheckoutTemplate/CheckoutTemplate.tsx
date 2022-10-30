@@ -9,8 +9,9 @@ import { useAuth } from 'hooks/useAuth';
 import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { loadStripe } from '@stripe/stripe-js';
-import { useAppSelector } from 'hooks/useRedux';
+import { useAppSelector, useAppDispatch } from 'hooks/useRedux';
 import { CurrentUserEmailType } from 'types';
+import { removeAllProduct } from 'store';
 
 const stripePromise = loadStripe(
   'pk_test_51LtAb8LPiJF5XvZcweOe1Mw9eTySLsMBfMidy6BxEzV8H5X09iMeXQe8kC4GnhDJro1CWEGGJmtBa36DzrxkUH6a005VVg4jgY',
@@ -20,18 +21,20 @@ const CheckoutTemplate = () => {
   const { currentUser } = useAuth();
   const cartList = useAppSelector((state) => state.cartList);
   const navigate = useNavigate();
+  const dispatch = useAppDispatch();
 
   const handleRedirectToCheckout = async () => {
     const lineItems = cartList.map(
       ({ id, shortName, image, productPrice, ...keepAttrs }) => keepAttrs,
     );
 
+    dispatch(removeAllProduct());
     const stripe = await stripePromise;
     await stripe?.redirectToCheckout({
       lineItems,
       mode: 'payment',
-      successUrl: 'http://localhost:3000/',
-      cancelUrl: 'http://localhost:3000/',
+      successUrl: 'http://localhost:3000/success',
+      cancelUrl: 'http://localhost:3000',
       customerEmail: currentUser?.email as CurrentUserEmailType,
     });
   };
