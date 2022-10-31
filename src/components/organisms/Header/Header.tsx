@@ -54,7 +54,7 @@ const Header = () => {
         </Link>
         <Navigation />
         <IconsWrapper>
-          <IconLink to='/sign-in'>
+          <IconLink to='/account'>
             <UserIcon />
           </IconLink>
           <IconButton onClick={toggleModal} count={getQuantityProducts(cartList)}>

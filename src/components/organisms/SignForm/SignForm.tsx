@@ -22,7 +22,6 @@ const SignForm: FC<IsSignInType> = ({ isSignIn }) => {
       password: Yup.string().min(6, 'Password is too short').required('Password field is required'),
     }),
     onSubmit: (values) => {
-      if (!error) formik.resetForm();
       isSignIn ? handleSignIn(values) : handleSignUp(values);
     },
   });

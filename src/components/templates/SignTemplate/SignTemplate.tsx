@@ -21,7 +21,7 @@ const SignTemplate: FC<ChildrenType & IsSignInType> = ({ children, isSignIn }) =
         <Link to='/'>
           <Logo />
         </Link>
-        <GoBackLink />
+        <GoBackLink location='/' />
         <Container>
           {children}
           <div>

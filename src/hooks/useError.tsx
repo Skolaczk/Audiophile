@@ -17,8 +17,14 @@ export const ErrorProvider: FC<ChildrenType> = ({ children }) => {
       case FirebaseErrors.UserNotFoundError:
         setError(ErrorMessages.UserNotFoundMessage);
         break;
+      case FirebaseErrors.WrongPasswordError:
+        setError(ErrorMessages.WrongPasswordMessage);
+        break;
+      case FirebaseErrors.TooManyRequestsError:
+        setError(ErrorMessages.TooManyRequestsMessage);
+        break;
       default:
-        setError(ErrorMessages.DefaultMessage);
+        setError(ErrorMessages.DefaultMessage + errorCode);
     }
   };
 
