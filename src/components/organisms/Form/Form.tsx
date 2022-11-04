@@ -1,13 +1,43 @@
 import FormField from 'components/molecules/FormField/FormField';
 import { useFormik } from 'formik';
 import { useAuth } from 'hooks/useAuth';
-import { FC } from 'react';
-import { FormType } from 'types';
 import * as Yup from 'yup';
-import { InputsWrapper, RadioInputBox, StyledForm, StyledLabel } from './Form.styles';
+import {
+  InputsWrapper,
+  RadioInputBox,
+  StyledForm,
+  StyledInformation,
+  StyledLabel,
+} from './Form.styles';
+import { addDoc, collection } from 'firebase/firestore';
+import { getSumPrice } from '../../../helpers/getSumPrice';
+import { db } from '../../../firebase/Firebase';
+import { useAppDispatch, useAppSelector } from 'hooks/useRedux';
+import { removeAllProduct } from 'store';
+import { useNavigate } from 'react-router-dom';
+import { useEffect, useState } from 'react';
 
-const Form: FC<FormType> = ({ handleRedirectToCheckout }) => {
+const Form = () => {
   const { currentUser } = useAuth();
+  const cartList = useAppSelector((state) => state.cartList);
+  const dispatch = useAppDispatch();
+  const navigate = useNavigate();
+  const [paymentMethod, setPaymentMethod] = useState('');
+
+  const createOrder = async () => {
+    try {
+      await addDoc(collection(db, `users/${currentUser?.uid}/orders`), {
+        status: 'in progress',
+        date: '01-11-2022',
+        orderNumber: Math.floor(Math.random() * 100000),
+        totalPrice: getSumPrice(cartList),
+        products: cartList,
+      });
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
   const formik = useFormik({
     initialValues: {
       name: '',
@@ -18,6 +48,9 @@ const Form: FC<FormType> = ({ handleRedirectToCheckout }) => {
       city: '',
       country: '',
       paymentMethod: '',
+      cardNumber: '',
+      cvcCode: '',
+      expirationDate: '',
     },
     validationSchema: Yup.object({
       name: Yup.string().required('Name field is required'),
@@ -33,12 +66,36 @@ const Form: FC<FormType> = ({ handleRedirectToCheckout }) => {
         .required('ZIP code field is required'),
       city: Yup.string().required('City field is required'),
       country: Yup.string().required('Country field is required'),
+      cardNumber:
+        paymentMethod === 'e-money'
+          ? Yup.string()
+              .length(16, 'Invalid cart number')
+              .matches(/^[0-9]+$/, 'Must be only digits')
+              .required('Cart number field is required')
+          : Yup.string(),
+      cvcCode:
+        paymentMethod === 'e-money'
+          ? Yup.string()
+              .length(3, 'Invalid CVC code')
+              .matches(/^[0-9]+$/, 'Must be only digits')
+              .required('CVC code field is required')
+          : Yup.string(),
+      expirationDate:
+        paymentMethod === 'e-money'
+          ? Yup.string().required('Expiration date field is required')
+          : Yup.string(),
     }),
     onSubmit: () => {
-      handleRedirectToCheckout();
       formik.resetForm();
+      createOrder();
+      dispatch(removeAllProduct());
+      navigate('/success');
     },
   });
+
+  useEffect(() => {
+    setPaymentMethod(formik.values.paymentMethod);
+  }, [formik.values.paymentMethod]);
 
   return (
     <StyledForm id='form' onSubmit={formik.handleSubmit}>
@@ -130,7 +187,6 @@ const Form: FC<FormType> = ({ handleRedirectToCheckout }) => {
                 name='paymentMethod'
                 id='e-money'
                 onChange={formik.handleChange}
-                checked
               />
             </RadioInputBox>
             <RadioInputBox>
@@ -143,6 +199,44 @@ const Form: FC<FormType> = ({ handleRedirectToCheckout }) => {
                 onChange={formik.handleChange}
               />
             </RadioInputBox>
+            {paymentMethod === 'e-money' ? (
+              <>
+                <FormField
+                  isBig
+                  id='cardNumber'
+                  label='Cart Number'
+                  type='string'
+                  placeholder='4242 4242 4242 4242'
+                  onChange={formik.handleChange}
+                  value={formik.values.cardNumber}
+                  isError={formik.touched.cardNumber && formik.errors.cardNumber}
+                />
+                <FormField
+                  id='expirationDate'
+                  label='Expiration data'
+                  type='string'
+                  placeholder='12/27'
+                  onChange={formik.handleChange}
+                  value={formik.values.expirationDate}
+                  isError={formik.touched.expirationDate && formik.errors.expirationDate}
+                />
+                <FormField
+                  id='cvcCode'
+                  label='CVC'
+                  type='string'
+                  placeholder='123'
+                  onChange={formik.handleChange}
+                  value={formik.values.cvcCode}
+                  isError={formik.touched.cvcCode && formik.errors.cvcCode}
+                />
+              </>
+            ) : (
+              <StyledInformation>
+                The ‘Cash on Delivery’ option enables you to pay in cash when our delivery courier
+                arrives at your residence. Just make sure your address is correct so that your order
+                will not be cancelled.
+              </StyledInformation>
+            )}
           </InputsWrapper>
         </div>
       </div>

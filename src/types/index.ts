@@ -121,10 +121,6 @@ export type ProductsListType = {
   category: string | undefined;
 };
 
-export type FormType = {
-  handleRedirectToCheckout: () => void;
-};
-
 export type AccountFieldType = {
   title: string;
   content: string | undefined | null;
@@ -142,8 +138,6 @@ export type CountType = {
 export type ActionType = {
   type: string;
 };
-
-export type CurrentUserEmailType = string | undefined;
 
 export type SuccessInformationType = {
   isOpen: boolean;

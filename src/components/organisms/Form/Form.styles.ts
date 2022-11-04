@@ -33,7 +33,7 @@ export const RadioInputBox = styled.div`
   width: 100%;
   display: flex;
   gap: 10px;
-  margin-top: 15px;
+  margin: 15px 0 20px;
 
   label {
     order: 1;
@@ -55,4 +55,10 @@ export const InputsWrapper = styled.div`
     grid-template-columns: repeat(2, 1fr);
     gap: 0 20px;
   }
+`;
+
+export const StyledInformation = styled.p`
+  grid-column: 1 / 3;
+  color: ${({ theme }) => theme.color.darkGray};
+  font-size: ${({ theme }) => theme.font.size.largeText};
 `;
