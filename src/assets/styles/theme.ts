@@ -18,11 +18,13 @@ export const theme = {
   },
   font: {
     size: {
+      verySmallText: '12px',
       smallText: '13px',
       mediumText: '14px',
       largeText: '15px',
       hugeText: '16px',
-      smallHeading: '18px',
+      verySmallHeading: '18px',
+      smallHeading: '24px',
       mediumHeading: '28px',
       largeHeading: '40px',
       hugeHeading: '56px',
@@ -33,7 +35,7 @@ export const theme = {
     },
   },
   letterSpacing: {
-    small: '0.125rem',
+    small: '0.1rem',
     big: '0.625rem',
   },
   lineHeight: '1.7',

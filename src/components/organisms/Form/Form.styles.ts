@@ -10,6 +10,7 @@ export const StyledForm = styled.form`
     font-size: ${({ theme }) => theme.font.size.mediumHeading};
     text-transform: uppercase;
     margin-bottom: 30px;
+    letter-spacing: ${({ theme }) => theme.letterSpacing.small};
   }
 
   h4 {
@@ -44,7 +45,7 @@ export const RadioInputBox = styled.div`
 `;
 
 export const StyledLabel = styled.label`
-  font-size: 12px;
+  font-size: ${({ theme }) => theme.font.size.verySmallText};
   color: ${({ theme }) => theme.color.black};
   font-weight: ${({ theme }) => theme.font.weight.bold};
 `;
@@ -61,4 +62,5 @@ export const StyledInformation = styled.p`
   grid-column: 1 / 3;
   color: ${({ theme }) => theme.color.darkGray};
   font-size: ${({ theme }) => theme.font.size.largeText};
+  line-height: ${({ theme }) => theme.lineHeight};
 `;

@@ -1,46 +1,57 @@
-# Getting Started with Create React App
+<h3 align="center">Audiophile</h3>
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Project Overview 🎉
 
-## Available Scripts
+I created a online store - Audiophile (idea and design from <a href="https://www.frontendmentor.io/challenges/audiophile-ecommerce-website-C8cuSd_wx">Front-end mentor</a>). I organized the structure of the projects using atomic design, so I split my components into atoms, molecules, organisms, templates. For style, I used Styled-components and React-router-dom to switch between routes. I used firebase auth to authenticate the user and firestore to save user's orders. Now user can log in or register by login and password. I used redux-toolkit to manage the shopping cart state and react-redux to distribute it. Products that are splitted into categories
+are fetched from <a href="https://github.com/Skolaczk/Audiophile-database">database</a>.
 
-In the project directory, you can run:
+## Installation 💾
 
-### `npm start`
+Download the project to your computer and install needed packages with command:
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+```sh
+npm install
+```
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+Then start the project on the local server with the command:
 
-### `npm test`
+```sh
+npm start
+```
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+and open http://localhost:3000/ to see this app.
 
-### `npm run build`
+## Live 📍
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Link to the live version: https://audiophile-skolaczk.netlify.app/
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Tech/framework used 🔧
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- React (Typescript template)
+- Styled-components
+- Redux-toolkit
+- React-redux
+- React-modal
+- React-router-dom
+- Axios
+- Formik
+- Yup
+- Firebase (auth and firestore)
+- Eslint, Prettier, Husky, Lint-staged
 
-### `npm run eject`
+## Screenshots 📺
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+![Screenshot homepage](https://user-images.githubusercontent.com/76774237/201381107-8dbaa183-61e0-4a6f-a229-b481a16881c6.png)
+![Screenshot product](https://user-images.githubusercontent.com/76774237/201381105-0e6c3acb-f113-4ee0-b5c1-123bbed7c139.png)
+![Screenshot checkout](https://user-images.githubusercontent.com/76774237/201381103-e791b576-c927-4193-b091-a34238456a73.png)
+![Screenshot account](https://user-images.githubusercontent.com/76774237/201381100-bcdbc23d-5b74-4efb-86bb-b6916f35f2df.png)
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Available scripts
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+| Command         | Description            |
+| --------------- | ---------------------- |
+| `npm run start` | Open local server      |
+| `npm run build` | Create optimized build |
+| `npm run test`  | Run tests              |
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+If you encounter a problem, write to this e-mail address: [skolakmichal1@gmail.com](mailto:skolakmichal1@gmail.com)

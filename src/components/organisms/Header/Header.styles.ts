@@ -1,4 +1,3 @@
-import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import { CountType, IsOpenType } from 'types';
 
@@ -8,16 +7,15 @@ export const StyledHeader = styled.header`
   padding: 0 25px;
 `;
 
-export const IconLink = styled(Link)`
+export const IconsWrapper = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
   svg {
     fill: white;
     height: 20px;
   }
-`;
-
-export const IconsWrapper = styled.div`
-  display: flex;
-  gap: 10px;
 `;
 
 export const IconButton = styled.button<CountType>`
@@ -27,8 +25,8 @@ export const IconButton = styled.button<CountType>`
 
   &:after {
     position: absolute;
-    top: -10px;
-    right: -10px;
+    top: -9px;
+    right: -9px;
     content: '${({ count }) => count}';
     width: 20px;
     height: 20px;
@@ -36,6 +34,11 @@ export const IconButton = styled.button<CountType>`
     border-radius: 50%;
     color: ${({ theme }) => theme.color.white};
     font-size: ${({ theme }) => theme.font.size.smallText};
+  }
+
+  svg {
+    fill: white;
+    height: 25px;
   }
 `;
 
@@ -50,7 +53,7 @@ export const Wrapper = styled.div`
 `;
 
 export const HamburgerButton = styled.button<IsOpenType>`
-  z-index: 2;
+  z-index: ${({ isOpen }) => (isOpen ? '2' : '0')};
   width: 23px;
   height: 23px;
   background-color: transparent;
@@ -115,6 +118,7 @@ export const StyledNavigation = styled.nav<IsOpenType>`
 export const Background = styled.div<IsOpenType>`
   ${({ theme }) => theme.mq.hugePhone} {
     display: ${({ isOpen }) => (isOpen ? 'block' : 'none')};
+    left: 0;
     background-color: ${({ theme }) => theme.color.darkGray};
     height: calc(100vh - 81px);
     width: 100%;

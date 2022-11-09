@@ -15,7 +15,7 @@ export const StyledProductsListItem = styled.div`
     margin-bottom: 25px;
   }
 
-  h4 {
+  h3 {
     color: ${({ theme }) => theme.color.orange};
     letter-spacing: ${({ theme }) => theme.letterSpacing.big};
     text-transform: uppercase;
@@ -27,6 +27,7 @@ export const StyledProductsListItem = styled.div`
   h2 {
     font-size: ${({ theme }) => theme.font.size.mediumHeading};
     color: ${({ theme }) => theme.color.black};
+    letter-spacing: ${({ theme }) => theme.letterSpacing.small};
   }
 
   p {

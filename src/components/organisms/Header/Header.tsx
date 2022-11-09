@@ -10,7 +10,6 @@ import {
   Wrapper,
   Background,
   IconButton,
-  IconLink,
   IconsWrapper,
 } from './Header.styles';
 import { Link, useLocation } from 'react-router-dom';
@@ -54,9 +53,9 @@ const Header = () => {
         </Link>
         <Navigation />
         <IconsWrapper>
-          <IconLink to='/account'>
+          <Link to='/account'>
             <UserIcon />
-          </IconLink>
+          </Link>
           <IconButton onClick={toggleModal} count={getQuantityProducts(cartList)}>
             <CartIcon />
           </IconButton>

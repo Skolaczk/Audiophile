@@ -11,6 +11,7 @@ export const StyledCategoryListItem = styled.div`
     font-size: ${({ theme }) => theme.font.size.largeText};
     color: ${({ theme }) => theme.color.black};
     margin-bottom: 15px;
+    letter-spacing: ${({ theme }) => theme.letterSpacing.small};
   }
 
   p {

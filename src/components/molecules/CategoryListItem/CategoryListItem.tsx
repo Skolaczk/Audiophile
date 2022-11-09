@@ -6,9 +6,9 @@ import { CategoryListItemType } from 'types';
 
 const CategoryListItem: FC<CategoryListItemType> = ({ imageUrl, name }) => {
   return (
-    <Link to={`/${name}`}>
+    <Link to={`/category/${name}`}>
       <StyledCategoryListItem>
-        <img src={imageUrl} alt='' />
+        <img src={imageUrl} alt={`${name} image`} />
         <h3>{name}</h3>
         <p>
           shop <ArrowRightIcon />

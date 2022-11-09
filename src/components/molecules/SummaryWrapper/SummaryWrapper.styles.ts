@@ -9,8 +9,9 @@ export const StyledSummaryWrapper = styled.div`
   h3 {
     color: ${({ theme }) => theme.color.black};
     text-transform: uppercase;
-    font-size: ${({ theme }) => theme.font.size.smallHeading};
+    font-size: ${({ theme }) => theme.font.size.verySmallHeading};
     margin-bottom: 25px;
+    letter-spacing: ${({ theme }) => theme.letterSpacing.small};
   }
 
   button {
@@ -56,7 +57,7 @@ export const SummaryItem = styled.div`
   }
 
   p:last-child {
-    font-size: ${({ theme }) => theme.font.size.smallHeading};
+    font-size: ${({ theme }) => theme.font.size.verySmallHeading};
     color: ${({ theme }) => theme.color.black};
     font-weight: ${({ theme }) => theme.font.weight.bold};
   }

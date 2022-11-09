@@ -8,18 +8,24 @@ const Navigation = () => {
         <li>
           <NavLink
             className={({ isActive }) => (isActive ? 'active' : 'inactive')}
-            to='/headphones'
+            to='/category/headphones'
           >
             headphones
           </NavLink>
         </li>
         <li>
-          <NavLink className={({ isActive }) => (isActive ? 'active' : 'inactive')} to='/speakers'>
+          <NavLink
+            className={({ isActive }) => (isActive ? 'active' : 'inactive')}
+            to='/category/speakers'
+          >
             speakers
           </NavLink>
         </li>
         <li>
-          <NavLink className={({ isActive }) => (isActive ? 'active' : 'inactive')} to='/earphones'>
+          <NavLink
+            className={({ isActive }) => (isActive ? 'active' : 'inactive')}
+            to='/category/earphones'
+          >
             earphones
           </NavLink>
         </li>

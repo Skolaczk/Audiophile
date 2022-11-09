@@ -46,7 +46,7 @@ const OrdersWrapper = () => {
               <OrderProducts>
                 {products.map(({ id, image, shortName, quantity, productPrice }: CartType) => (
                   <div key={id}>
-                    <img src={image} alt='' />
+                    <img src={image} alt={`${shortName} image`} />
                     <h5>
                       {shortName} x{quantity}
                     </h5>

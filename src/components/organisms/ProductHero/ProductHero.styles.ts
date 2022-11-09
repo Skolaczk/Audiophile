@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 export const StyledPrice = styled.p`
   color: ${({ theme }) => theme.color.black};
-  font-size: ${({ theme }) => theme.font.size.smallHeading};
+  font-size: ${({ theme }) => theme.font.size.verySmallHeading};
   font-weight: ${({ theme }) => theme.font.weight.bold};
 `;
 
@@ -60,6 +60,26 @@ export const StyledContent = styled.p`
 `;
 
 export const StyledProductHero = styled.div`
+  h5 {
+    color: ${({ theme }) => theme.color.orange};
+    letter-spacing: ${({ theme }) => theme.letterSpacing.big};
+    text-transform: uppercase;
+    font-size: ${({ theme }) => theme.font.size.mediumText};
+    font-weight: ${({ theme }) => theme.font.weight.regular};
+    margin-top: 25px;
+
+    ${({ theme }) => theme.mq.hugePhone} {
+      margin-top: 0;
+    }
+  }
+
+  h2 {
+    letter-spacing: ${({ theme }) => theme.letterSpacing.small};
+    font-size: ${({ theme }) => theme.font.size.mediumHeading};
+    color: ${({ theme }) => theme.color.black};
+    margin-top: 10px;
+  }
+
   ${({ theme }) => theme.mq.hugePhone} {
     display: flex;
     align-items: center;

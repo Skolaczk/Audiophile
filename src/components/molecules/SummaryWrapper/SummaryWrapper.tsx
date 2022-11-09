@@ -11,7 +11,7 @@ const SummaryWrapper = () => {
       {cartList.map(({ id, image, shortName, productPrice, quantity }) => (
         <CartItem key={id}>
           <div>
-            <img src={image} alt='' />
+            <img src={image} alt={`${shortName} image`} />
             <div>
               <h4>{shortName}</h4>
               <p>$ {productPrice}</p>

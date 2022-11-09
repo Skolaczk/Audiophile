@@ -5,8 +5,9 @@ export const StyledOtherProduct = styled.div`
 
   h4 {
     color: ${({ theme }) => theme.color.black};
-    font-size: 24px;
+    font-size: ${({ theme }) => theme.font.size.smallHeading};
     margin: 15px 0;
+    letter-spacing: ${({ theme }) => theme.letterSpacing.small};
   }
 
   &:not(:last-child) {
@@ -17,6 +18,8 @@ export const StyledOtherProduct = styled.div`
 export const CenterHeading = styled.h3`
   text-align: center;
   margin-bottom: 25px;
+  font-size: ${({ theme }) => theme.font.size.mediumHeading};
+  letter-spacing: ${({ theme }) => theme.letterSpacing.small};
 `;
 
 export const ProductsWrapper = styled.div`

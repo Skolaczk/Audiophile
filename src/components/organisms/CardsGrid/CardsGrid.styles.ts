@@ -18,7 +18,12 @@ export const FirstCard = styled.div<FirstCardType>`
   h2 {
     color: ${({ theme }) => theme.color.white};
     margin-top: 15px;
-    font-size: clamp(36px, 8vw, 56px);
+    font-size: ${({ theme }) => theme.font.size.mediumHeading};
+    letter-spacing: ${({ theme }) => theme.letterSpacing.small};
+
+    ${({ theme }) => theme.mq.tablet} {
+      font-size: ${({ theme }) => theme.font.size.largeHeading};
+    }
   }
 
   p {
@@ -47,6 +52,7 @@ export const SecondCard = styled.div<SecondCardType>`
     font-size: ${({ theme }) => theme.font.size.mediumHeading};
     margin-bottom: 25px;
     color: ${({ theme }) => theme.color.black};
+    letter-spacing: ${({ theme }) => theme.letterSpacing.small};
   }
 
   a {
@@ -77,6 +83,7 @@ export const ThirdCard = styled.div`
     font-size: ${({ theme }) => theme.font.size.mediumHeading};
     margin-bottom: 25px;
     color: ${({ theme }) => theme.color.black};
+    letter-spacing: ${({ theme }) => theme.letterSpacing.small};
   }
 
   a {

@@ -13,7 +13,7 @@ const Hero = () => {
           Experience natural, lifelike audio and exceptional build quality made for the passionate
           music enthusiast.
         </p>
-        <ButtonLink to='/category/xx99-mark-one-headphones'>see product</ButtonLink>
+        <ButtonLink to='/category/headphones/xx99-mark-two-headphones'>see product</ButtonLink>
       </div>
     </StyledHero>
   );

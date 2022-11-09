@@ -28,6 +28,7 @@ export const StyledHero = styled.div<HeroType>`
     font-size: clamp(36px, 8vw, 56px);
     color: ${({ theme }) => theme.color.white};
     margin: 15px 0 25px;
+    letter-spacing: ${({ theme }) => theme.letterSpacing.small};
   }
 
   p {

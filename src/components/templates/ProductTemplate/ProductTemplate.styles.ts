@@ -8,25 +8,10 @@ export const ProductItemWrapper = styled.div`
     border-radius: 5px;
   }
 
-  h5 {
-    color: ${({ theme }) => theme.color.orange};
-    letter-spacing: ${({ theme }) => theme.letterSpacing.big};
-    text-transform: uppercase;
-    font-size: ${({ theme }) => theme.font.size.mediumText};
-    font-weight: ${({ theme }) => theme.font.weight.regular};
-    margin-top: 25px;
-  }
-
-  h2 {
-    font-size: ${({ theme }) => theme.font.size.mediumHeading};
-    color: ${({ theme }) => theme.color.black};
-    margin-top: 25px;
-  }
-
   h3 {
     text-transform: uppercase;
     color: ${({ theme }) => theme.color.black};
-    font-size: 24px;
+    font-size: ${({ theme }) => theme.font.size.smallHeading};
     margin-top: 50px;
   }
 `;

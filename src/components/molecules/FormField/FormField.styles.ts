@@ -6,12 +6,12 @@ export const LabelBox = styled.div`
   justify-content: space-between;
 
   p {
-    font-size: 12px;
+    font-size: ${({ theme }) => theme.font.size.verySmallText};
   }
 `;
 
 export const StyledLabel = styled.label`
-  font-size: 12px;
+  font-size: ${({ theme }) => theme.font.size.verySmallText};
   color: ${({ theme }) => theme.color.black};
   font-weight: ${({ theme }) => theme.font.weight.bold};
 `;

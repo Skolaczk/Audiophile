@@ -33,6 +33,11 @@ export const ProductCompositionWrapper = styled.div`
 `;
 
 export const StyledProductContent = styled.div`
+  h3 {
+    letter-spacing: ${({ theme }) => theme.letterSpacing.small};
+    font-size: ${({ theme }) => theme.font.size.smallHeading};
+  }
+
   ${({ theme }) => theme.mq.tablet} {
     display: flex;
     gap: 50px;

@@ -9,7 +9,7 @@ const ContentCard = () => {
       <picture>
         <source media='(min-width: 768px)' srcSet={ImageDesktop} />
         <source media='(min-width: 500px)' srcSet={ImageTablet} />
-        <img src={ImageMobile} alt='' />
+        <img src={ImageMobile} alt='Image best gear' />
       </picture>
       <div>
         <h2>

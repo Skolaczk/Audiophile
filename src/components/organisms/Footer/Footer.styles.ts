@@ -15,6 +15,7 @@ export const StyledFooter = styled.footer`
     font-weight: ${({ theme }) => theme.font.weight.bold};
     margin: 50px 0;
     gap: 25px;
+    letter-spacing: ${({ theme }) => theme.letterSpacing.small};
   }
 
   p {

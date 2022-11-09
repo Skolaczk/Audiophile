@@ -16,9 +16,11 @@ import { useAppDispatch, useAppSelector } from 'hooks/useRedux';
 import { removeAllProduct } from 'store';
 import { useNavigate } from 'react-router-dom';
 import { useEffect, useState } from 'react';
+import { useSuccess } from 'hooks/useSuccess';
 
 const Form = () => {
   const { currentUser } = useAuth();
+  const { changeIsBlockedValue } = useSuccess();
   const cartList = useAppSelector((state) => state.cartList);
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
@@ -89,6 +91,7 @@ const Form = () => {
       formik.resetForm();
       createOrder();
       dispatch(removeAllProduct());
+      changeIsBlockedValue();
       navigate('/success');
     },
   });

@@ -16,10 +16,10 @@ import SuccessInformation from 'components/molecules/SuccessInformation/SuccessI
 const reducer = (state: CountType, action: ActionType) => {
   switch (action.type) {
     case ActionTypes.Add:
-      return { count: state.count++ };
+      return { count: ++state.count };
     case ActionTypes.Subtract:
       if (state.count === 1) return state;
-      else return { count: state.count-- };
+      else return { count: --state.count };
     case ActionTypes.Reset:
       return { count: 1 };
     default:
@@ -52,16 +52,16 @@ const ProductHero: FC<ProductHeroType> = (product) => {
 
   return (
     <>
+      <SuccessInformation
+        name={name}
+        isOpen={isOpen}
+        closeSuccesInformation={closeSuccesInformation}
+      />
       <StyledProductHero>
-        <SuccessInformation
-          name={name}
-          isOpen={isOpen}
-          closeSuccesInformation={closeSuccesInformation}
-        />
         <picture>
           <source media='(min-width: 768px)' srcSet={image.desktop} />
           <source media='(min-width: 500px)' srcSet={image.tablet} />
-          <img src={image.mobile} alt='' />
+          <img src={image.mobile} alt={`${name} image`} />
         </picture>
         <div>
           {isNew && <h5>new product</h5>}

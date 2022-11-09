@@ -16,6 +16,7 @@ import { removeAllProduct, changeProductQuantity, clearCart } from 'store';
 import { getSumPrice } from 'helpers/getSumPrice';
 import { ActionTypes } from 'constants/index';
 import { getQuantityProducts } from 'helpers/getQuantityProducts';
+import { useEffect } from 'react';
 
 const Cart = () => {
   const { modalIsOpen, toggleModal } = useModal();
@@ -31,12 +32,21 @@ const Cart = () => {
     dispatch(clearCart());
   };
 
+  useEffect(() => {
+    if (modalIsOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+  }, [modalIsOpen]);
+
   return (
     <StyledModal
       isOpen={modalIsOpen}
       onRequestClose={toggleModal}
       style={{ overlay }}
       contentLabel='Cart Modal'
+      appElement={document.getElementById('root') as HTMLElement}
     >
       {cartList.length > 0 ? (
         <div>
@@ -48,7 +58,7 @@ const Cart = () => {
             {cartList.map(({ id, image, shortName, productPrice, quantity }) => (
               <CartItem key={id}>
                 <div>
-                  <img src={image} alt='' />
+                  <img src={image} alt={`${shortName} image`} />
                   <ItemCartContent>
                     <h3>{shortName}</h3>
                     <p>$ {productPrice}</p>
@@ -70,12 +80,12 @@ const Cart = () => {
             <p>total</p>
             <p>$ {getSumPrice(cartList)}</p>
           </Wrapper>
-          <ButtonLink to='/checkout'>chekout</ButtonLink>
+          <ButtonLink to='/checkout'>checkout</ButtonLink>
         </div>
       ) : (
         <NoItemsWrapper>
           <p>Your cart is empty</p>
-          <img src={EmptyCart} alt='' />
+          <img src={EmptyCart} alt='Empty cart image' />
         </NoItemsWrapper>
       )}
     </StyledModal>

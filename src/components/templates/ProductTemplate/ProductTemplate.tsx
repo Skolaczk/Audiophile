@@ -1,6 +1,6 @@
 import Card from 'components/molecules/Card/ContentCard';
 import CategoryList from 'components/organisms/CategoryList/CategoryList';
-import { useLocation, useParams } from 'react-router-dom';
+import { useLocation, useNavigate, useParams } from 'react-router-dom';
 import MainTemplate from '../MainTemplate/MainTemplate';
 import { useEffect, useState } from 'react';
 import ProductHero from 'components/organisms/ProductHero/ProductHero';
@@ -17,6 +17,7 @@ import { ProductType } from 'types';
 const Product = () => {
   const { slug } = useParams();
   const location = useLocation();
+  const navigate = useNavigate();
   const [isLoading, setIsLoading] = useState(true);
   const [product, setProduct] = useState<ProductType>();
 
@@ -28,6 +29,10 @@ const Product = () => {
         setIsLoading(false);
       });
   }, [location]);
+
+  useEffect(() => {
+    if (!isLoading && !product) navigate('/');
+  }, [isLoading, product]);
 
   return (
     <MainTemplate>

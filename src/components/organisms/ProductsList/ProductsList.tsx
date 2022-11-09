@@ -1,28 +1,18 @@
 import { ButtonLink } from 'components/atoms/Button/ButtonLink';
 import { FC, useEffect, useState } from 'react';
 import { StyledProductsList, StyledProductsListItem } from './ProductsList.styles';
-import { ProductsListType } from 'types';
+import { CategoryType, ProductsListType } from 'types';
 import axios from 'axios';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import Spinner from 'components/atoms/Spinner/Spinner';
 
-type ProductType = {
-  id: number;
-  isNew: boolean;
-  name: string;
-  categoryImage: { mobile: string; tablet: string; desktop: string };
-  slug: string;
-  description: string;
-};
-
-const ProductsList: FC<ProductsListType> = ({ category }) => {
+const ProductsList: FC<CategoryType> = ({ category }) => {
   const location = useLocation();
-  const [products, setProducts] = useState<Array<ProductType>>([]);
-  const [isLoading, setIsLoading] = useState(false);
+  const navigate = useNavigate();
+  const [products, setProducts] = useState<Array<ProductsListType>>([]);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    setProducts([]);
-    setIsLoading(true);
     axios
       .get(`https://audiophile-database.herokuapp.com/products?category=${category}`)
       .then(({ data }) => {
@@ -30,6 +20,10 @@ const ProductsList: FC<ProductsListType> = ({ category }) => {
         setIsLoading(false);
       });
   }, [location]);
+
+  useEffect(() => {
+    if (!isLoading && !products.length) navigate('/');
+  }, [isLoading, products]);
 
   return (
     <StyledProductsList>
@@ -39,13 +33,13 @@ const ProductsList: FC<ProductsListType> = ({ category }) => {
             <picture>
               <source media='(min-width: 768px)' srcSet={categoryImage.desktop} />
               <source media='(min-width: 500px)' srcSet={categoryImage.tablet} />
-              <img src={categoryImage.mobile} alt='' />
+              <img src={categoryImage.mobile} alt={`${name} image`} />
             </picture>
             <div>
-              {isNew && <h4>new product</h4>}
+              {isNew && <h3>new product</h3>}
               <h2>{name}</h2>
               <p>{description}</p>
-              <ButtonLink to={`/${category}/${slug}`}>see product</ButtonLink>
+              <ButtonLink to={`/category/${category}/${slug}`}>see product</ButtonLink>
             </div>
           </StyledProductsListItem>
         ))

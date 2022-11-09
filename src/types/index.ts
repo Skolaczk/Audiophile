@@ -117,7 +117,7 @@ export type ProductHeroType = {
   description: string;
 };
 
-export type ProductsListType = {
+export type CategoryType = {
   category: string | undefined;
 };
 
@@ -178,4 +178,18 @@ export type ProductType = {
 
 export type GoBackLinkType = {
   location?: string;
+};
+
+export type SuccessContextType = {
+  isBlocked: boolean;
+  changeIsBlockedValue: () => void;
+};
+
+export type ProductsListType = {
+  id: number;
+  isNew: boolean;
+  name: string;
+  categoryImage: { mobile: string; tablet: string; desktop: string };
+  slug: string;
+  description: string;
 };

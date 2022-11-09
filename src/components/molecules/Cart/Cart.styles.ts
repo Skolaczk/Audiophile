@@ -10,7 +10,7 @@ export const StyledModal = styled(ReactModal)`
   position: absolute;
   left: 50%;
   top: 10%;
-  width: 80%;
+  width: 85%;
   transform: translateX(-50%);
   background-color: ${({ theme }) => theme.color.white};
   border-radius: 5px;
@@ -19,8 +19,9 @@ export const StyledModal = styled(ReactModal)`
 
   h2 {
     color: ${({ theme }) => theme.color.black};
-    font-size: ${({ theme }) => theme.font.size.smallHeading};
+    font-size: ${({ theme }) => theme.font.size.verySmallHeading};
     text-transform: uppercase;
+    letter-spacing: ${({ theme }) => theme.letterSpacing.small};
   }
 
   ${ButtonLink} {
@@ -47,7 +48,7 @@ export const Wrapper = styled.div`
   }
 
   p:last-child {
-    font-size: ${({ theme }) => theme.font.size.smallHeading};
+    font-size: ${({ theme }) => theme.font.size.verySmallHeading};
     color: ${({ theme }) => theme.color.black};
     font-weight: ${({ theme }) => theme.font.weight.bold};
   }
