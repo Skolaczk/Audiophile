@@ -3,12 +3,12 @@ import { getAuth } from 'firebase/auth';
 import { getFirestore } from 'firebase/firestore';
 
 const firebaseConfig = {
-  apiKey: 'AIzaSyAGg7heA_m0p-ek8dTM65tOxaKFYBtqdNA',
-  authDomain: 'audiophile-michalskolak.firebaseapp.com',
-  projectId: 'audiophile-michalskolak',
-  storageBucket: 'audiophile-michalskolak.appspot.com',
-  messagingSenderId: '381051543416',
-  appId: '1:381051543416:web:40c0f5657ead4a1238f28d',
+  apiKey: process.env.REACT_APP_API_KEY,
+  authDomain: process.env.REACT_APP_AUTH_DOMAIN,
+  projectId: process.env.REACT_APP_PROJECT_ID,
+  storageBucket: process.env.REACT_APP_STORAGE_BUCKET,
+  messagingSenderId: process.env.REACT_APP_MESSAGING_SENDER_ID,
+  appId: process.env.REACT_APP_APP_ID,
 };
 
 const app = firebase.initializeApp(firebaseConfig);
