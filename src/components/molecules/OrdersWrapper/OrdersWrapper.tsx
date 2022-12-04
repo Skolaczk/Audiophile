@@ -44,13 +44,13 @@ const OrdersWrapper = () => {
                 <StyledPrice>$ {totalPrice}</StyledPrice>
               </OrderInforamtion>
               <OrderProducts>
-                {products.map(({ id, image, shortName, quantity, productPrice }: CartType) => (
+                {products.map(({ id, image, shortName, quantity, price }: CartType) => (
                   <div key={id}>
                     <img src={image} alt={`${shortName} image`} />
                     <h5>
                       {shortName} x{quantity}
                     </h5>
-                    <p>$ {productPrice}</p>
+                    <p>$ {price}</p>
                   </div>
                 ))}
               </OrderProducts>

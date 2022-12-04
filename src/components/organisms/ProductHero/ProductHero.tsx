@@ -9,9 +9,10 @@ import {
   Wrapper,
 } from './ProductHero.styles';
 import { addProduct } from 'store';
-import { ActionType, CountType, ProductHeroType } from 'types';
+import { ActionType, CountType } from 'types';
 import { ActionTypes } from 'constants/index';
 import SuccessInformation from 'components/molecules/SuccessInformation/SuccessInforamtion';
+import { DocumentData } from 'firebase/firestore';
 
 const reducer = (state: CountType, action: ActionType) => {
   switch (action.type) {
@@ -27,10 +28,10 @@ const reducer = (state: CountType, action: ActionType) => {
   }
 };
 
-const ProductHero: FC<ProductHeroType> = (product) => {
-  const { cartImage, image, name, shortName, isNew, description, productPrice, price } = product;
+const ProductHero: FC<DocumentData> = (product) => {
+  const { cartImage, image, name, shortName, isNew, description, price } = product;
   const dispatch = useAppDispatch();
-  const [state, dispatchCounter] = useReducer(reducer, { count: 1 });
+  const [counter, dispatchCounter] = useReducer(reducer, { count: 1 });
   const [isOpen, setIsOpen] = useState(false);
 
   const closeSuccesInformation = () => setIsOpen(false);
@@ -43,9 +44,7 @@ const ProductHero: FC<ProductHeroType> = (product) => {
   };
 
   const handleAddProduct = () => {
-    dispatch(
-      addProduct({ image: cartImage, shortName, productPrice, quantity: state.count, price }),
-    );
+    dispatch(addProduct({ image: cartImage, shortName, quantity: counter.count, price }));
     dispatchCounter({ type: ActionTypes.Reset });
     toggleSuccesInformation();
   };
@@ -67,11 +66,11 @@ const ProductHero: FC<ProductHeroType> = (product) => {
           {isNew && <h5>new product</h5>}
           <h2>{name}</h2>
           <StyledContent>{description}</StyledContent>
-          <StyledPrice>$ {productPrice}</StyledPrice>
+          <StyledPrice>$ {price}</StyledPrice>
           <Wrapper>
             <StyledBoxCounter>
               <button onClick={() => dispatchCounter({ type: ActionTypes.Subtract })}>-</button>
-              <div>{state.count}</div>
+              <div>{counter.count}</div>
               <button onClick={() => dispatchCounter({ type: ActionTypes.Add })}>+</button>
             </StyledBoxCounter>
             <StyledButton onClick={handleAddProduct}>add to cart</StyledButton>

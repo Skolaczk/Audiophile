@@ -1,24 +1,33 @@
 import { ButtonLink } from 'components/atoms/Button/ButtonLink';
+import { db } from '../../../firebase/Firebase';
 import { FC, useEffect, useState } from 'react';
 import { StyledProductsList, StyledProductsListItem } from './ProductsList.styles';
-import { CategoryType, ProductsListType } from 'types';
-import axios from 'axios';
+import { CategoryType } from 'types';
 import { useLocation, useNavigate } from 'react-router-dom';
 import Spinner from 'components/atoms/Spinner/Spinner';
+import { collection, DocumentData, getDocs, query, where } from 'firebase/firestore';
 
 const ProductsList: FC<CategoryType> = ({ category }) => {
   const location = useLocation();
   const navigate = useNavigate();
-  const [products, setProducts] = useState<Array<ProductsListType>>([]);
+  const [products, setProducts] = useState<Array<DocumentData>>([]);
   const [isLoading, setIsLoading] = useState(true);
+  const colRef = collection(db, 'products');
+  const q = query(colRef, where('category', '==', category));
 
   useEffect(() => {
-    axios
-      .get(`https://audiophile-database.herokuapp.com/products?category=${category}`)
-      .then(({ data }) => {
-        setProducts(data);
-        setIsLoading(false);
+    const getProducts = async () => {
+      const querySnapshot = await getDocs(q);
+
+      const productsArray: Array<DocumentData> = [];
+      querySnapshot.forEach((doc) => {
+        productsArray.push(doc.data());
       });
+      setProducts(productsArray);
+      setIsLoading(false);
+    };
+
+    getProducts();
   }, [location]);
 
   useEffect(() => {
@@ -28,8 +37,8 @@ const ProductsList: FC<CategoryType> = ({ category }) => {
   return (
     <StyledProductsList>
       {products && !isLoading ? (
-        products.map(({ isNew, id, name, categoryImage, description, slug }) => (
-          <StyledProductsListItem key={id}>
+        products.map(({ isNew, name, categoryImage, description, slug }) => (
+          <StyledProductsListItem key={name}>
             <picture>
               <source media='(min-width: 768px)' srcSet={categoryImage.desktop} />
               <source media='(min-width: 500px)' srcSet={categoryImage.tablet} />

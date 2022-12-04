@@ -8,8 +8,7 @@ export type CartType = {
   id: string;
   shortName: string;
   image: string;
-  productPrice: number;
-  price: string;
+  price: number;
   quantity: number;
 };
 
@@ -106,17 +105,6 @@ export type OthersProductsListType = {
   }>;
 };
 
-export type ProductHeroType = {
-  cartImage: string;
-  name: string;
-  shortName: string;
-  image: ImageType;
-  isNew: boolean;
-  productPrice: number;
-  price: string;
-  description: string;
-};
-
 export type CategoryType = {
   category: string | undefined;
 };
@@ -149,33 +137,6 @@ export type IsLoadingType = {
   isLoading: boolean;
 };
 
-export type ProductType = {
-  id: number;
-  slug: string;
-  name: string;
-  shortName: string;
-  image: ImageType;
-  cartImage: string;
-  category: string;
-  categoryImage: ImageType;
-  isNew: boolean;
-  productPrice: number;
-  price: string;
-  description: string;
-  features: string;
-  includedItems: Array<{ quantity: number; item: string }>;
-  gallery: {
-    first: ImageType;
-    second: ImageType;
-    third: ImageType;
-  };
-  others: Array<{
-    slug: string;
-    name: string;
-    image: ImageType;
-  }>;
-};
-
 export type GoBackLinkType = {
   location?: string;
 };
@@ -183,13 +144,4 @@ export type GoBackLinkType = {
 export type SuccessContextType = {
   isBlocked: boolean;
   changeIsBlockedValue: () => void;
-};
-
-export type ProductsListType = {
-  id: number;
-  isNew: boolean;
-  name: string;
-  categoryImage: { mobile: string; tablet: string; desktop: string };
-  slug: string;
-  description: string;
 };

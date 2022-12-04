@@ -55,13 +55,13 @@ const Cart = () => {
             <RemoveButton onClick={handleRemoveAllProduct}>Remove All</RemoveButton>
           </Wrapper>
           <div>
-            {cartList.map(({ id, image, shortName, productPrice, quantity }) => (
+            {cartList.map(({ id, image, shortName, price, quantity }) => (
               <CartItem key={id}>
                 <div>
                   <img src={image} alt={`${shortName} image`} />
                   <ItemCartContent>
                     <h3>{shortName}</h3>
-                    <p>$ {productPrice}</p>
+                    <p>$ {price}</p>
                   </ItemCartContent>
                 </div>
                 <CounterWrapper>

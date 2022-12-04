@@ -8,13 +8,13 @@ const SummaryWrapper = () => {
   return (
     <StyledSummaryWrapper>
       <h3>summary</h3>
-      {cartList.map(({ id, image, shortName, productPrice, quantity }) => (
+      {cartList.map(({ id, image, shortName, price, quantity }) => (
         <CartItem key={id}>
           <div>
             <img src={image} alt={`${shortName} image`} />
             <div>
               <h4>{shortName}</h4>
-              <p>$ {productPrice}</p>
+              <p>$ {price}</p>
             </div>
           </div>
           <p>x {quantity}</p>

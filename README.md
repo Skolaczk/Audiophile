@@ -3,7 +3,7 @@
 ## Project Overview 🎉
 
 I created a online store - Audiophile (idea and design from <a href="https://www.frontendmentor.io/challenges/audiophile-ecommerce-website-C8cuSd_wx">Front-end mentor</a>). I organized the structure of the projects using atomic design, so I split my components into atoms, molecules, organisms, templates. For style, I used Styled-components and React-router-dom to switch between routes. I used firebase auth to authenticate the user and firestore to save user's orders. Now user can log in or register by login and password. I used redux-toolkit to manage the shopping cart state and react-redux to distribute it. Products that are splitted into categories
-are fetched from <a href="https://github.com/Skolaczk/Audiophile-database">database</a>.
+are fetched from firestore.
 
 ## Installation 💾
 
@@ -23,7 +23,7 @@ and open http://localhost:3000/ to see this app.
 
 ## Live 📍
 
-Link to the live version: https://audiophile-skolaczk.netlify.app/
+Link to the live version: https://audiophile-ms.netlify.app/
 
 ## Tech/framework used 🔧
 
@@ -33,7 +33,6 @@ Link to the live version: https://audiophile-skolaczk.netlify.app/
 - React-redux
 - React-modal
 - React-router-dom
-- Axios
 - Formik
 - Yup
 - Firebase (auth and firestore)

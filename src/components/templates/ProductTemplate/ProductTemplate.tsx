@@ -10,24 +10,32 @@ import OthersProductsList from 'components/organisms/OthersProductsList/OthersPr
 import { ProductItemWrapper } from './ProductTemplate.styles';
 import GoBackLink from 'components/atoms/GoBackLink/GoBackLink';
 import { ViewWrapper } from 'components/organisms/ViewWrapper/ViewWrapper.styles';
-import axios from 'axios';
 import Spinner from 'components/atoms/Spinner/Spinner';
-import { ProductType } from 'types';
+import { collection, DocumentData, getDocs, query, where } from 'firebase/firestore';
+import { db } from '../../../firebase/Firebase';
 
 const Product = () => {
   const { slug } = useParams();
   const location = useLocation();
   const navigate = useNavigate();
   const [isLoading, setIsLoading] = useState(true);
-  const [product, setProduct] = useState<ProductType>();
+  const [product, setProduct] = useState<DocumentData>();
+  const colRef = collection(db, 'products');
+  const q = query(colRef, where('slug', '==', slug));
 
   useEffect(() => {
-    axios
-      .get(`https://audiophile-database.herokuapp.com/products?slug=${slug}`)
-      .then(({ data }) => {
-        setProduct(data[0]);
-        setIsLoading(false);
+    const getProduct = async () => {
+      const querySnapshot = await getDocs(q);
+
+      const productsArray: Array<DocumentData> = [];
+      querySnapshot.forEach((doc) => {
+        productsArray.push(doc.data());
       });
+      setProduct(productsArray[0]);
+      setIsLoading(false);
+    };
+
+    getProduct();
   }, [location]);
 
   useEffect(() => {
