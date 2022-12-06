@@ -9,7 +9,11 @@ export const StyledTitleBox = styled.div`
     color: ${({ theme }) => theme.color.white};
     text-transform: uppercase;
     text-align: center;
-    letter-spacing: ${({ theme }) => theme.letterSpacing.big};
+    letter-spacing: ${({ theme }) => theme.letterSpacing.small};
+
+    ${({ theme }) => theme.mq.tablet} {
+      font-size: ${({ theme }) => theme.font.size.largeHeading};
+    }
   }
 
   ${({ theme }) => theme.mq.tablet} {

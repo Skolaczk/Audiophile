@@ -25,6 +25,6 @@ export const CenterHeading = styled.h3`
 export const ProductsWrapper = styled.div`
   ${({ theme }) => theme.mq.tablet} {
     display: flex;
-    gap: 25px;
+    gap: 35px;
   }
 `;

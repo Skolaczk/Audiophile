@@ -35,7 +35,7 @@ export const theme = {
     },
   },
   letterSpacing: {
-    small: '0.1rem',
+    small: '0.05rem',
     big: '0.625rem',
   },
   lineHeight: '1.7',

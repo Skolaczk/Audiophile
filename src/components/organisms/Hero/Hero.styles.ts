@@ -4,7 +4,7 @@ import { HeroType } from 'types';
 export const StyledHero = styled.div<HeroType>`
   text-align: center;
   background-color: ${({ theme }) => theme.color.black};
-  height: calc(100vh - 81px);
+  height: 550px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -44,7 +44,7 @@ export const StyledHero = styled.div<HeroType>`
     background-color: ${({ theme }) => theme.color.black};
     justify-content: flex-start;
     padding: 25px;
-    height: calc(70vh - 81px);
+    height: 700px;
 
     div {
       background-image: none;

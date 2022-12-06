@@ -93,7 +93,7 @@ export const HamburgerButton = styled.button<IsOpenType>`
 `;
 
 export const StyledNavigation = styled.nav<IsOpenType>`
-  z-index: 1;
+  z-index: 2;
   position: absolute;
   top: 0;
   left: -100%;
@@ -124,5 +124,6 @@ export const Background = styled.div<IsOpenType>`
     width: 100%;
     position: absolute;
     top: 81px;
+    z-index: 1;
   }
 `;
