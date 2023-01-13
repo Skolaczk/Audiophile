@@ -53,7 +53,7 @@ export const Wrapper = styled.div`
 `;
 
 export const HamburgerButton = styled.button<IsOpenType>`
-  z-index: ${({ isOpen }) => (isOpen ? '2' : '0')};
+  z-index: ${({ isOpen }) => (isOpen ? '3' : '0')};
   width: 23px;
   height: 23px;
   background-color: transparent;
