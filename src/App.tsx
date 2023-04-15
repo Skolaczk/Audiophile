@@ -1,4 +1,5 @@
-import { Routes, Route } from 'react-router-dom';
+import { useEffect } from 'react';
+import { Routes, Route, useLocation } from 'react-router-dom';
 import Homepage from 'components/templates/HomepageTemplate/HomepageTemplate';
 import CategoryTemplate from 'components/templates/CategoryTemplate/CategoryTemplate';
 import Product from 'components/templates/ProductTemplate/ProductTemplate';
@@ -8,12 +9,17 @@ import SignIn from 'components/templates/SignInTemplate/SignInTemplate';
 import SignUp from 'components/templates/SignUpTemplate/SignUpTemplate';
 import AccountTemplate from 'components/templates/AccountTemplate/AccountTemplate';
 import SuccessTemplate from 'components/templates/SuccessTemplate/SuccessTemplate';
-import AppProvider from 'providers/AppProvider';
 import NotFoundPage from 'components/templates/404Template/NotFoundPage';
 
 const App = () => {
+  const { pathname } = useLocation();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
+
   return (
-    <AppProvider>
+    <>
       <Routes>
         <Route path='/' element={<Homepage />} />
         <Route path='/category/:category' element={<CategoryTemplate />} />
@@ -26,7 +32,7 @@ const App = () => {
         <Route path='*' element={<NotFoundPage />} />
       </Routes>
       <Cart />
-    </AppProvider>
+    </>
   );
 };
 

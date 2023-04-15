@@ -19,7 +19,7 @@ import Navigation from 'components/molecules/Navigation/Navigation';
 import { getQuantityProducts } from 'helpers/getQuantityProducts';
 
 const Header = () => {
-  const location = useLocation();
+  const { pathname } = useLocation();
   const [isOpen, setIsOpen] = useState(false);
   const cartList = useAppSelector((state) => state.cartList);
   const { toggleModal } = useModal();
@@ -38,7 +38,7 @@ const Header = () => {
 
   useEffect(() => {
     setIsOpen(false);
-  }, [location]);
+  }, [pathname]);
 
   return (
     <StyledHeader>

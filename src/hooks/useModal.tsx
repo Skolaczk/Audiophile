@@ -6,13 +6,13 @@ const ModalContext = createContext<ModalContextType>(null!);
 
 export const ModalProvider: FC<ChildrenType> = ({ children }) => {
   const [modalIsOpen, setIsOpen] = useState(true);
-  const location = useLocation();
+  const { pathname } = useLocation();
 
   const toggleModal = () => setIsOpen((prevState) => !prevState);
 
   useEffect(() => {
     setIsOpen(false);
-  }, [location]);
+  }, [pathname]);
 
   return (
     <ModalContext.Provider value={{ modalIsOpen, toggleModal }}>{children}</ModalContext.Provider>

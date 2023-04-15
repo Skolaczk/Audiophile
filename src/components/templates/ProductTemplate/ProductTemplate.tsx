@@ -16,7 +16,7 @@ import { db } from '../../../firebase/Firebase';
 
 const Product = () => {
   const { slug } = useParams();
-  const location = useLocation();
+  const { pathname } = useLocation();
   const navigate = useNavigate();
   const [isLoading, setIsLoading] = useState(true);
   const [product, setProduct] = useState<DocumentData>();
@@ -36,7 +36,7 @@ const Product = () => {
     };
 
     getProduct();
-  }, [location]);
+  }, [pathname]);
 
   useEffect(() => {
     if (!isLoading && !product) navigate('/');

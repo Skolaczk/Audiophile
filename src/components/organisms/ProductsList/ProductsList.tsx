@@ -8,7 +8,7 @@ import Spinner from 'components/atoms/Spinner/Spinner';
 import { collection, DocumentData, getDocs, query, where } from 'firebase/firestore';
 
 const ProductsList: FC<CategoryType> = ({ category }) => {
-  const location = useLocation();
+  const { pathname } = useLocation();
   const navigate = useNavigate();
   const [products, setProducts] = useState<Array<DocumentData>>([]);
   const [isLoading, setIsLoading] = useState(true);
@@ -28,7 +28,7 @@ const ProductsList: FC<CategoryType> = ({ category }) => {
     };
 
     getProducts();
-  }, [location]);
+  }, [pathname]);
 
   useEffect(() => {
     if (!isLoading && !products.length) navigate('/');

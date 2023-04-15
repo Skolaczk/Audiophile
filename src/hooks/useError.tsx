@@ -7,7 +7,7 @@ const ErrorContext = createContext<ErrorContextType>(null!);
 
 export const ErrorProvider: FC<ChildrenType> = ({ children }) => {
   const [error, setError] = useState('');
-  const location = useLocation();
+  const { pathname } = useLocation();
 
   const catchError = (errorCode: string) => {
     switch (errorCode) {
@@ -30,7 +30,7 @@ export const ErrorProvider: FC<ChildrenType> = ({ children }) => {
 
   useEffect(() => {
     setError('');
-  }, [location]);
+  }, [pathname]);
 
   return <ErrorContext.Provider value={{ error, catchError }}>{children}</ErrorContext.Provider>;
 };
