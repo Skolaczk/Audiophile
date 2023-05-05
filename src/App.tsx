@@ -9,6 +9,7 @@ import SignIn from 'components/templates/SignInTemplate/SignInTemplate';
 import SignUp from 'components/templates/SignUpTemplate/SignUpTemplate';
 import AccountTemplate from 'components/templates/AccountTemplate/AccountTemplate';
 import NotFoundPage from 'components/templates/404Template/NotFoundPage';
+import SuccessTemplate from 'components/templates/SuccessTemplate/SuccessTemplate';
 
 const App = () => {
   const { pathname } = useLocation();
@@ -27,6 +28,7 @@ const App = () => {
         <Route path='/sign-in' element={<SignIn />} />
         <Route path='/sign-up' element={<SignUp />} />
         <Route path='/account' element={<AccountTemplate />} />
+        <Route path='/success' element={<SuccessTemplate />} />
         <Route path='*' element={<NotFoundPage />} />
       </Routes>
       <Cart />
