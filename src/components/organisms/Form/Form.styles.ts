@@ -27,29 +27,6 @@ export const StyledForm = styled.form`
   }
 `;
 
-export const RadioInputBox = styled.div`
-  border: 1px solid ${({ theme }) => theme.color.inputBorder};
-  border-radius: 5px;
-  padding: 15px;
-  width: 100%;
-  display: flex;
-  gap: 10px;
-  margin: 15px 0 20px;
-
-  label {
-    order: 1;
-    color: ${({ theme }) => theme.color.black};
-    font-size: ${({ theme }) => theme.font.size.mediumText};
-    font-weight: ${({ theme }) => theme.font.weight.bold};
-  }
-`;
-
-export const StyledLabel = styled.label`
-  font-size: ${({ theme }) => theme.font.size.verySmallText};
-  color: ${({ theme }) => theme.color.black};
-  font-weight: ${({ theme }) => theme.font.weight.bold};
-`;
-
 export const InputsWrapper = styled.div`
   ${({ theme }) => theme.mq.hugePhone} {
     display: grid;
@@ -58,9 +35,16 @@ export const InputsWrapper = styled.div`
   }
 `;
 
-export const StyledInformation = styled.p`
-  grid-column: 1 / 3;
-  color: ${({ theme }) => theme.color.darkGray};
-  font-size: ${({ theme }) => theme.font.size.largeText};
-  line-height: ${({ theme }) => theme.lineHeight};
+export const SpinnerOverlay = styled.div`
+  width: 100%;
+  height: 100vh;
+  position: absolute;
+  top: 0;
+  left: 0;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: ${({ theme }) => theme.color.darkGray};
+  z-index: 1;
 `;

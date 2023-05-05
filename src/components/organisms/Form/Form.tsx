@@ -2,41 +2,50 @@ import FormField from 'components/molecules/FormField/FormField';
 import { useFormik } from 'formik';
 import { useAuth } from 'hooks/useAuth';
 import * as Yup from 'yup';
-import {
-  InputsWrapper,
-  RadioInputBox,
-  StyledForm,
-  StyledInformation,
-  StyledLabel,
-} from './Form.styles';
-import { addDoc, collection } from 'firebase/firestore';
-import { getSumPrice } from '../../../helpers/getSumPrice';
-import { db } from '../../../firebase/Firebase';
-import { useAppDispatch, useAppSelector } from 'hooks/useRedux';
-import { removeAllProduct } from 'store';
-import { useEffect, useState } from 'react';
+import { InputsWrapper, SpinnerOverlay, StyledForm } from './Form.styles';
+import { functions } from '../../../firebase/Firebase';
+import { useAppSelector } from 'hooks/useRedux';
+import { httpsCallable } from 'firebase/functions';
+import { loadStripe } from '@stripe/stripe-js';
+import Spinner from 'components/atoms/Spinner/Spinner';
+import { useState } from 'react';
 
 const Form = () => {
   const { currentUser } = useAuth();
+  const [isLoading, setIsLoading] = useState(false);
   const cartList = useAppSelector((state) => state.cartList);
-  const dispatch = useAppDispatch();
-  const [paymentMethod, setPaymentMethod] = useState('');
 
-  const createOrder = async () => {
+  const redirectToCheckout = async () => {
+    const stripeCartList = cartList.map(({ price, quantity, shortName }) => {
+      return {
+        quantity,
+        price_data: {
+          currency: 'usd',
+          unit_amount: price * 100,
+          product_data: {
+            name: shortName,
+          },
+        },
+      };
+    });
+    const createStripeCheckout = httpsCallable(functions, 'createStripeCheckout');
+    const stripePromise = loadStripe(
+      'pk_test_51LtAb8LPiJF5XvZcweOe1Mw9eTySLsMBfMidy6BxEzV8H5X09iMeXQe8kC4GnhDJro1CWEGGJmtBa36DzrxkUH6a005VVg4jgY',
+    );
+    const stripe = await stripePromise;
     try {
-      await addDoc(collection(db, `users/${currentUser?.uid}/orders`), {
-        status: 'in progress',
-        date: '01-11-2022',
-        orderNumber: Math.floor(Math.random() * 100000),
-        totalPrice: getSumPrice(cartList),
-        products: cartList,
+      const { data } = await createStripeCheckout({
+        products: stripeCartList,
+        userEmail: currentUser?.email,
       });
-    } catch (error) {
-      console.error(error);
+      const { id } = data as { id: string };
+      stripe!.redirectToCheckout({ sessionId: id });
+    } catch (err) {
+      console.log(err);
     }
   };
 
-  const formik = useFormik({
+  const { handleSubmit, handleChange, values, touched, errors, resetForm } = useFormik({
     initialValues: {
       name: '',
       email: currentUser?.email,
@@ -45,10 +54,6 @@ const Form = () => {
       zipCode: '',
       city: '',
       country: '',
-      paymentMethod: '',
-      cardNumber: '',
-      cvcCode: '',
-      expirationDate: '',
     },
     validationSchema: Yup.object({
       name: Yup.string().required('Name field is required'),
@@ -64,180 +69,99 @@ const Form = () => {
         .required('ZIP code field is required'),
       city: Yup.string().required('City field is required'),
       country: Yup.string().required('Country field is required'),
-      cardNumber:
-        paymentMethod === 'e-money'
-          ? Yup.string()
-              .length(16, 'Invalid cart number')
-              .matches(/^[0-9]+$/, 'Must be only digits')
-              .required('Cart number field is required')
-          : Yup.string(),
-      cvcCode:
-        paymentMethod === 'e-money'
-          ? Yup.string()
-              .length(3, 'Invalid CVC code')
-              .matches(/^[0-9]+$/, 'Must be only digits')
-              .required('CVC code field is required')
-          : Yup.string(),
-      expirationDate:
-        paymentMethod === 'e-money'
-          ? Yup.string().required('Expiration date field is required')
-          : Yup.string(),
     }),
     onSubmit: () => {
-      formik.resetForm();
-      createOrder();
-      dispatch(removeAllProduct());
+      resetForm();
+      redirectToCheckout();
+      setIsLoading(true);
     },
   });
 
-  useEffect(() => {
-    setPaymentMethod(formik.values.paymentMethod);
-  }, [formik.values.paymentMethod]);
-
   return (
-    <StyledForm id='form' onSubmit={formik.handleSubmit}>
-      <h2>Checkout</h2>
-      <div>
-        <h4>biling details</h4>
-        <InputsWrapper>
-          <FormField
-            id='name'
-            label='Name'
-            type='text'
-            placeholder='Jan Kowalski'
-            onChange={formik.handleChange}
-            value={formik.values.name}
-            isError={formik.touched.name && formik.errors.name}
-          />
-          <FormField
-            id='email'
-            label='Email Address'
-            type='email'
-            placeholder='jankowalski@gmail.com'
-            onChange={formik.handleChange}
-            value={formik.values.email!}
-            isError={formik.touched.email && formik.errors.email}
-          />
-          <FormField
-            id='phoneNumber'
-            label='Phone Number'
-            type='string'
-            placeholder='+48 123-456-789'
-            onChange={formik.handleChange}
-            value={formik.values.phoneNumber}
-            isError={formik.touched.phoneNumber && formik.errors.phoneNumber}
-          />
-        </InputsWrapper>
-      </div>
-      <div>
-        <h4>shipping info</h4>
-        <InputsWrapper>
-          <FormField
-            isBig
-            id='address'
-            label='Your Address'
-            type='text'
-            placeholder='01 Mickiewicza'
-            onChange={formik.handleChange}
-            value={formik.values.address}
-            isError={formik.touched.address && formik.errors.address}
-          />
-          <FormField
-            id='zipCode'
-            label='ZIP Code'
-            type='text'
-            placeholder='10-001'
-            onChange={formik.handleChange}
-            value={formik.values.zipCode}
-            isError={formik.touched.zipCode && formik.errors.zipCode}
-          />
-          <FormField
-            id='city'
-            label='City'
-            type='text'
-            placeholder='Warszawa'
-            onChange={formik.handleChange}
-            value={formik.values.city}
-            isError={formik.touched.city && formik.errors.city}
-          />
-          <FormField
-            id='country'
-            label='Country'
-            type='text'
-            placeholder='Poland'
-            onChange={formik.handleChange}
-            value={formik.values.country}
-            isError={formik.touched.country && formik.errors.country}
-          />
-        </InputsWrapper>
-      </div>
-      <div>
-        <h4>payment details</h4>
+    <>
+      <StyledForm id='form' onSubmit={handleSubmit}>
+        <h2>Checkout</h2>
         <div>
-          <StyledLabel as='p'>Payment Method</StyledLabel>
+          <h4>biling details</h4>
           <InputsWrapper>
-            <RadioInputBox>
-              <label htmlFor='e-money'>e-Money</label>
-              <input
-                type='radio'
-                value='e-money'
-                name='paymentMethod'
-                id='e-money'
-                onChange={formik.handleChange}
-              />
-            </RadioInputBox>
-            <RadioInputBox>
-              <label htmlFor='cash-on-delivery'>Cash on Delivery</label>
-              <input
-                type='radio'
-                value='cash-on-delivery'
-                name='paymentMethod'
-                id='cash-on-delivery'
-                onChange={formik.handleChange}
-              />
-            </RadioInputBox>
-            {paymentMethod === 'e-money' ? (
-              <>
-                <FormField
-                  isBig
-                  id='cardNumber'
-                  label='Cart Number'
-                  type='string'
-                  placeholder='4242 4242 4242 4242'
-                  onChange={formik.handleChange}
-                  value={formik.values.cardNumber}
-                  isError={formik.touched.cardNumber && formik.errors.cardNumber}
-                />
-                <FormField
-                  id='expirationDate'
-                  label='Expiration data'
-                  type='string'
-                  placeholder='12/27'
-                  onChange={formik.handleChange}
-                  value={formik.values.expirationDate}
-                  isError={formik.touched.expirationDate && formik.errors.expirationDate}
-                />
-                <FormField
-                  id='cvcCode'
-                  label='CVC'
-                  type='string'
-                  placeholder='123'
-                  onChange={formik.handleChange}
-                  value={formik.values.cvcCode}
-                  isError={formik.touched.cvcCode && formik.errors.cvcCode}
-                />
-              </>
-            ) : (
-              <StyledInformation>
-                The ‘Cash on Delivery’ option enables you to pay in cash when our delivery courier
-                arrives at your residence. Just make sure your address is correct so that your order
-                will not be cancelled.
-              </StyledInformation>
-            )}
+            <FormField
+              id='name'
+              label='Name'
+              type='text'
+              placeholder='Jan Kowalski'
+              onChange={handleChange}
+              value={values.name}
+              isError={touched.name && errors.name}
+            />
+            <FormField
+              id='email'
+              label='Email Address'
+              type='email'
+              placeholder='jankowalski@gmail.com'
+              onChange={handleChange}
+              value={values.email!}
+              isError={touched.email && errors.email}
+            />
+            <FormField
+              id='phoneNumber'
+              label='Phone Number'
+              type='string'
+              placeholder='+48 123-456-789'
+              onChange={handleChange}
+              value={values.phoneNumber}
+              isError={touched.phoneNumber && errors.phoneNumber}
+            />
           </InputsWrapper>
         </div>
-      </div>
-    </StyledForm>
+        <div>
+          <h4>shipping info</h4>
+          <InputsWrapper>
+            <FormField
+              isBig
+              id='address'
+              label='Your Address'
+              type='text'
+              placeholder='01 Mickiewicza'
+              onChange={handleChange}
+              value={values.address}
+              isError={touched.address && errors.address}
+            />
+            <FormField
+              id='zipCode'
+              label='ZIP Code'
+              type='text'
+              placeholder='10-001'
+              onChange={handleChange}
+              value={values.zipCode}
+              isError={touched.zipCode && errors.zipCode}
+            />
+            <FormField
+              id='city'
+              label='City'
+              type='text'
+              placeholder='Warszawa'
+              onChange={handleChange}
+              value={values.city}
+              isError={touched.city && errors.city}
+            />
+            <FormField
+              id='country'
+              label='Country'
+              type='text'
+              placeholder='Poland'
+              onChange={handleChange}
+              value={values.country}
+              isError={touched.country && errors.country}
+            />
+          </InputsWrapper>
+        </div>
+      </StyledForm>
+      {isLoading && (
+        <SpinnerOverlay>
+          <Spinner isLoading={isLoading} />
+        </SpinnerOverlay>
+      )}
+    </>
   );
 };
 

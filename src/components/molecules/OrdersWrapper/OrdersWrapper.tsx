@@ -1,5 +1,5 @@
 import { db } from '../../../firebase/Firebase';
-import { collection, DocumentData, getDocs } from 'firebase/firestore';
+import { collection, DocumentData, getDocs, query, where } from 'firebase/firestore';
 import { useAuth } from 'hooks/useAuth';
 import { useState, useEffect } from 'react';
 import { CartType } from 'types';
@@ -14,11 +14,11 @@ import {
 const OrdersWrapper = () => {
   const [orders, setOrders] = useState<Array<DocumentData>>();
   const { currentUser } = useAuth();
-  const colRef = collection(db, `users/${currentUser?.uid}/orders`);
 
   useEffect(() => {
     const getOrders = async () => {
-      const querySnapshot = await getDocs(colRef);
+      const q = query(collection(db, 'orders'), where('customerEmail', '==', currentUser?.email));
+      const querySnapshot = await getDocs(q);
 
       const ordersArray: Array<DocumentData> = [];
       querySnapshot.forEach((doc) => {
@@ -28,6 +28,7 @@ const OrdersWrapper = () => {
     };
 
     getOrders();
+    console.log(orders);
   }, []);
 
   return (
@@ -35,18 +36,17 @@ const OrdersWrapper = () => {
       <h3>Orders</h3>
       {orders?.length ? (
         <div>
-          {orders.map(({ products, orderNumber, date, status, totalPrice }) => (
-            <StyledOrder key={orderNumber}>
+          {orders.map(({ id, amountTotal, date, paymentStatus, products }) => (
+            <StyledOrder key={id}>
               <OrderInforamtion>
-                <h4>{status}</h4>
+                <h4>Status: {paymentStatus}</h4>
                 <p>{date}</p>
-                <p>nr {orderNumber}</p>
-                <StyledPrice>$ {totalPrice}</StyledPrice>
+                <p>nr. {id}</p>
+                <StyledPrice>$ {amountTotal}</StyledPrice>
               </OrderInforamtion>
               <OrderProducts>
-                {products.map(({ id, image, shortName, quantity, price }: CartType) => (
+                {products.map(({ id, shortName, quantity, price }: CartType) => (
                   <div key={id}>
-                    <img src={image} alt={`${shortName} image`} />
                     <h5>
                       {shortName} x{quantity}
                     </h5>
