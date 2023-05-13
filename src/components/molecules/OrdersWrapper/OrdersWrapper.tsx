@@ -17,8 +17,9 @@ const OrdersWrapper = () => {
 
   useEffect(() => {
     const getOrders = async () => {
-      const q = query(collection(db, 'orders'), where('customerEmail', '==', currentUser?.email));
-      const querySnapshot = await getDocs(q);
+      const querySnapshot = await getDocs(
+        query(collection(db, 'orders'), where('customerEmail', '==', currentUser?.email)),
+      );
 
       const ordersArray: Array<DocumentData> = [];
       querySnapshot.forEach((doc) => {
@@ -28,7 +29,6 @@ const OrdersWrapper = () => {
     };
 
     getOrders();
-    console.log(orders);
   }, []);
 
   return (
