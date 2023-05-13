@@ -1,16 +1,22 @@
 import { ReactComponent as Success } from 'assets/icons/success.svg';
 import GoBackLink from 'components/atoms/GoBackLink/GoBackLink';
-import { useSuccess } from 'hooks/useSuccess';
 import { useEffect } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useNavigate, useSearchParams } from 'react-router-dom';
 import { Background, SuccessWrapper } from './SuccessTemplate.styles';
+import { useAppDispatch } from 'hooks/useRedux';
+import { removeAllProduct } from 'store';
 
 const SuccessTemplate = () => {
+  const [searchParams] = useSearchParams();
   const navigate = useNavigate();
-  const { isBlocked } = useSuccess();
+  const dispatch = useAppDispatch();
 
   useEffect(() => {
-    if (!isBlocked) navigate('/');
+    if (searchParams.get('success')) {
+      dispatch(removeAllProduct());
+    } else {
+      navigate('/');
+    }
   }, []);
 
   return (

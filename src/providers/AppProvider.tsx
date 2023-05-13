@@ -9,7 +9,6 @@ import { ErrorProvider } from 'hooks/useError';
 import { ThemeProvider } from 'styled-components';
 import GlobalStyles from 'assets/styles/GlobalStyles';
 import { theme } from 'assets/styles/theme';
-import { SuccessProvider } from 'hooks/useSuccess';
 
 const AppProvider: FC<ChildrenType> = ({ children }) => {
   return (
@@ -19,10 +18,8 @@ const AppProvider: FC<ChildrenType> = ({ children }) => {
           <ErrorProvider>
             <AuthProvider>
               <ModalProvider>
-                <SuccessProvider>
-                  <GlobalStyles />
-                  {children}
-                </SuccessProvider>
+                <GlobalStyles />
+                {children}
               </ModalProvider>
             </AuthProvider>
           </ErrorProvider>

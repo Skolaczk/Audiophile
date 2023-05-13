@@ -8,8 +8,8 @@ import Cart from 'components/molecules/Cart/Cart';
 import SignIn from 'components/templates/SignInTemplate/SignInTemplate';
 import SignUp from 'components/templates/SignUpTemplate/SignUpTemplate';
 import AccountTemplate from 'components/templates/AccountTemplate/AccountTemplate';
-import SuccessTemplate from 'components/templates/SuccessTemplate/SuccessTemplate';
 import NotFoundPage from 'components/templates/404Template/NotFoundPage';
+import SuccessTemplate from 'components/templates/SuccessTemplate/SuccessTemplate';
 
 const App = () => {
   const { pathname } = useLocation();
