@@ -2,7 +2,7 @@
 
 ## Project Overview 🎉
 
-I created a online store - Audiophile (idea and design from <a href="https://www.frontendmentor.io/challenges/audiophile-ecommerce-website-C8cuSd_wx">Front-end mentor</a>). I organized the structure of the projects using atomic design, so I split my components into atoms, molecules, organisms, templates. For style, I used Styled-components and React-router-dom to switch between routes. I used firebase auth to authenticate the user and firestore to save user's orders. Now user can log in or register by login and password. I used redux-toolkit to manage the shopping cart state and react-redux to distribute it. Products that are splitted into categories
+I created a online store - Audiophile (idea and design from <a href="https://www.frontendmentor.io/challenges/audiophile-ecommerce-website-C8cuSd_wx">Front-end mentor</a>). I organized the structure of the projects using atomic design, so I split my components into atoms, molecules, organisms, templates. For style, I used Styled-components and React-router-dom to switch between routes. I used firebase auth to authenticate the user, firestore to save user's orders and functions to create webhook between firebase and stripe to create stripe checkout. Now user can log in or register by login and password. I used redux-toolkit to manage the shopping cart state and react-redux to distribute it. Products that are splitted into categories
 are fetched from firestore.
 
 ## Installation 💾
