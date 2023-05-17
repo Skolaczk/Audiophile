@@ -39,7 +39,7 @@ const Product = () => {
   }, [pathname]);
 
   useEffect(() => {
-    if (!isLoading && !product) navigate('/');
+    if (!isLoading && !product) navigate('/404');
   }, [isLoading, product]);
 
   return (

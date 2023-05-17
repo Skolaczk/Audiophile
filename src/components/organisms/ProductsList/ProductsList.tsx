@@ -31,7 +31,7 @@ const ProductsList: FC<CategoryType> = ({ category }) => {
   }, [pathname]);
 
   useEffect(() => {
-    if (!isLoading && !products.length) navigate('/');
+    if (!isLoading && !products.length) navigate('/404');
   }, [isLoading, products]);
 
   return (
