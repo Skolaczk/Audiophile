@@ -10,6 +10,9 @@ import { loadStripe } from '@stripe/stripe-js';
 import Spinner from 'components/atoms/Spinner/Spinner';
 import { useState } from 'react';
 
+const stripeKey =
+  'pk_test_51LtAb8LPiJF5XvZcweOe1Mw9eTySLsMBfMidy6BxEzV8H5X09iMeXQe8kC4GnhDJro1CWEGGJmtBa36DzrxkUH6a005VVg4jgY';
+
 const Form = () => {
   const { currentUser } = useAuth();
   const [isLoading, setIsLoading] = useState(false);
@@ -29,20 +32,14 @@ const Form = () => {
       };
     });
     const createStripeCheckout = httpsCallable(functions, 'createStripeCheckout');
-    const stripePromise = loadStripe(
-      'pk_test_51LtAb8LPiJF5XvZcweOe1Mw9eTySLsMBfMidy6BxEzV8H5X09iMeXQe8kC4GnhDJro1CWEGGJmtBa36DzrxkUH6a005VVg4jgY',
-    );
+    const stripePromise = loadStripe(stripeKey);
     const stripe = await stripePromise;
-    try {
-      const { data } = await createStripeCheckout({
-        products: stripeCartList,
-        userEmail: currentUser?.email,
-      });
-      const { id } = data as { id: string };
-      stripe!.redirectToCheckout({ sessionId: id });
-    } catch (err) {
-      console.log(err);
-    }
+    const { data } = await createStripeCheckout({
+      products: stripeCartList,
+      userEmail: currentUser?.email,
+    });
+    const { id } = data as { id: string };
+    stripe!.redirectToCheckout({ sessionId: id });
   };
 
   const { handleSubmit, handleChange, values, touched, errors, resetForm } = useFormik({
