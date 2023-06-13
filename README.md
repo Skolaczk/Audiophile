@@ -28,6 +28,7 @@ Link to the live version: https://audiophile-ms.netlify.app/
 ## Tech/framework used 🔧
 
 - React (Typescript template)
+- Stripe
 - Styled-components
 - Redux-toolkit
 - React-redux
