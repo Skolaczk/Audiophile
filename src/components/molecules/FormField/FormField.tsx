@@ -1,8 +1,18 @@
-import { FC } from 'react';
-import { FormFieldType } from 'types';
+import { FC, ChangeEventHandler } from 'react';
 import { InputBox, LabelBox, StyledLabel } from './FormField.styles';
 
-const FormField: FC<FormFieldType> = (formFieldData) => {
+type PropsType = {
+  id: string;
+  label: string;
+  type: string;
+  placeholder: string;
+  isBig?: boolean;
+  onChange: ChangeEventHandler<HTMLInputElement>;
+  value?: string;
+  isError: string | false | undefined;
+};
+
+const FormField: FC<PropsType> = (formFieldData) => {
   const { id, label, type, placeholder, isBig, onChange, value, isError } = formFieldData;
 
   return (

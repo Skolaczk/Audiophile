@@ -1,9 +1,16 @@
 import { ButtonLink } from 'components/atoms/Button/ButtonLink';
 import { FC } from 'react';
-import { OthersProductsListType } from 'types';
 import { CenterHeading, ProductsWrapper, StyledOtherProduct } from './OtherProductsList.styles';
 
-const OthersProductsList: FC<OthersProductsListType> = ({ others }) => {
+export type PropsType = {
+  others: Array<{
+    slug: string;
+    name: string;
+    image: { mobile: string; tablet: string; desktop: string };
+  }>;
+};
+
+const OthersProductsList: FC<PropsType> = ({ others }) => {
   return (
     <div>
       <CenterHeading>you may also like</CenterHeading>

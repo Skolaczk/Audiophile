@@ -1,5 +1,4 @@
 import { FC } from 'react';
-import { ProductContentType } from 'types';
 import {
   FeaturesWrapper,
   ProductCompositionWrapper,
@@ -7,7 +6,12 @@ import {
   StyledProductContent,
 } from './ProductContent.styles';
 
-const ProductContent: FC<ProductContentType> = ({ features, includedItems }) => {
+export type PropsType = {
+  features: string;
+  includedItems: Array<{ quantity: number; item: string }>;
+};
+
+const ProductContent: FC<PropsType> = ({ features, includedItems }) => {
   return (
     <StyledProductContent>
       <FeaturesWrapper>

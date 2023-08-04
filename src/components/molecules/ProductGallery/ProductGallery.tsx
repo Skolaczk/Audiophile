@@ -1,8 +1,15 @@
 import { FC } from 'react';
-import { ProductGalleryType } from 'types';
 import { ImagesWrapper } from './ProductGallery.styles';
 
-const ProductGallery: FC<ProductGalleryType> = ({ gallery }) => {
+type PropsType = {
+  gallery: {
+    first: { mobile: string; tablet: string; desktop: string };
+    second: { mobile: string; tablet: string; desktop: string };
+    third: { mobile: string; tablet: string; desktop: string };
+  };
+};
+
+const ProductGallery: FC<PropsType> = ({ gallery }) => {
   return (
     <ImagesWrapper>
       <img src={gallery.first.tablet} alt='Product first image' />

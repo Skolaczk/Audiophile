@@ -5,9 +5,12 @@ import { useError } from 'hooks/useError';
 import { StyledButton, StyledError, StyledForm } from './SignForm.styles';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
-import { IsSignInType } from 'types';
 
-const SignForm: FC<IsSignInType> = ({ isSignIn }) => {
+type PropsType = {
+  isSignIn?: boolean;
+};
+
+const SignForm: FC<PropsType> = ({ isSignIn }) => {
   const { handleSignUp, handleSignIn } = useAuth();
   const { error } = useError();
   const formik = useFormik({

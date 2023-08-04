@@ -2,12 +2,15 @@ import { ButtonLink } from 'components/atoms/Button/ButtonLink';
 import { db } from '../../../firebase/Firebase';
 import { FC, useEffect, useState } from 'react';
 import { StyledProductsList, StyledProductsListItem } from './ProductsList.styles';
-import { CategoryType } from 'types';
 import { useLocation, useNavigate } from 'react-router-dom';
 import Spinner from 'components/atoms/Spinner/Spinner';
 import { collection, DocumentData, getDocs, query, where } from 'firebase/firestore';
 
-const ProductsList: FC<CategoryType> = ({ category }) => {
+type PropsType = {
+  category: string | undefined;
+};
+
+const ProductsList: FC<PropsType> = ({ category }) => {
   const { pathname } = useLocation();
   const navigate = useNavigate();
   const [products, setProducts] = useState<Array<DocumentData>>([]);

@@ -1,8 +1,11 @@
 import { FC } from 'react';
-import { TitleType } from 'types';
 import { StyledTitleBox } from './TitleBox.styles';
 
-const TitleBox: FC<TitleType> = ({ title }) => {
+type PropsType = {
+  title: string | undefined;
+};
+
+const TitleBox: FC<PropsType> = ({ title }) => {
   return (
     <StyledTitleBox>
       <h1>{title}</h1>

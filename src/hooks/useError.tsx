@@ -1,7 +1,12 @@
 import { ErrorMessages, FirebaseErrors } from 'constants/index';
 import { FC, createContext, useState, useContext, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
-import { ChildrenType, ErrorContextType } from 'types';
+import { ChildrenType } from 'types';
+
+type ErrorContextType = {
+  error: string;
+  catchError: (errorCode: string) => void;
+};
 
 const ErrorContext = createContext<ErrorContextType>(null!);
 

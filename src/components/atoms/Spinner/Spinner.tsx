@@ -1,9 +1,12 @@
 import { ReactComponent as SpinnerIcon } from 'assets/icons/spinner.svg';
 import { FC } from 'react';
-import { IsLoadingType } from 'types';
 import { SpinnerWrapper } from './Spinner.styles';
 
-const Spinner: FC<IsLoadingType> = ({ isLoading }) => {
+export type PropsType = {
+  isLoading: boolean;
+};
+
+const Spinner: FC<PropsType> = ({ isLoading }) => {
   return (
     <SpinnerWrapper isLoading={isLoading}>
       <SpinnerIcon />

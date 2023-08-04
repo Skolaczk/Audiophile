@@ -4,10 +4,14 @@ import { ViewWrapper } from 'components/organisms/ViewWrapper/ViewWrapper.styles
 import { Link } from 'react-router-dom';
 import { StyledSignInTemplate, StyledParagraph, Container } from './SignTemplate.styles';
 import { FC } from 'react';
-import { ChildrenType, IsSignInType } from 'types';
+import { ChildrenType } from 'types';
 import SignFormContent from 'components/molecules/SignFormContent/SignFormContent';
 
-const SignTemplate: FC<ChildrenType & IsSignInType> = ({ children, isSignIn }) => {
+type PropsType = {
+  isSignIn?: boolean;
+};
+
+const SignTemplate: FC<ChildrenType & PropsType> = ({ children, isSignIn }) => {
   return (
     <StyledSignInTemplate>
       <ViewWrapper>

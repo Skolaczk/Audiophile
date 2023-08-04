@@ -1,6 +1,11 @@
 import { FC, createContext, useState, useContext, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
-import { ChildrenType, ModalContextType } from 'types';
+import { ChildrenType } from 'types';
+
+type ModalContextType = {
+  modalIsOpen: boolean;
+  toggleModal: () => void;
+};
 
 const ModalContext = createContext<ModalContextType>(null!);
 

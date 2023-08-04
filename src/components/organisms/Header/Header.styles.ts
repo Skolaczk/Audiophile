@@ -1,5 +1,12 @@
 import styled from 'styled-components';
-import { CountType, IsOpenType } from 'types';
+
+type CountType = {
+  count: number;
+};
+
+type IsOpenType = {
+  isOpen: boolean;
+};
 
 export const StyledHeader = styled.header`
   background-color: ${({ theme }) => theme.color.black};

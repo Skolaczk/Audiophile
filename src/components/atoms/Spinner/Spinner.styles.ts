@@ -1,5 +1,8 @@
 import styled, { css, keyframes } from 'styled-components';
-import { IsLoadingType } from 'types';
+
+type IsLoadingType = {
+  isLoading: boolean;
+};
 
 const rotateSpinner = keyframes`
   100% {
