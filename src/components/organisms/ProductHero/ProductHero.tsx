@@ -9,10 +9,17 @@ import {
   Wrapper,
 } from './ProductHero.styles';
 import { addProduct } from 'store';
-import { ActionType, CountType } from 'types';
 import { ActionTypes } from 'constants/index';
 import SuccessInformation from 'components/molecules/SuccessInformation/SuccessInforamtion';
 import { DocumentData } from 'firebase/firestore';
+
+type ActionType = {
+  type: string;
+};
+
+type CountType = {
+  count: number;
+};
 
 const reducer = (state: CountType, action: ActionType) => {
   switch (action.type) {

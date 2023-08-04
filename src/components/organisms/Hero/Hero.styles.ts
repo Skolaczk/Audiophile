@@ -1,5 +1,9 @@
 import styled from 'styled-components';
-import { HeroType } from 'types';
+
+type HeroType = {
+  heroImage: string;
+  heroImageDesktop: string;
+};
 
 export const StyledHero = styled.div<HeroType>`
   text-align: center;

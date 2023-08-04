@@ -1,5 +1,9 @@
 import styled from 'styled-components';
-import { InputType } from 'types';
+
+type InputType = {
+  isBig?: boolean;
+  isError: string | false | undefined;
+};
 
 export const LabelBox = styled.div`
   display: flex;

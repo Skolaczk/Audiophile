@@ -1,5 +1,8 @@
 import styled from 'styled-components';
-import { IsOpenType } from 'types';
+
+type IsOpenType = {
+  isOpen: boolean;
+};
 
 export const StyledSuccesInforamtion = styled.div<IsOpenType>`
   z-index: 3;

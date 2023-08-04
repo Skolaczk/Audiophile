@@ -1,9 +1,12 @@
 import { ReactComponent as Check } from 'assets/icons/check.svg';
 import { FC } from 'react';
-import { IsSignInType } from 'types';
 import { Box, StyledLink, Wrapper } from './SignFormContent.styles';
 
-const SignFormContent: FC<IsSignInType> = ({ isSignIn }) => {
+type PropsType = {
+  isSignIn?: boolean;
+};
+
+const SignFormContent: FC<PropsType> = ({ isSignIn }) => {
   return (
     <div>
       <Wrapper>

@@ -47,12 +47,12 @@ const OrdersWrapper = () => {
               <OrderProducts>
                 {products.map(({ id, shortName, quantity, price, image }: CartType) => (
                   <div key={id}>
-                  <img src={image} alt={`${shortName}`} />
-                  <h5>
-                    {shortName} x{quantity}
-                  </h5>
-                  <p>$ {price}</p>
-                </div>
+                    <img src={image} alt={`${shortName}`} />
+                    <h5>
+                      {shortName} x{quantity}
+                    </h5>
+                    <p>$ {price}</p>
+                  </div>
                 ))}
               </OrderProducts>
             </StyledOrder>

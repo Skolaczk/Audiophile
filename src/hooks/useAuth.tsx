@@ -8,7 +8,20 @@ import {
 } from 'firebase/auth';
 import { auth } from '../firebase/Firebase';
 import { useError } from './useError';
-import { AuthContextType, ChildrenType, FormValuesType } from 'types';
+import { ChildrenType } from 'types';
+
+type FormValuesType = {
+  name: string;
+  email: string;
+  password: string;
+};
+
+type AuthContextType = {
+  currentUser: User | null;
+  handleSignIn: (values: FormValuesType) => void;
+  handleSignUp: (values: FormValuesType) => void;
+  handleSignOut: () => void;
+};
 
 export const AuthContext = React.createContext<AuthContextType>(null!);
 

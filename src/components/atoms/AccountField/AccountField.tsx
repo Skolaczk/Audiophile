@@ -1,8 +1,12 @@
 import { FC } from 'react';
-import { AccountFieldType } from 'types';
 import { AccountFieldBox } from './AccountField.styles';
 
-const AccountField: FC<AccountFieldType> = ({ title, content }) => {
+export type PropsType = {
+  title: string;
+  content: string | undefined | null;
+};
+
+const AccountField: FC<PropsType> = ({ title, content }) => {
   return (
     <AccountFieldBox>
       <h4>{title}</h4>
